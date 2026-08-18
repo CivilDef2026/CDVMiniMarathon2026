@@ -2031,7 +2031,11 @@
             AppState.registrations = regsRes.data;
           }
           if (runnersRes.data && runnersRes.data.length > 0) {
-            AppState.runners = runnersRes.data;
+            const regCatMap = new Map((AppState.registrations || []).map(rg => [rg.id, rg.category_id]));
+            AppState.runners = runnersRes.data.map(run => ({
+              ...run,
+              category_id: run.category_id || regCatMap.get(run.registration_id) || 'funrun'
+            }));
           }
           if (usersRes.data && usersRes.data.length > 0) {
             AppState.users = usersRes.data;
@@ -2083,7 +2087,12 @@
 
       if (storedRegs && storedRunners) {
         AppState.registrations = JSON.parse(storedRegs);
-        AppState.runners = JSON.parse(storedRunners);
+        const parsedRunners = JSON.parse(storedRunners);
+        const regCatMap = new Map((AppState.registrations || []).map(rg => [rg.id, rg.category_id]));
+        AppState.runners = parsedRunners.map(run => ({
+          ...run,
+          category_id: run.category_id || regCatMap.get(run.registration_id) || 'funrun'
+        }));
       } else {
         // Initial Seed Samples
         AppState.registrations = [
@@ -3736,8 +3745,9 @@
       // 2. Render Category Doughnut Chart
       const catCounts = { vip: 0, funrun: 0, family: 0, mini: 0 };
       AppState.runners.forEach(r => {
-        if (catCounts[r.category_id] !== undefined) {
-          catCounts[r.category_id]++;
+        const catId = getRunnerCategoryId(r);
+        if (catCounts[catId] !== undefined) {
+          catCounts[catId]++;
         }
       });
 
@@ -3903,6 +3913,23 @@
     }
 
     /**
+     * Helpers: ดึงข้อมูล Category ของนักวิ่งอย่างแม่นยำ (รองรับทั้งที่อยู่ใน runner object หรือใน registrations)
+     */
+    function getRunnerCategoryId(runner) {
+      if (runner && runner.category_id) return runner.category_id;
+      if (runner && runner.registration_id) {
+        const reg = AppState.registrations.find(rg => rg.id === runner.registration_id);
+        if (reg && reg.category_id) return reg.category_id;
+      }
+      return 'funrun';
+    }
+
+    function getRunnerCategory(runner) {
+      const catId = getRunnerCategoryId(runner);
+      return AppState.categories.find(c => c.id === catId) || AppState.categories[0] || { id: 'funrun', name: 'รุ่น Fun Run', badgeColor: 'bg-cyan-100 text-cyan-800' };
+    }
+
+    /**
      * Helper: สร้างหมายเลข BIB ตามรุ่นและเพศแบบเรียงลำดับ (Sequential BIB Numbering)
      * กฎการรันหมายเลข:
      * - VIP: VIP-001, VIP-002, VIP-003...
@@ -3911,7 +3938,7 @@
      * - Mini Marathon (10km): ชาย -> 10M-001, 10M-002... / หญิง -> 10F-001, 10F-002...
      */
     function generateSequentialBibNumber(runner, runnerIdxInTeam = 0, existingAssignedBibs = new Set()) {
-      const catId = (runner.category_id || '').toLowerCase();
+      const catId = getRunnerCategoryId(runner).toLowerCase();
       const isFemale = (runner.gender === 'หญิง' || runner.prefix === 'นาง' || runner.prefix === 'นางสาว' || runner.prefix === 'ด.ญ.');
 
       // รวบรวมหมายเลข BIB ทั้งหมดที่มีอยู่ในระบบ
@@ -4201,7 +4228,7 @@
 
       let filtered = AppState.runners;
       if (filter !== 'all') {
-        filtered = filtered.filter(r => r.category_id === filter);
+        filtered = filtered.filter(r => getRunnerCategoryId(r) === filter);
       }
 
       if (kw) {
@@ -4221,7 +4248,7 @@
 
       tbody.innerHTML = filtered.map(r => {
         const reg = AppState.registrations.find(rg => rg.id === r.registration_id);
-        const cat = AppState.categories.find(c => c.id === r.category_id) || AppState.categories[0];
+        const cat = getRunnerCategory(r);
 
         return `
           <tr class="hover:bg-slate-50 transition whitespace-nowrap">
@@ -4362,7 +4389,7 @@
       // 2. Export Runners CSV (Filtered by category or all)
       let runnersToExport = AppState.runners;
       if (filter !== 'all') {
-        runnersToExport = runnersToExport.filter(r => r.category_id === filter);
+        runnersToExport = runnersToExport.filter(r => getRunnerCategoryId(r) === filter);
       }
 
       if (runnersToExport.length === 0) {
@@ -4375,7 +4402,7 @@
 
       runnersToExport.forEach((r, idx) => {
         const reg = AppState.registrations.find(rg => rg.id === r.registration_id);
-        const cat = AppState.categories.find(c => c.id === r.category_id);
+        const cat = getRunnerCategory(r);
         const row = [
           idx + 1,
           `"${r.bib_number || ''}"`,
@@ -4386,22 +4413,25 @@
           `"${r.gender}"`,
           r.age,
           `"${r.birth_date || ''}"`,
-          `="${r.citizen_id}"`,
-          `="${r.phone}"`,
-          `"${r.shirt_size}"`,
+          `="${r.citizen_id || ''}"`,
+          `="${r.phone || ''}"`,
+          `"${r.shirt_size || ''}"`,
           `"${r.chronic_disease || 'ไม่มี'}"`,
           `"${cat ? cat.name : ''}"`,
           `"${cat ? cat.distance : ''}"`,
-          `"${reg ? reg.delivery_type : ''}"`,
-          `"${(r.address || '').replace(/"/g, '""')}"`,
+          `"${reg ? (reg.delivery_type === 'delivery' ? 'จัดส่ง' : 'รับหน้างาน') : ''}"`,
+          `"${reg && reg.delivery_address ? reg.delivery_address.replace(/"/g, '""') : '-'}"`,
           `"${reg ? reg.status : ''}"`
         ];
         csvContent += row.join(",") + "\n";
       });
 
-      const catName = filter === 'all' ? 'all' : filter;
-      downloadCSVFile(csvContent, `runners_${catName}_${new Date().toISOString().slice(0,10)}.csv`);
-      showToast('ส่งออกข้อมูลนักวิ่งสำเร็จ', 'success');
+      const fileName = filter === 'all' 
+        ? `all_runners_${new Date().toISOString().slice(0,10)}.csv`
+        : `runners_${filter}_${new Date().toISOString().slice(0,10)}.csv`;
+
+      downloadCSVFile(csvContent, fileName);
+      showToast('ส่งออกข้อมูลนักวิ่ง CSV สำเร็จ', 'success');
     }
 
     function downloadCSVFile(content, fileName) {
