@@ -295,11 +295,11 @@
               <span>เปิดรับสมัครแล้ววันนี้ • ชิงถ้วยเกียรติยศ</span>
             </div>
 
-            <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+            <h1 id="hero-event-title" class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
               อปพร. มินิมาราธอน <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">ครั้งที่ 1</span>
             </h1>
 
-            <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+            <p id="hero-event-subtitle" class="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
               ชิงถ้วยผู้ว่าราชการจังหวัดระยอง <strong class="text-white">นายไตรภพ วงศ์ไตรรัตน์</strong><br>
               วิ่งเพื่อสุขภาพ เพื่อชุมชน หารายได้สมทบกองทุนสวัสดิการ อปพร.ระยอง และส่งเสริมการท่องเที่ยวธรรมชาติ ณ อ่างเก็บน้ำเขาจุก อ.เขาชะเมา จ.ระยอง
             </p>
@@ -308,11 +308,11 @@
             <div class="flex flex-wrap gap-2 sm:gap-4 pt-2 text-xs sm:text-sm text-slate-200">
               <div class="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white/10 border border-white/10">
                 <i data-lucide="calendar" class="w-4 h-4 text-amber-400"></i>
-                <span>18 ตุลาคม 2569</span>
+                <span id="hero-chip-date">18 ตุลาคม 2569</span>
               </div>
               <div class="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white/10 border border-white/10">
                 <i data-lucide="map-pin" class="w-4 h-4 text-rose-400"></i>
-                <span>อ่างเก็บน้ำเขาจุก อ.เขาชะเมา จ.ระยอง</span>
+                <span id="hero-chip-location">อ่างเก็บน้ำเขาจุก อ.เขาชะเมา จ.ระยอง</span>
               </div>
               <div class="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white/10 border border-white/10">
                 <i data-lucide="clock" class="w-4 h-4 text-emerald-400"></i>
@@ -436,15 +436,15 @@
           </div>
         </div>
 
-        <!-- Souvenir Shirt Banner -->
-        <div class="p-6 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+        <!-- Souvenir Product Banner (Dynamic) -->
+        <div id="landing-souvenir-banner" class="p-6 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
           <div class="space-y-1 text-center sm:text-left">
             <div class="inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full bg-white/20 text-xs font-semibold">
               <i data-lucide="tag" class="w-3.5 h-3.5"></i>
               <span>สินค้าที่ระลึกพิเศษ</span>
             </div>
-            <h3 class="text-xl font-bold">เสื้อที่ระลึก อปพร. มินิมาราธอน เพียง 300 บาท</h3>
-            <p class="text-xs sm:text-sm text-orange-100">เนื้อผ้า Micro Polyester เบาสบาย ระบายอากาศดีเยี่ยม สั่งซื้อเพิ่มได้ในขั้นตอนการสมัคร</p>
+            <h3 id="landing-souvenir-title" class="text-xl font-bold">เสื้อที่ระลึก อปพร. มินิมาราธอน เพียง 300 บาท</h3>
+            <p id="landing-souvenir-desc" class="text-xs sm:text-sm text-orange-100">เนื้อผ้า Micro Polyester เบาสบาย ระบายอากาศดีเยี่ยม สั่งซื้อเพิ่มได้ในขั้นตอนการสมัคร</p>
           </div>
           <button onclick="startRegistration()" class="px-5 py-2.5 rounded-xl bg-white text-orange-600 font-bold text-sm shadow-md hover:bg-orange-50 transition shrink-0 active:scale-95">
             สั่งซื้อพร้อมสมัครวิ่ง
@@ -454,51 +454,19 @@
         <!-- Event Schedule & Location Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
-          <!-- Schedule 17-18 Oct -->
+          <!-- Schedule Container (Dynamic) -->
           <div class="lg:col-span-2 p-6 rounded-2xl bg-white border border-slate-200/80 shadow-soft space-y-4">
             <div class="flex items-center space-x-2 text-brand-600 font-bold text-lg">
               <i data-lucide="calendar-days" class="w-5 h-5"></i>
               <span>กำหนดการจัดงาน</span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-              <!-- Day 1 -->
-              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 space-y-3">
-                <div class="flex items-center justify-between">
-                  <span class="font-bold text-slate-900 text-base">17 ต.ค. 2569</span>
-                  <span class="px-2 py-0.5 text-xs font-semibold bg-brand-100 text-brand-700 rounded-md">วันรับเสื้อ & บิบ</span>
-                </div>
-                <ul class="space-y-2 text-slate-600 text-xs sm:text-sm">
-                  <li class="flex items-start space-x-2">
-                    <span class="font-semibold text-slate-900 w-24 shrink-0">12.00 - 18.00 น.</span>
-                    <span>รับเสื้อ + บิบ และรับสมัครนักวิ่งหน้างาน</span>
-                  </li>
-                  <li class="flex items-start space-x-2">
-                    <span class="font-semibold text-slate-900 w-24 shrink-0">สถานที่</span>
-                    <span>ณ อ่างเก็บน้ำเขาจุก อ.เขาชะเมา จ.ระยอง</span>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Day 2 -->
-              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 space-y-3">
-                <div class="flex items-center justify-between">
-                  <span class="font-bold text-slate-900 text-base">18 ต.ค. 2569</span>
-                  <span class="px-2 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-700 rounded-md">วันแข่งขัน</span>
-                </div>
-                <ul class="space-y-1.5 text-slate-600 text-xs sm:text-sm">
-                  <li class="flex items-start space-x-2"><span class="font-semibold text-slate-900 w-20 shrink-0">04.00 น.</span><span>เจ้าหน้าที่ประจำจุด / รับเสื้อ+บิบ</span></li>
-                  <li class="flex items-start space-x-2"><span class="font-semibold text-slate-900 w-20 shrink-0">05.00 น.</span><span>ประธานกล่าวเปิดงาน</span></li>
-                  <li class="flex items-start space-x-2"><span class="font-semibold text-slate-900 w-20 shrink-0">05.10 น.</span><span>นำวอร์มร่างกาย</span></li>
-                  <li class="flex items-start space-x-2"><span class="font-semibold text-slate-900 w-20 shrink-0">05.30 น.</span><span class="font-bold text-brand-600">ปล่อยตัว 10 km</span></li>
-                  <li class="flex items-start space-x-2"><span class="font-semibold text-slate-900 w-20 shrink-0">06.00 น.</span><span class="font-bold text-emerald-600">ปล่อยตัว 5 km</span></li>
-                  <li class="flex items-start space-x-2"><span class="font-semibold text-slate-900 w-20 shrink-0">07.00 น.</span><span>พิธีมอบรางวัล / รับประทานอาหาร</span></li>
-                </ul>
-              </div>
+            <div id="landing-schedule-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <!-- Rendered dynamically by renderLandingSchedule() -->
             </div>
           </div>
 
-          <!-- Shirt Size Chart Card -->
+          <!-- Shirt Size Chart Card (Dynamic) -->
           <div class="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-soft space-y-4">
             <div class="flex items-center space-x-2 text-slate-900 font-bold text-lg">
               <i data-lucide="ruler" class="w-5 h-5 text-amber-500"></i>
@@ -514,16 +482,8 @@
                     <th class="py-2 px-2">ความยาว (นิ้ว)</th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100 text-slate-600">
-                  <tr><td class="py-1.5 font-bold text-slate-900">SS</td><td>34"</td><td>25"</td></tr>
-                  <tr><td class="py-1.5 font-bold text-slate-900">S</td><td>36"</td><td>26"</td></tr>
-                  <tr><td class="py-1.5 font-bold text-slate-900">M</td><td>38"</td><td>27"</td></tr>
-                  <tr><td class="py-1.5 font-bold text-slate-900">L</td><td>40"</td><td>28"</td></tr>
-                  <tr><td class="py-1.5 font-bold text-slate-900">XL</td><td>42"</td><td>29"</td></tr>
-                  <tr><td class="py-1.5 font-bold text-slate-900">2XL</td><td>44"</td><td>30"</td></tr>
-                  <tr><td class="py-1.5 font-bold text-slate-900">3XL</td><td>46"</td><td>31"</td></tr>
-                  <tr><td class="py-1.5 font-bold text-slate-900">4XL</td><td>48"</td><td>32"</td></tr>
-                  <tr><td class="py-1.5 font-bold text-slate-900">5XL</td><td>50"</td><td>33"</td></tr>
+                <tbody id="landing-shirt-size-tbody" class="divide-y divide-slate-100 text-slate-600">
+                  <!-- Rendered dynamically by renderLandingShirtSizes() -->
                 </tbody>
               </table>
             </div>
@@ -625,14 +585,13 @@
               </div>
             </div>
 
-            <hr class="border-slate-100">
-
-            <!-- Extra Souvenir Shirt Option -->
-            <div class="space-y-3">
+            <!-- Extra Souvenir Item Option (Dynamic) -->
+            <div id="reg-souvenir-section-wrapper" class="space-y-3 pt-2">
+              <hr class="border-slate-100 mb-3">
               <div class="flex items-center justify-between">
                 <div>
-                  <span class="text-sm font-bold text-slate-900">สั่งซื้อเสื้อที่ระลึกเพิ่มเติม (ตัวละ 300 บาท)</span>
-                  <p class="text-xs text-slate-500">สามารถสั่งซื้อเพิ่มได้ตามต้องการ</p>
+                  <span id="reg-souvenir-title-display" class="text-sm font-bold text-slate-900">สั่งซื้อเสื้อที่ระลึกเพิ่มเติม (ตัวละ 300 บาท)</span>
+                  <p id="reg-souvenir-desc-display" class="text-xs text-slate-500">สามารถสั่งซื้อเพิ่มได้ตามต้องการ</p>
                 </div>
                 <div class="flex items-center space-x-2">
                   <button type="button" onclick="adjustSouvenirQty(-1)" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center font-bold text-lg">-</button>
@@ -1255,11 +1214,11 @@
               </div>
             </div>
 
-            <!-- Pricing, Souvenir & Registration Period Section -->
+            <!-- Pricing & Registration Period Section -->
             <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
               <h3 class="font-bold text-slate-800 text-sm sm:text-base flex items-center space-x-2">
                 <i data-lucide="clock" class="w-4 h-4 text-emerald-600"></i>
-                <span>กำหนดการรับสมัคร & ราคาเสื้อที่ระลึก</span>
+                <span>กำหนดการรับสมัคร & ข้อมูลติดต่อ</span>
               </h3>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
@@ -1270,12 +1229,7 @@
                 </div>
 
                 <div>
-                  <label class="block font-semibold text-slate-700 mb-1">ราคาเสื้อที่ระลึก (บาท/ตัว) <span class="text-rose-500">*</span></label>
-                  <input type="number" id="set_souvenir_shirt_price" required min="0" step="1" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-mono">
-                </div>
-
-                <div class="sm:col-span-2">
-                  <label class="block font-semibold text-slate-700 mb-1">เบอร์ติดต่อฝ่ายรับสมัคร</label>
+                  <label class="block font-semibold text-slate-700 mb-1">เบอร์ติดต่อฝ่ายรับสมัคร / ผู้จัดงาน</label>
                   <input type="text" id="set_contact_phone" placeholder="เช่น 081-234-5678" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-mono">
                 </div>
               </div>
@@ -1290,7 +1244,7 @@
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
                 <div class="md:col-span-2">
-                  <label class="block font-semibold text-slate-700 mb-1">ชื่องานวิ่ง</label>
+                  <label class="block font-semibold text-slate-700 mb-1">ชื่องานวิ่ง <span class="text-rose-500">*</span></label>
                   <input type="text" id="set_event_name" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300">
                 </div>
 
@@ -1308,6 +1262,143 @@
                   <label class="block font-semibold text-slate-700 mb-1">สถานที่จัดงาน</label>
                   <input type="text" id="set_event_location" placeholder="เช่น ณ อ่างเก็บน้ำเขาจุก อ.เขาชะเมา จ.ระยอง" class="w-full px-3 py-2.5 rounded-xl border border-slate-300">
                 </div>
+              </div>
+            </div>
+
+            <!-- Event Schedule & Timeline Section (NEW) -->
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                <h3 class="font-bold text-slate-800 text-sm sm:text-base flex items-center space-x-2">
+                  <i data-lucide="calendar-days" class="w-4 h-4 text-indigo-600"></i>
+                  <span>1. กำหนดการจัดงาน (Event Schedule)</span>
+                </h3>
+                <span class="text-[11px] text-slate-400">แสดงผลในหน้าแรกของเว็บ</span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                <!-- Day 1 Schedule -->
+                <div class="p-4 rounded-xl bg-white border border-slate-200 space-y-3">
+                  <div class="flex items-center space-x-2">
+                    <span class="w-5 h-5 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-xs">1</span>
+                    <h4 class="font-bold text-slate-800 text-xs sm:text-sm">กำหนดการวันที่ 1 (วันรับเสื้อ/บิบ)</h4>
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">หัวข้อวันที่ 1</label>
+                    <input type="text" id="set_sched_day1_title" placeholder="เช่น 17 ต.ค. 2569" class="w-full px-3 py-2 rounded-lg border border-slate-300 font-semibold">
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">ป้ายสถานะวันที่ 1</label>
+                    <input type="text" id="set_sched_day1_badge" placeholder="เช่น วันรับเสื้อ & บิบ" class="w-full px-3 py-2 rounded-lg border border-slate-300">
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">รายการกิจกรรมวันที่ 1 (1 บรรทัด = 1 กิจกรรม ในรูปแบบ เวลา | กิจกรรม)</label>
+                    <textarea id="set_sched_day1_items" rows="4" placeholder="12.00 - 18.00 น. | รับเสื้อ + บิบ และรับสมัครนักวิ่งหน้างาน&#10;สถานที่ | ณ อ่างเก็บน้ำเขาจุก อ.เขาชะเมา จ.ระยอง" class="w-full px-3 py-2 rounded-lg border border-slate-300 font-mono text-xs leading-relaxed"></textarea>
+                  </div>
+                </div>
+
+                <!-- Day 2 Schedule -->
+                <div class="p-4 rounded-xl bg-white border border-slate-200 space-y-3">
+                  <div class="flex items-center space-x-2">
+                    <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">2</span>
+                    <h4 class="font-bold text-slate-800 text-xs sm:text-sm">กำหนดการวันที่ 2 (วันแข่งขัน)</h4>
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">หัวข้อวันที่ 2</label>
+                    <input type="text" id="set_sched_day2_title" placeholder="เช่น 18 ต.ค. 2569" class="w-full px-3 py-2 rounded-lg border border-slate-300 font-semibold">
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">ป้ายสถานะวันที่ 2</label>
+                    <input type="text" id="set_sched_day2_badge" placeholder="เช่น วันแข่งขัน" class="w-full px-3 py-2 rounded-lg border border-slate-300">
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">รายการกิจกรรมวันที่ 2 (1 บรรทัด = 1 กิจกรรม ในรูปแบบ เวลา | กิจกรรม)</label>
+                    <textarea id="set_sched_day2_items" rows="4" placeholder="04.00 น. | เจ้าหน้าที่ประจำจุด / รับเสื้อ+บิบ&#10;05.00 น. | ประธานกล่าวเปิดงาน&#10;05.10 น. | นำวอร์มร่างกาย&#10;05.30 น. | ปล่อยตัว 10 km (Mini Marathon)&#10;06.00 น. | ปล่อยตัว 5 km (Fun Run)&#10;07.00 น. | พิธีมอบรางวัล / รับประทานอาหาร" class="w-full px-3 py-2 rounded-lg border border-slate-300 font-mono text-xs leading-relaxed"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Souvenir Item Settings (NEW) -->
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                <h3 class="font-bold text-slate-800 text-sm sm:text-base flex items-center space-x-2">
+                  <i data-lucide="tag" class="w-4 h-4 text-amber-500"></i>
+                  <span>2. สินค้าของที่ระลึก (Souvenir Item)</span>
+                </h3>
+                <label class="flex items-center space-x-2 cursor-pointer">
+                  <input type="checkbox" id="set_souvenir_enabled" class="w-4 h-4 text-amber-600 rounded">
+                  <span class="text-xs font-bold text-slate-700">เปิดขายของที่ระลึก</span>
+                </label>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 text-xs sm:text-sm">
+                <div class="md:col-span-7">
+                  <label class="block font-semibold text-slate-700 mb-1">ชื่อสินค้าของที่ระลึก</label>
+                  <input type="text" id="set_souvenir_name" placeholder="เช่น เสื้อที่ระลึก อปพร., แก้วน้ำเก็บความเย็น, กระเป๋าผ้า" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-semibold">
+                </div>
+
+                <div class="md:col-span-3">
+                  <label class="block font-semibold text-slate-700 mb-1">ราคาต่อหน่วย (บาท) <span class="text-rose-500">*</span></label>
+                  <input type="number" id="set_souvenir_shirt_price" required min="0" step="1" placeholder="เช่น 300 หรือ 150" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-mono font-bold text-brand-600">
+                </div>
+
+                <div class="md:col-span-2">
+                  <label class="block font-semibold text-slate-700 mb-1">หน่วยนับ</label>
+                  <input type="text" id="set_souvenir_unit" placeholder="เช่น ตัว, ใบ, ชิ้น" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-semibold">
+                </div>
+
+                <div class="md:col-span-8">
+                  <label class="block font-semibold text-slate-700 mb-1">คำบรรยาย / จุดเด่นของสินค้า</label>
+                  <input type="text" id="set_souvenir_description" placeholder="เช่น เนื้อผ้า Micro Polyester เบาสบาย ระบายอากาศดีเยี่ยม หรือ สแตนเลส 304 เก็บอุณหภูมิ 12 ชม." class="w-full px-3 py-2.5 rounded-xl border border-slate-300">
+                </div>
+
+                <div class="md:col-span-4">
+                  <label class="block font-semibold text-slate-700 mb-1">รูปแบบตัวเลือกสินค้า</label>
+                  <select id="set_souvenir_has_sizes" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white font-semibold">
+                    <option value="true">มีขนาด/ไซส์ให้เลือก (เช่น เสื้อ)</option>
+                    <option value="false">ไม่ต้องเลือกไซส์ (เช่น แก้วน้ำ/กระเป๋า)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shirt Size Chart & Options (NEW) -->
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                <div>
+                  <h3 class="font-bold text-slate-800 text-sm sm:text-base flex items-center space-x-2">
+                    <i data-lucide="ruler" class="w-4 h-4 text-rose-500"></i>
+                    <span>3. ตารางขนาดเสื้อ & ตัวเลือกไซส์ (Shirt Size Chart & Options)</span>
+                  </h3>
+                  <p class="text-[11px] text-slate-400">กำหนดไซส์และรอบอกให้ตรงกับร้านตัดเย็บของงานนี้ (ตัวเลือกไซส์ในฟอร์มสมัครจะเปลี่ยนตามตารางนี้ทันที)</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <button type="button" onclick="resetAdminShirtSizesDefault()" class="px-3 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-semibold transition">
+                    คืนค่ามาตรฐาน
+                  </button>
+                  <button type="button" onclick="addAdminShirtSizeRow()" class="px-3 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition flex items-center space-x-1">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                    <span>เพิ่มขนาดไซส์</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Sizes Editable Table -->
+              <div class="overflow-x-auto bg-white rounded-xl border border-slate-200">
+                <table class="w-full text-xs sm:text-sm text-left">
+                  <thead class="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
+                    <tr>
+                      <th class="py-2.5 px-3 w-16 text-center">ลำดับ</th>
+                      <th class="py-2.5 px-3">รหัสไซส์ (Size)</th>
+                      <th class="py-2.5 px-3">รอบอก (Chest) เช่น 38" หรือ 38 นิ้ว</th>
+                      <th class="py-2.5 px-3">ความยาว (Length) เช่น 27"</th>
+                      <th class="py-2.5 px-3 w-16 text-center">ลบ</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-shirt-sizes-tbody" class="divide-y divide-slate-100">
+                    <!-- Populated dynamically by renderAdminShirtSizesTable() -->
+                  </tbody>
+                </table>
               </div>
             </div>
 
@@ -1717,6 +1808,42 @@
     let dbClient = null;
     let isConnectedToSupabase = false;
 
+    // Default Master Configs
+    const DEFAULT_SHIRT_SIZES = [
+      { size: 'SS', chest: '34"', length: '25"' },
+      { size: 'S', chest: '36"', length: '26"' },
+      { size: 'M', chest: '38"', length: '27"' },
+      { size: 'L', chest: '40"', length: '28"' },
+      { size: 'XL', chest: '42"', length: '29"' },
+      { size: '2XL', chest: '44"', length: '30"' },
+      { size: '3XL', chest: '46"', length: '31"' },
+      { size: '4XL', chest: '48"', length: '32"' },
+      { size: '5XL', chest: '50"', length: '33"' }
+    ];
+
+    const DEFAULT_SCHEDULES = [
+      {
+        day_title: '17 ต.ค. 2569',
+        badge: 'วันรับเสื้อ & บิบ',
+        items: [
+          { time: '12.00 - 18.00 น.', text: 'รับเสื้อ + บิบ และรับสมัครนักวิ่งหน้างาน' },
+          { time: 'สถานที่', text: 'ณ อ่างเก็บน้ำเขาจุก อ.เขาชะเมา จ.ระยอง' }
+        ]
+      },
+      {
+        day_title: '18 ต.ค. 2569',
+        badge: 'วันแข่งขัน',
+        items: [
+          { time: '04.00 น.', text: 'เจ้าหน้าที่ประจำจุด / รับเสื้อ+บิบ' },
+          { time: '05.00 น.', text: 'ประธานกล่าวเปิดงาน' },
+          { time: '05.10 น.', text: 'นำวอร์มร่างกาย' },
+          { time: '05.30 น.', text: 'ปล่อยตัว 10 km (Mini Marathon)' },
+          { time: '06.00 น.', text: 'ปล่อยตัว 5 km (Fun Run)' },
+          { time: '07.00 น.', text: 'พิธีมอบรางวัล / รับประทานอาหาร' }
+        ]
+      }
+    ];
+
     // Active Application State
     const AppState = {
       currentUser: null, // { id, username, full_name, role }
@@ -1781,7 +1908,15 @@
         bank_name: 'ธนาคารกรุงไทย',
         bank_account_no: '123-0-45678-9',
         bank_account_name: 'กองทุนสวัสดิการ อปพร. จังหวัดระยอง',
+        souvenir_enabled: true,
+        souvenir_name: 'เสื้อที่ระลึก อปพร. มินิมาราธอน',
+        souvenir_description: 'เนื้อผ้า Micro Polyester เบาสบาย ระบายอากาศดีเยี่ยม สั่งซื้อเพิ่มได้ในขั้นตอนการสมัคร',
+        souvenir_price: 300,
         souvenir_shirt_price: 300,
+        souvenir_unit: 'ตัว',
+        souvenir_has_sizes: true,
+        shirt_sizes: JSON.parse(JSON.stringify(DEFAULT_SHIRT_SIZES)),
+        schedules: JSON.parse(JSON.stringify(DEFAULT_SCHEDULES)),
         contact_phone: '081-234-5678'
       },
       activePaymentQrType: 'promptpay',
@@ -1850,6 +1985,9 @@
       updateHeaderAndBranding();
       renderNavAuth();
       renderLandingCategories();
+      renderLandingSchedule();
+      renderLandingShirtSizes();
+      renderLandingSouvenirBanner();
       updateLandingStats();
       renderCountdown();
       calculateTotalAmount();
@@ -1871,8 +2009,8 @@
       const storedSettings = localStorage.getItem('mock_settings');
       if (storedSettings) {
         try {
-          AppState.settings = JSON.parse(storedSettings);
-          AppState.souvenirShirtPrice = Number(AppState.settings.souvenir_shirt_price) || 300;
+          AppState.settings = { ...AppState.settings, ...JSON.parse(storedSettings) };
+          AppState.souvenirShirtPrice = Number(AppState.settings.souvenir_price || AppState.settings.souvenir_shirt_price) || 300;
         } catch (e) {}
       }
 
@@ -1914,11 +2052,19 @@
             settingsRes.data.forEach(item => {
               if (item.key === 'app_config' && item.value) {
                 AppState.settings = { ...AppState.settings, ...item.value };
-                if (AppState.settings.souvenir_shirt_price) {
-                  AppState.souvenirShirtPrice = Number(AppState.settings.souvenir_shirt_price);
+                if (AppState.settings.souvenir_price || AppState.settings.souvenir_shirt_price) {
+                  AppState.souvenirShirtPrice = Number(AppState.settings.souvenir_price || AppState.settings.souvenir_shirt_price);
                 }
               }
             });
+          }
+
+          // Guard defaults
+          if (!AppState.settings.shirt_sizes || !Array.isArray(AppState.settings.shirt_sizes) || AppState.settings.shirt_sizes.length === 0) {
+            AppState.settings.shirt_sizes = JSON.parse(JSON.stringify(DEFAULT_SHIRT_SIZES));
+          }
+          if (!AppState.settings.schedules || !Array.isArray(AppState.settings.schedules) || AppState.settings.schedules.length === 0) {
+            AppState.settings.schedules = JSON.parse(JSON.stringify(DEFAULT_SCHEDULES));
           }
 
           saveDataToStorage();
@@ -1926,6 +2072,14 @@
         } catch (err) {
           console.warn('ดึงข้อมูลจาก Supabase ล้มเหลว สลับใช้ข้อมูลสำรองในเครื่อง', err);
         }
+      }
+
+      // Guard defaults in fallback
+      if (!AppState.settings.shirt_sizes || !Array.isArray(AppState.settings.shirt_sizes) || AppState.settings.shirt_sizes.length === 0) {
+        AppState.settings.shirt_sizes = JSON.parse(JSON.stringify(DEFAULT_SHIRT_SIZES));
+      }
+      if (!AppState.settings.schedules || !Array.isArray(AppState.settings.schedules) || AppState.settings.schedules.length === 0) {
+        AppState.settings.schedules = JSON.parse(JSON.stringify(DEFAULT_SCHEDULES));
       }
 
       const storedRegs = localStorage.getItem('mock_registrations');
@@ -2205,6 +2359,19 @@
       if (titleEl && s.event_name) titleEl.textContent = s.event_name;
       if (subEl && s.event_subtitle) subEl.textContent = `${s.event_subtitle} • ${s.event_location || ''}`;
 
+      // Update Hero Banner
+      const heroTitle = document.getElementById('hero-event-title');
+      const heroSub = document.getElementById('hero-event-subtitle');
+      const heroDate = document.getElementById('hero-chip-date');
+      const heroLoc = document.getElementById('hero-chip-location');
+
+      if (heroTitle && s.event_name) heroTitle.innerHTML = `${s.event_name} <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400"></span>`;
+      if (heroSub && (s.event_subtitle || s.event_location)) {
+        heroSub.innerHTML = `${s.event_subtitle ? s.event_subtitle + '<br>' : ''}${s.event_location || ''}`;
+      }
+      if (heroDate && s.event_date) heroDate.textContent = s.event_date;
+      if (heroLoc && s.event_location) heroLoc.textContent = s.event_location;
+
       if (logoWrapper) {
         if (s.logo_url) {
           logoWrapper.innerHTML = `<img src="${s.logo_url}" alt="Logo" class="w-full h-full object-contain bg-white" onerror="this.parentElement.innerHTML='<i data-lucide=\\'flame\\' class=\\'w-6 h-6 text-white\\'></i>'; lucide.createIcons();">`;
@@ -2213,6 +2380,71 @@
         }
       }
       lucide.createIcons();
+    }
+
+    function renderLandingSchedule() {
+      const container = document.getElementById('landing-schedule-grid');
+      if (!container) return;
+
+      const scheds = (AppState.settings.schedules && AppState.settings.schedules.length > 0)
+        ? AppState.settings.schedules
+        : DEFAULT_SCHEDULES;
+
+      container.innerHTML = scheds.map((day, idx) => `
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-slate-900 text-base">${day.day_title || `วันที่ ${idx + 1}`}</span>
+            <span class="px-2 py-0.5 text-xs font-semibold ${idx === 1 ? 'bg-emerald-100 text-emerald-700' : 'bg-brand-100 text-brand-700'} rounded-md">
+              ${day.badge || (idx === 1 ? 'วันแข่งขัน' : 'วันรับเสื้อ & บิบ')}
+            </span>
+          </div>
+          <ul class="space-y-1.5 text-slate-600 text-xs sm:text-sm">
+            ${(day.items || []).map(it => `
+              <li class="flex items-start space-x-2">
+                <span class="font-semibold text-slate-900 w-24 shrink-0">${it.time}</span>
+                <span>${it.text}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      `).join('');
+    }
+
+    function renderLandingShirtSizes() {
+      const tbody = document.getElementById('landing-shirt-size-tbody');
+      if (!tbody) return;
+
+      const sizes = (AppState.settings.shirt_sizes && AppState.settings.shirt_sizes.length > 0)
+        ? AppState.settings.shirt_sizes
+        : DEFAULT_SHIRT_SIZES;
+
+      tbody.innerHTML = sizes.map(sz => `
+        <tr>
+          <td class="py-1.5 font-bold text-slate-900">${sz.size}</td>
+          <td>${sz.chest || '-'}</td>
+          <td>${sz.length || '-'}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderLandingSouvenirBanner() {
+      const banner = document.getElementById('landing-souvenir-banner');
+      if (!banner) return;
+
+      const s = AppState.settings;
+      if (s.souvenir_enabled === false) {
+        banner.classList.add('hidden');
+        return;
+      }
+
+      banner.classList.remove('hidden');
+      const titleEl = document.getElementById('landing-souvenir-title');
+      const descEl = document.getElementById('landing-souvenir-desc');
+      const price = Number(s.souvenir_price || s.souvenir_shirt_price) || 300;
+      const unit = s.souvenir_unit || 'ตัว';
+
+      if (titleEl) titleEl.textContent = `${s.souvenir_name || 'สินค้าที่ระลึกพิเศษ'} เพียง ${price.toLocaleString()} บาท/${unit}`;
+      if (descEl) descEl.textContent = s.souvenir_description || 'สินค้าคุณภาพ สั่งซื้อเพิ่มได้ในขั้นตอนการสมัคร';
     }
 
     function renderLandingCategories() {
@@ -2716,6 +2948,9 @@
     // =========================================================================
     // REGISTRATION FORM LOGIC (Single + Family 3 Persons)
     // =========================================================================
+    // =========================================================================
+    // REGISTRATION FORM LOGIC (Single + Family 3 Persons)
+    // =========================================================================
     function renderRegistrationForm() {
       // 1. Render Category Radio Cards
       const catContainer = document.getElementById('form-category-options');
@@ -2738,10 +2973,34 @@
         `;
       }).join('');
 
-      // 2. Render Runners Input Fields
+      // 2. Render Runners Input Fields (with dynamic shirt sizes)
       renderRunnerInputCards();
 
-      // 3. Recalculate Totals & QR
+      // 3. Configure Souvenir Addon Section
+      const s = AppState.settings;
+      const souvenirWrapper = document.getElementById('reg-souvenir-section-wrapper');
+      const souvenirTitle = document.getElementById('reg-souvenir-title-display');
+      const souvenirDesc = document.getElementById('reg-souvenir-desc-display');
+
+      if (souvenirWrapper) {
+        if (s.souvenir_enabled === false) {
+          souvenirWrapper.classList.add('hidden');
+          AppState.souvenirQty = 0;
+          document.getElementById('souvenir-qty-display').textContent = '0';
+        } else {
+          souvenirWrapper.classList.remove('hidden');
+          const price = Number(s.souvenir_price || s.souvenir_shirt_price) || 300;
+          const unit = s.souvenir_unit || 'ตัว';
+          if (souvenirTitle) {
+            souvenirTitle.textContent = `สั่งซื้อ${s.souvenir_name || 'ของที่ระลึก'}เพิ่มเติม (${unit}ละ ${price.toLocaleString()} บาท)`;
+          }
+          if (souvenirDesc) {
+            souvenirDesc.textContent = s.souvenir_description || 'สามารถสั่งซื้อเพิ่มได้ตามต้องการ';
+          }
+        }
+      }
+
+      // 4. Recalculate Totals & QR
       calculateTotalAmount();
     }
 
@@ -2756,6 +3015,16 @@
 
       document.getElementById('runner-count-badge').textContent = `ผู้สมัคร ${runnerCount} ท่าน (${cat.name})`;
       const container = document.getElementById('runners-inputs-container');
+
+      const sizes = (AppState.settings.shirt_sizes && AppState.settings.shirt_sizes.length > 0)
+        ? AppState.settings.shirt_sizes
+        : DEFAULT_SHIRT_SIZES;
+
+      const sizeOptionsHtml = sizes.map((sz, idx) => `
+        <option value="${sz.size}" ${sz.size === 'M' || idx === 2 ? 'selected' : ''}>
+          ${sz.size} (รอบอก ${sz.chest}${sz.length ? ' ยาว ' + sz.length : ''})
+        </option>
+      `).join('');
 
       let html = '';
       for (let i = 1; i <= runnerCount; i++) {
@@ -2829,15 +3098,7 @@
               <div class="sm:col-span-4">
                 <label class="block font-semibold text-slate-700 mb-1">ขนาดเสื้อวิ่ง <span class="text-rose-500">*</span></label>
                 <select id="runner_${i}_shirt" required class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white font-semibold text-brand-700">
-                  <option value="SS">SS (รอบอก 34")</option>
-                  <option value="S">S (รอบอก 36")</option>
-                  <option value="M" selected>M (รอบอก 38")</option>
-                  <option value="L">L (รอบอก 40")</option>
-                  <option value="XL">XL (รอบอก 42")</option>
-                  <option value="2XL">2XL (รอบอก 44")</option>
-                  <option value="3XL">3XL (รอบอก 46")</option>
-                  <option value="4XL">4XL (รอบอก 48")</option>
-                  <option value="5XL">5XL (รอบอก 50")</option>
+                  ${sizeOptionsHtml}
                 </select>
               </div>
 
@@ -2890,34 +3151,42 @@
       document.getElementById('souvenir-qty-display').textContent = AppState.souvenirQty;
 
       const container = document.getElementById('souvenir-sizes-container');
+      const s = AppState.settings;
+
       if (AppState.souvenirQty > 0) {
         container.classList.remove('hidden');
-        let html = '<p class="text-xs font-semibold text-slate-700">เลือกขนาดเสื้อที่ระลึกแต่ละตัว:</p><div class="grid grid-cols-2 sm:grid-cols-4 gap-2">';
-        for (let i = 1; i <= AppState.souvenirQty; i++) {
-          html += `
-            <div>
-              <label class="block text-[11px] text-slate-500 mb-0.5">ตัวที่ ${i}</label>
-              <select id="souvenir_size_${i}" class="w-full px-2 py-1.5 text-xs rounded-lg border border-slate-300 bg-white">
-                <option value="SS">SS (34")</option>
-                <option value="S">S (36")</option>
-                <option value="M" selected>M (38")</option>
-                <option value="L">L (40")</option>
-                <option value="XL">XL (42")</option>
-                <option value="2XL">2XL (44")</option>
-                <option value="3XL">3XL (46")</option>
-                <option value="4XL">4XL (48")</option>
-                <option value="5XL">5XL (50")</option>
-              </select>
+
+        if (s.souvenir_has_sizes === false) {
+          container.innerHTML = `
+            <div class="p-3 rounded-xl bg-amber-50 text-amber-800 text-xs font-semibold flex items-center space-x-2">
+              <i data-lucide="info" class="w-4 h-4 text-amber-600 shrink-0"></i>
+              <span>สั่งซื้อ ${s.souvenir_name || 'ของที่ระลึก'} จำนวน ${AppState.souvenirQty} ${s.souvenir_unit || 'ชิ้น'} (สินค้านี้ไม่จำเป็นต้องระบุขนาด)</span>
             </div>
           `;
+        } else {
+          const sizes = (s.shirt_sizes && s.shirt_sizes.length > 0) ? s.shirt_sizes : DEFAULT_SHIRT_SIZES;
+          const optionsHtml = sizes.map(sz => `<option value="${sz.size}">${sz.size} (รอบอก ${sz.chest})</option>`).join('');
+
+          let html = `<p class="text-xs font-semibold text-slate-700">เลือกขนาด${s.souvenir_name || 'สินค้า'}แต่ละ${s.souvenir_unit || 'ตัว'}:</p><div class="grid grid-cols-2 sm:grid-cols-4 gap-2">`;
+          for (let i = 1; i <= AppState.souvenirQty; i++) {
+            html += `
+              <div>
+                <label class="block text-[11px] text-slate-500 mb-0.5">${s.souvenir_unit || 'ตัว'}ที่ ${i}</label>
+                <select id="souvenir_size_${i}" class="w-full px-2 py-1.5 text-xs rounded-lg border border-slate-300 bg-white">
+                  ${optionsHtml}
+                </select>
+              </div>
+            `;
+          }
+          html += '</div>';
+          container.innerHTML = html;
         }
-        html += '</div>';
-        container.innerHTML = html;
       } else {
         container.classList.add('hidden');
         container.innerHTML = '';
       }
 
+      lucide.createIcons();
       calculateTotalAmount();
     }
 
@@ -2947,8 +3216,8 @@
     function calculateTotalAmount() {
       const cat = AppState.categories.find(c => c.id === AppState.selectedCategory) || AppState.categories[0];
       const basePrice = Number(cat ? cat.price : 0) || 0;
-      const souvenirPrice = Number(AppState.settings.souvenir_shirt_price) || AppState.souvenirShirtPrice || 300;
-      const souvenirTotal = AppState.souvenirQty * souvenirPrice;
+      const souvenirPrice = Number(AppState.settings.souvenir_price || AppState.settings.souvenir_shirt_price) || 300;
+      const souvenirTotal = (AppState.settings.souvenir_enabled !== false) ? (AppState.souvenirQty * souvenirPrice) : 0;
       const grandTotal = basePrice + souvenirTotal;
 
       const totalDisplay = document.getElementById('total-payment-display');
@@ -3748,20 +4017,23 @@
       const filter = AppState.adminRunnerCategoryFilter || 'all';
 
       // -------------------------------------------------------------
-      // Case 1: Souvenir Shirt Buyers Table
+      // Case 1: Souvenir Product Buyers Table
       // -------------------------------------------------------------
       if (filter === 'souvenir') {
-        if (titleEl) titleEl.textContent = '🛍️ รายการสั่งซื้อเสื้อที่ระลึก (Souvenir Orders)';
-        if (descEl) descEl.textContent = 'รายชื่อผู้สั่งซื้อเสื้อที่ระลึกพิเศษ จำนวน ไซส์ และข้อมูลการจัดส่ง';
-        if (exportLabel) exportLabel.textContent = 'Export เสื้อที่ระลึก CSV';
+        const souvName = AppState.settings.souvenir_name || 'ของที่ระลึก';
+        const souvUnit = AppState.settings.souvenir_unit || 'ชิ้น';
+
+        if (titleEl) titleEl.textContent = `🛍️ รายการสั่งซื้อ${souvName}`;
+        if (descEl) descEl.textContent = `รายชื่อผู้สั่งซื้อ${souvName} จำนวน ${AppState.settings.souvenir_has_sizes ? 'ขนาดไซส์ ' : ''}และข้อมูลการจัดส่ง`;
+        if (exportLabel) exportLabel.textContent = `Export ${souvName} CSV`;
 
         thead.innerHTML = `
           <tr>
             <th class="py-3 px-4">รหัสใบสมัคร</th>
             <th class="py-3 px-4">ชื่อผู้สั่งซื้อ</th>
             <th class="py-3 px-4">เบอร์โทรศัพท์</th>
-            <th class="py-3 px-4 text-center">จำนวน (ตัว)</th>
-            <th class="py-3 px-4">ไซส์ที่สั่ง</th>
+            <th class="py-3 px-4 text-center">จำนวน (${souvUnit})</th>
+            <th class="py-3 px-4">${AppState.settings.souvenir_has_sizes ? 'ไซส์ที่สั่ง' : 'รายการ'}</th>
             <th class="py-3 px-4">รูปแบบการรับ</th>
             <th class="py-3 px-4">ที่อยู่จัดส่ง</th>
             <th class="py-3 px-4 text-right">ยอดชำระ</th>
@@ -3781,7 +4053,7 @@
         }
 
         if (souvenirRegs.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="10" class="text-center py-8 text-slate-400">ไม่พบรายการสั่งซื้อเสื้อที่ระลึก</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="10" class="text-center py-8 text-slate-400">ไม่พบรายการสั่งซื้อ${souvName}</td></tr>`;
           return;
         }
 
@@ -3790,10 +4062,13 @@
             <td class="py-3 px-4 font-mono font-bold text-brand-600">${reg.reg_code}</td>
             <td class="py-3 px-4 font-semibold text-slate-900">${reg.contact_name}</td>
             <td class="py-3 px-4 font-mono text-slate-600">${reg.contact_phone}</td>
-            <td class="py-3 px-4 text-center font-bold text-rose-600 bg-rose-50/50">${reg.souvenir_shirt_qty} ตัว</td>
+            <td class="py-3 px-4 text-center font-bold text-rose-600 bg-rose-50/50">${reg.souvenir_shirt_qty} ${souvUnit}</td>
             <td class="py-3 px-4">
               <div class="flex flex-wrap gap-1">
-                ${(reg.souvenir_shirt_sizes || []).map(sz => `<span class="px-2 py-0.5 rounded bg-slate-100 font-mono font-bold text-xs text-slate-800">${sz}</span>`).join('')}
+                ${(reg.souvenir_shirt_sizes && reg.souvenir_shirt_sizes.length > 0)
+                  ? reg.souvenir_shirt_sizes.map(sz => `<span class="px-2 py-0.5 rounded bg-slate-100 font-mono font-bold text-xs text-slate-800">${sz}</span>`).join('')
+                  : `<span class="text-xs text-slate-400 font-medium">${souvName}</span>`
+                }
               </div>
             </td>
             <td class="py-3 px-4">
@@ -3802,7 +4077,7 @@
               </span>
             </td>
             <td class="py-3 px-4 text-xs text-slate-600 max-w-xs truncate" title="${reg.delivery_address || '-'}">
-              ${reg.delivery_type === 'delivery' ? (reg.delivery_address || '-') : 'รับหน้างาน 17 ต.ค.'}
+              ${reg.delivery_type === 'delivery' ? (reg.delivery_address || '-') : 'รับหน้างาน'}
             </td>
             <td class="py-3 px-4 text-right font-mono font-bold text-slate-900">${Number(reg.total_amount).toLocaleString()} ฿</td>
             <td class="py-3 px-4">
@@ -4021,7 +4296,20 @@
     // ADMIN SHIRTS & LOGISTICS
     // =========================================================================
     function renderAdminShirtsSummary() {
-      const sizes = ['SS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
+      const definedSizes = (AppState.settings.shirt_sizes && AppState.settings.shirt_sizes.length > 0)
+        ? AppState.settings.shirt_sizes.map(s => s.size)
+        : DEFAULT_SHIRT_SIZES.map(s => s.size);
+
+      // Collect all sizes including any historical runner data
+      const allSizesSet = new Set(definedSizes);
+      AppState.runners.forEach(r => { if (r.shirt_size) allSizesSet.add(r.shirt_size); });
+      AppState.registrations.forEach(r => {
+        if (r.souvenir_shirt_sizes && Array.isArray(r.souvenir_shirt_sizes)) {
+          r.souvenir_shirt_sizes.forEach(sz => allSizesSet.add(sz));
+        }
+      });
+      const sizes = Array.from(allSizesSet);
+
       const runnerShirtCounts = {};
       const souvenirShirtCounts = {};
       sizes.forEach(s => { runnerShirtCounts[s] = 0; souvenirShirtCounts[s] = 0; });
@@ -4047,8 +4335,8 @@
 
       const tbody = document.getElementById('shirts-summary-tbody');
       tbody.innerHTML = sizes.map(s => {
-        const rc = runnerShirtCounts[s];
-        const sc = souvenirShirtCounts[s];
+        const rc = runnerShirtCounts[s] || 0;
+        const sc = souvenirShirtCounts[s] || 0;
         const sum = rc + sc;
         totalRunnersAll += rc;
         totalSouvenirsAll += sc;
@@ -4066,7 +4354,7 @@
           <td class="py-3 px-3 text-left text-slate-900">รวมทั้งหมด</td>
           <td class="py-3 px-3 text-slate-900">${totalRunnersAll}</td>
           <td class="py-3 px-3 text-slate-900">${totalSouvenirsAll}</td>
-          <td class="py-3 px-3 text-brand-700 text-base">${totalRunnersAll + totalSouvenirsAll} ตัว</td>
+          <td class="py-3 px-3 text-brand-700 text-base">${totalRunnersAll + totalSouvenirsAll} ${AppState.settings.souvenir_unit || 'ตัว'}</td>
         </tr>
       `;
 
@@ -4075,6 +4363,9 @@
       AppState.registrations.forEach(r => {
         if (logCounts[r.delivery_type] !== undefined) logCounts[r.delivery_type]++;
       });
+
+      const schedDay1 = (AppState.settings.schedules && AppState.settings.schedules[0]) ? AppState.settings.schedules[0].day_title : 'วันรับเสื้อ/บิบ';
+      const schedDay2 = (AppState.settings.schedules && AppState.settings.schedules[1]) ? AppState.settings.schedules[1].day_title : 'วันแข่งขัน';
 
       document.getElementById('logistics-summary-cards').innerHTML = `
         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
@@ -4087,16 +4378,16 @@
 
         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
           <div>
-            <span class="font-bold text-slate-900 text-sm block">รับก่อนวันแข่ง (17 ต.ค. 2569)</span>
-            <span class="text-xs text-slate-500">รับ ณ อ่างเก็บน้ำเขาจุก (12.00 - 18.00 น.)</span>
+            <span class="font-bold text-slate-900 text-sm block">รับก่อนวันแข่ง (${schedDay1})</span>
+            <span class="text-xs text-slate-500">รับ ณ จุดรับเสื้อและบิบ</span>
           </div>
           <span class="text-xl font-bold text-amber-600">${logCounts.before_event} รายการ</span>
         </div>
 
         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
           <div>
-            <span class="font-bold text-slate-900 text-sm block">รับเช้าวันแข่ง (18 ต.ค. 2569)</span>
-            <span class="text-xs text-slate-500">รับ ณ จุดลงทะเบียน (04.00 - 05.00 น.)</span>
+            <span class="font-bold text-slate-900 text-sm block">รับเช้าวันแข่ง (${schedDay2})</span>
+            <span class="text-xs text-slate-500">รับ ณ จุดลงทะเบียนหน้างาน</span>
           </div>
           <span class="text-xl font-bold text-emerald-600">${logCounts.event_day} รายการ</span>
         </div>
@@ -4651,6 +4942,80 @@
       showToast('ลบภาพ QR Code ธนาคารแล้ว', 'info');
     }
 
+    function renderAdminShirtSizesTable() {
+      const tbody = document.getElementById('admin-shirt-sizes-tbody');
+      if (!tbody) return;
+
+      const sizes = (AppState.settings.shirt_sizes && AppState.settings.shirt_sizes.length > 0)
+        ? AppState.settings.shirt_sizes
+        : DEFAULT_SHIRT_SIZES;
+
+      tbody.innerHTML = sizes.map((sz, idx) => `
+        <tr class="hover:bg-slate-50">
+          <td class="py-2 px-3 text-center font-bold text-slate-400">${idx + 1}</td>
+          <td class="py-2 px-3">
+            <input type="text" value="${sz.size || ''}" class="w-24 px-2 py-1.5 text-xs font-bold rounded-lg border border-slate-300 size-input-name" placeholder="รหัสไซส์ เช่น M">
+          </td>
+          <td class="py-2 px-3">
+            <input type="text" value="${sz.chest || ''}" class="w-36 px-2 py-1.5 text-xs rounded-lg border border-slate-300 size-input-chest" placeholder="เช่น 38\\" หรือ 38 นิ้ว">
+          </td>
+          <td class="py-2 px-3">
+            <input type="text" value="${sz.length || ''}" class="w-36 px-2 py-1.5 text-xs rounded-lg border border-slate-300 size-input-length" placeholder="เช่น 27\\" หรือ 27 นิ้ว">
+          </td>
+          <td class="py-2 px-3 text-center">
+            <button type="button" onclick="removeAdminShirtSizeRow(${idx})" class="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition" title="ลบไซส์นี้">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function addAdminShirtSizeRow() {
+      // First synchronize current values in inputs before adding
+      syncCurrentShirtSizesFromTable();
+      if (!AppState.settings.shirt_sizes) AppState.settings.shirt_sizes = JSON.parse(JSON.stringify(DEFAULT_SHIRT_SIZES));
+      AppState.settings.shirt_sizes.push({ size: '', chest: '', length: '' });
+      renderAdminShirtSizesTable();
+    }
+
+    function removeAdminShirtSizeRow(idx) {
+      syncCurrentShirtSizesFromTable();
+      if (!AppState.settings.shirt_sizes) AppState.settings.shirt_sizes = JSON.parse(JSON.stringify(DEFAULT_SHIRT_SIZES));
+      AppState.settings.shirt_sizes.splice(idx, 1);
+      renderAdminShirtSizesTable();
+    }
+
+    function resetAdminShirtSizesDefault() {
+      AppState.settings.shirt_sizes = JSON.parse(JSON.stringify(DEFAULT_SHIRT_SIZES));
+      renderAdminShirtSizesTable();
+      showToast('คืนค่าขนาดไซส์เสื้อมาตรฐานเรียบร้อยแล้ว (อย่าลืมกดบันทึกการตั้งค่า)', 'info');
+    }
+
+    function syncCurrentShirtSizesFromTable() {
+      const tbody = document.getElementById('admin-shirt-sizes-tbody');
+      if (!tbody) return;
+      const rows = tbody.querySelectorAll('tr');
+      const newSizes = [];
+      rows.forEach(row => {
+        const nameEl = row.querySelector('.size-input-name');
+        const chestEl = row.querySelector('.size-input-chest');
+        const lengthEl = row.querySelector('.size-input-length');
+        if (nameEl && nameEl.value.trim()) {
+          newSizes.push({
+            size: nameEl.value.trim(),
+            chest: chestEl ? chestEl.value.trim() : '',
+            length: lengthEl ? lengthEl.value.trim() : ''
+          });
+        }
+      });
+      if (newSizes.length > 0) {
+        AppState.settings.shirt_sizes = newSizes;
+      }
+    }
+
     function renderAdminSettings() {
       const s = AppState.settings;
       document.getElementById('set_promptpay_number').value = s.promptpay_number || '';
@@ -4658,7 +5023,6 @@
       document.getElementById('set_bank_name').value = s.bank_name || '';
       document.getElementById('set_bank_account_no').value = s.bank_account_no || '';
       document.getElementById('set_bank_account_name').value = s.bank_account_name || '';
-      document.getElementById('set_souvenir_shirt_price').value = s.souvenir_shirt_price || 300;
       document.getElementById('set_contact_phone').value = s.contact_phone || '';
       document.getElementById('set_event_name').value = s.event_name || '';
       document.getElementById('set_event_subtitle').value = s.event_subtitle || '';
@@ -4667,6 +5031,30 @@
       document.getElementById('set_registration_close_date').value = s.registration_close_date || '';
       document.getElementById('set_logo_url').value = s.logo_url || '';
       document.getElementById('set_custom_qr_url').value = s.custom_qr_url || '';
+
+      // Schedule inputs
+      const sched = (s.schedules && s.schedules.length > 0) ? s.schedules : DEFAULT_SCHEDULES;
+      const d1 = sched[0] || DEFAULT_SCHEDULES[0];
+      const d2 = sched[1] || DEFAULT_SCHEDULES[1];
+
+      document.getElementById('set_sched_day1_title').value = d1.day_title || '';
+      document.getElementById('set_sched_day1_badge').value = d1.badge || '';
+      document.getElementById('set_sched_day1_items').value = (d1.items || []).map(i => `${i.time} | ${i.text}`).join('\n');
+
+      document.getElementById('set_sched_day2_title').value = d2.day_title || '';
+      document.getElementById('set_sched_day2_badge').value = d2.badge || '';
+      document.getElementById('set_sched_day2_items').value = (d2.items || []).map(i => `${i.time} | ${i.text}`).join('\n');
+
+      // Souvenir inputs
+      document.getElementById('set_souvenir_enabled').checked = s.souvenir_enabled !== false;
+      document.getElementById('set_souvenir_name').value = s.souvenir_name || 'เสื้อที่ระลึก อปพร. มินิมาราธอน';
+      document.getElementById('set_souvenir_description').value = s.souvenir_description || '';
+      document.getElementById('set_souvenir_shirt_price').value = Number(s.souvenir_price || s.souvenir_shirt_price) || 300;
+      document.getElementById('set_souvenir_unit').value = s.souvenir_unit || 'ตัว';
+      document.getElementById('set_souvenir_has_sizes').value = String(s.souvenir_has_sizes !== false);
+
+      // Shirt sizes table
+      renderAdminShirtSizesTable();
 
       // Logo Preview
       const logoPreview = document.getElementById('set_logo_preview');
@@ -4701,6 +5089,44 @@
 
     async function handleSaveSettings(e) {
       e.preventDefault();
+
+      // 1. Parse Schedule Items
+      const parseSchedItems = (text) => {
+        if (!text) return [];
+        return text.split('\n')
+          .map(line => line.trim())
+          .filter(line => line.length > 0)
+          .map(line => {
+            const parts = line.split('|');
+            return {
+              time: parts[0] ? parts[0].trim() : '',
+              text: parts.slice(1).join('|').trim() || parts[0].trim()
+            };
+          });
+      };
+
+      const schedules = [
+        {
+          day_title: document.getElementById('set_sched_day1_title').value.trim() || '17 ต.ค. 2569',
+          badge: document.getElementById('set_sched_day1_badge').value.trim() || 'วันรับเสื้อ & บิบ',
+          items: parseSchedItems(document.getElementById('set_sched_day1_items').value)
+        },
+        {
+          day_title: document.getElementById('set_sched_day2_title').value.trim() || '18 ต.ค. 2569',
+          badge: document.getElementById('set_sched_day2_badge').value.trim() || 'วันแข่งขัน',
+          items: parseSchedItems(document.getElementById('set_sched_day2_items').value)
+        }
+      ];
+
+      // 2. Parse Shirt Sizes Table
+      syncCurrentShirtSizesFromTable();
+      const shirtSizes = (AppState.settings.shirt_sizes && AppState.settings.shirt_sizes.length > 0)
+        ? AppState.settings.shirt_sizes
+        : JSON.parse(JSON.stringify(DEFAULT_SHIRT_SIZES));
+
+      // 3. Souvenir Configuration
+      const souvenirPrice = Number(document.getElementById('set_souvenir_shirt_price').value) || 300;
+
       AppState.settings = {
         logo_url: document.getElementById('set_logo_url').value.trim() || AppState.settings.logo_url || '',
         custom_qr_url: document.getElementById('set_custom_qr_url').value.trim() || AppState.settings.custom_qr_url || '',
@@ -4710,15 +5136,29 @@
         bank_name: document.getElementById('set_bank_name').value.trim(),
         bank_account_no: document.getElementById('set_bank_account_no').value.trim(),
         bank_account_name: document.getElementById('set_bank_account_name').value.trim(),
-        souvenir_shirt_price: Number(document.getElementById('set_souvenir_shirt_price').value) || 300,
         contact_phone: document.getElementById('set_contact_phone').value.trim(),
         event_name: document.getElementById('set_event_name').value.trim(),
         event_subtitle: document.getElementById('set_event_subtitle').value.trim(),
         event_date: document.getElementById('set_event_date').value.trim(),
-        event_location: document.getElementById('set_event_location').value.trim()
+        event_location: document.getElementById('set_event_location').value.trim(),
+        
+        // Dynamic Schedules
+        schedules: schedules,
+
+        // Dynamic Souvenir Item
+        souvenir_enabled: document.getElementById('set_souvenir_enabled').checked,
+        souvenir_name: document.getElementById('set_souvenir_name').value.trim() || 'ของที่ระลึก',
+        souvenir_description: document.getElementById('set_souvenir_description').value.trim(),
+        souvenir_price: souvenirPrice,
+        souvenir_shirt_price: souvenirPrice,
+        souvenir_unit: document.getElementById('set_souvenir_unit').value.trim() || 'ชิ้น',
+        souvenir_has_sizes: document.getElementById('set_souvenir_has_sizes').value === 'true',
+
+        // Dynamic Shirt Sizes
+        shirt_sizes: shirtSizes
       };
 
-      AppState.souvenirShirtPrice = AppState.settings.souvenir_shirt_price;
+      AppState.souvenirShirtPrice = AppState.settings.souvenir_price;
       saveDataToStorage();
 
       if (isConnectedToSupabase && dbClient) {
@@ -4726,7 +5166,7 @@
           await dbClient.from('system_settings').upsert([{
             key: 'app_config',
             value: AppState.settings,
-            description: 'Main application and payment settings',
+            description: 'Main application, schedule, souvenir, and sizes settings',
             updated_at: new Date().toISOString()
           }]);
         } catch (err) {
@@ -4735,8 +5175,13 @@
       }
 
       updateHeaderAndBranding();
+      renderLandingSchedule();
+      renderLandingShirtSizes();
+      renderLandingSouvenirBanner();
+      renderRegistrationForm();
+      renderAdminShirtsSummary();
       calculateTotalAmount();
-      showToast('บันทึกการตั้งค่าระบบและบัญชีเรียบร้อยแล้ว!', 'success');
+      showToast('บันทึกการตั้งค่ากำหนดการ สินค้าที่ระลึก และไซส์เสื้อเรียบร้อยแล้ว!', 'success');
     }
 
     function refreshAllData() {
