@@ -129,15 +129,15 @@
         
         <!-- Logo & Title -->
         <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('landing')">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-brand-500 to-accent-teal flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+          <div id="header-logo-wrapper" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-brand-500 to-accent-teal flex items-center justify-center text-white shadow-md shadow-brand-500/20 overflow-hidden shrink-0">
             <i data-lucide="flame" class="w-6 h-6"></i>
           </div>
           <div>
             <div class="flex items-center space-x-2">
-              <span class="font-bold text-slate-900 text-lg leading-tight tracking-tight">อปพร. มินิมาราธอน</span>
+              <span id="header-event-name" class="font-bold text-slate-900 text-lg leading-tight tracking-tight">อปพร. มินิมาราธอน</span>
               <span class="hidden sm:inline-block px-2 py-0.5 text-xs font-semibold bg-amber-100 text-amber-800 rounded-full border border-amber-200">ครั้งที่ 1</span>
             </div>
-            <p class="text-xs text-slate-500 hidden sm:block">ชิงถ้วยผู้ว่าราชการจังหวัดระยอง • อ่างเก็บน้ำเขาจุก</p>
+            <p id="header-event-sub" class="text-xs text-slate-500 hidden sm:block">ชิงถ้วยผู้ว่าราชการจังหวัดระยอง • อ่างเก็บน้ำเขาจุก</p>
           </div>
         </div>
 
@@ -219,42 +219,42 @@
             <span>ผู้ดูแลระบบ (Admin)</span>
           </p>
 
-          <button onclick="switchView('admin-dashboard')" id="side-nav-admin-dash" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:text-purple-600 hover:bg-purple-50 transition">
-            <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
-            <span>แดชบอร์ดสถิติ</span>
+          <button onclick="switchView('admin-dashboard')" id="side-nav-admin-dash" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-left hover:text-purple-600 hover:bg-purple-50 transition">
+            <i data-lucide="layout-dashboard" class="w-4 h-4 shrink-0"></i>
+            <span class="truncate">แดชบอร์ดสถิติ</span>
           </button>
 
-          <button onclick="switchView('admin-approvals')" id="side-nav-admin-approvals" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:text-purple-600 hover:bg-purple-50 transition">
-            <span class="flex items-center space-x-3">
-              <i data-lucide="check-circle-2" class="w-4 h-4"></i>
-              <span>ตรวจสอบสลิป</span>
+          <button onclick="switchView('admin-approvals')" id="side-nav-admin-approvals" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left hover:text-purple-600 hover:bg-purple-50 transition">
+            <span class="flex items-center space-x-3 truncate">
+              <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i>
+              <span class="truncate">ตรวจสอบสลิป</span>
             </span>
-            <span id="badge-pending-count" class="px-2 py-0.5 text-xs font-bold bg-amber-500 text-white rounded-full">0</span>
+            <span id="badge-pending-count" class="px-2 py-0.5 text-xs font-bold bg-amber-500 text-white rounded-full shrink-0">0</span>
           </button>
 
-          <button onclick="switchView('admin-runners')" id="side-nav-admin-runners" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:text-purple-600 hover:bg-purple-50 transition">
-            <i data-lucide="users" class="w-4 h-4"></i>
-            <span>รายชื่อนักวิ่งทั้งหมด</span>
+          <button onclick="switchView('admin-runners')" id="side-nav-admin-runners" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-left hover:text-purple-600 hover:bg-purple-50 transition">
+            <i data-lucide="users" class="w-4 h-4 shrink-0"></i>
+            <span class="truncate">รายชื่อนักวิ่งทั้งหมด</span>
           </button>
 
-          <button onclick="switchView('admin-shirts')" id="side-nav-admin-shirts" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:text-purple-600 hover:bg-purple-50 transition">
-            <i data-lucide="shirt" class="w-4 h-4"></i>
-            <span>สรุปยอดเสื้อ & การจัดส่ง</span>
+          <button onclick="switchView('admin-shirts')" id="side-nav-admin-shirts" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-left hover:text-purple-600 hover:bg-purple-50 transition">
+            <i data-lucide="shirt" class="w-4 h-4 shrink-0"></i>
+            <span class="truncate">สรุปยอดเสื้อ & การจัดส่ง</span>
           </button>
 
-          <button onclick="switchView('admin-users')" id="side-nav-admin-users" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:text-purple-600 hover:bg-purple-50 transition">
-            <i data-lucide="user-cog" class="w-4 h-4"></i>
-            <span>จัดการสิทธิ์ผู้ใช้</span>
+          <button onclick="switchView('admin-users')" id="side-nav-admin-users" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-left hover:text-purple-600 hover:bg-purple-50 transition">
+            <i data-lucide="user-cog" class="w-4 h-4 shrink-0"></i>
+            <span class="truncate">จัดการสิทธิ์ผู้ใช้</span>
           </button>
 
-          <button onclick="switchView('admin-categories')" id="side-nav-admin-categories" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:text-purple-600 hover:bg-purple-50 transition">
-            <i data-lucide="tags" class="w-4 h-4"></i>
-            <span>จัดการประเภท & รุ่นการแข่งขัน</span>
+          <button onclick="switchView('admin-categories')" id="side-nav-admin-categories" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-left hover:text-purple-600 hover:bg-purple-50 transition">
+            <i data-lucide="tags" class="w-4 h-4 shrink-0"></i>
+            <span class="truncate">จัดการประเภท & รุ่นวิ่ง</span>
           </button>
 
-          <button onclick="switchView('admin-settings')" id="side-nav-admin-settings" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:text-purple-600 hover:bg-purple-50 transition">
-            <i data-lucide="settings" class="w-4 h-4"></i>
-            <span>ตั้งค่าบัญชี & ระบบ</span>
+          <button onclick="switchView('admin-settings')" id="side-nav-admin-settings" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-left hover:text-purple-600 hover:bg-purple-50 transition">
+            <i data-lucide="settings" class="w-4 h-4 shrink-0"></i>
+            <span class="truncate">ตั้งค่าบัญชี & ระบบ</span>
           </button>
         </div>
       </div>
@@ -335,6 +335,52 @@
           </div>
         </div>
 
+        <!-- Registration Closure Banner (Visible if registration period ended) -->
+        <div id="landing-closure-banner" class="hidden"></div>
+
+        <!-- Registration Schedule & Live Countdown Widget -->
+        <div id="landing-countdown-banner" class="p-5 sm:p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center space-x-3.5 text-center sm:text-left">
+            <div id="countdown-icon-box" class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+              <i data-lucide="timer" class="w-6 h-6 animate-pulse"></i>
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <span id="countdown-status-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
+                  🟢 กำลังเปิดรับสมัคร
+                </span>
+                <span id="countdown-close-date-label" class="text-xs text-slate-500 font-medium"></span>
+              </div>
+              <h3 id="countdown-main-heading" class="text-base sm:text-lg font-extrabold text-slate-900 mt-1">
+                เวลาที่เหลือก่อนปิดระบบรับสมัครออนไลน์
+              </h3>
+            </div>
+          </div>
+
+          <!-- Countdown 4 Live Boxes -->
+          <div id="countdown-timer-boxes" class="flex items-center space-x-1.5 sm:space-x-2 text-center">
+            <div class="bg-slate-900 text-white px-3 py-2 rounded-2xl min-w-[56px] shadow-sm">
+              <span id="cd-days" class="block text-xl sm:text-2xl font-black font-mono">00</span>
+              <span class="block text-[10px] text-slate-400 font-medium">วัน</span>
+            </div>
+            <span class="text-slate-400 font-black text-lg">:</span>
+            <div class="bg-slate-900 text-white px-3 py-2 rounded-2xl min-w-[56px] shadow-sm">
+              <span id="cd-hours" class="block text-xl sm:text-2xl font-black font-mono">00</span>
+              <span class="block text-[10px] text-slate-400 font-medium">ชั่วโมง</span>
+            </div>
+            <span class="text-slate-400 font-black text-lg">:</span>
+            <div class="bg-slate-900 text-white px-3 py-2 rounded-2xl min-w-[56px] shadow-sm">
+              <span id="cd-mins" class="block text-xl sm:text-2xl font-black font-mono">00</span>
+              <span class="block text-[10px] text-slate-400 font-medium">นาที</span>
+            </div>
+            <span class="text-slate-400 font-black text-lg">:</span>
+            <div id="cd-secs-card" class="bg-amber-500 text-slate-950 px-3 py-2 rounded-2xl min-w-[56px] shadow-sm">
+              <span id="cd-secs" class="block text-xl sm:text-2xl font-black font-mono">00</span>
+              <span class="block text-[10px] text-amber-950 font-bold">วินาที</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Realtime Live Stats Bar -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-soft">
@@ -368,11 +414,11 @@
 
           <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-soft">
             <div class="flex items-center justify-between text-slate-400 mb-2">
-              <span class="text-xs font-semibold uppercase">นับถอยหลังสู่วันงาน</span>
+              <span class="text-xs font-semibold uppercase">ปิดรับสมัครในอีก</span>
               <div class="p-2 rounded-xl bg-amber-50 text-amber-600"><i data-lucide="hourglass" class="w-4 h-4"></i></div>
             </div>
             <div id="stat-countdown" class="text-2xl sm:text-3xl font-extrabold text-amber-600">-- วัน</div>
-            <p class="text-xs text-slate-500 mt-1">18 ต.ค. 2569</p>
+            <p id="stat-countdown-sub" class="text-xs text-slate-500 mt-1 truncate">กำหนดการปิดรับสมัคร</p>
           </div>
         </div>
 
@@ -612,9 +658,14 @@
               
               <!-- QR Code Display & Bank Details -->
               <div class="lg:col-span-5 flex flex-col items-center text-center p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-                <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold mb-3">
-                  <i data-lucide="qr-code" class="w-3.5 h-3.5"></i>
-                  <span>สแกน QR Code ชำระเงิน</span>
+                <!-- QR Type Switcher (if custom bank QR exists) -->
+                <div id="payment-qr-tabs" class="flex items-center p-1 bg-slate-200/80 rounded-xl mb-3 text-xs font-semibold">
+                  <button type="button" id="tab-qr-promptpay" onclick="switchPaymentQrType('promptpay')" class="px-3 py-1 rounded-lg bg-white text-brand-700 shadow-sm transition">
+                    พร้อมเพย์ QR
+                  </button>
+                  <button type="button" id="tab-qr-bank" onclick="switchPaymentQrType('bank')" class="px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition">
+                    QR ธนาคาร
+                  </button>
                 </div>
 
                 <!-- Generated PromptPay / Dynamic QR Image -->
@@ -858,13 +909,13 @@
       </section>
 
       <!-- ------------------------------------------------------------------- -->
-      <!-- VIEW 7: ADMIN ALL RUNNERS TABLE                                     -->
+      <!-- VIEW 7: ADMIN ALL RUNNERS & SOUVENIR ORDERS TABLE                   -->
       <!-- ------------------------------------------------------------------- -->
       <section id="view-admin-runners" class="view-content space-y-6 hidden">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h2 class="text-2xl font-bold text-slate-900">รายชื่อนักวิ่งทั้งหมด</h2>
-            <p class="text-xs sm:text-sm text-slate-500">รายชื่อนักวิ่งทุกคนในระบบ พร้อมเลขบิบและข้อมูลติดต่อ</p>
+            <h2 id="admin-runners-view-title" class="text-2xl font-bold text-slate-900">รายชื่อนักวิ่งและผู้สั่งซื้อ</h2>
+            <p id="admin-runners-view-desc" class="text-xs sm:text-sm text-slate-500">เลือกดูข้อมูลแยกตามรุ่นการแข่งขัน หรือดูรายการผู้สั่งซื้อเสื้อที่ระลึก</p>
           </div>
 
           <div class="flex items-center space-x-2">
@@ -872,27 +923,42 @@
               <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
               <input type="text" id="admin-runner-search" oninput="renderAdminRunnersTable()" placeholder="ค้นหาชื่อ, บิบ, บัตรประชาชน..." class="pl-9 pr-3 py-2 text-xs sm:text-sm rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500">
             </div>
-            <button onclick="exportRunnersCSV()" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center space-x-1">
+            <button onclick="exportRunnersCSV()" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center space-x-1 shadow-sm transition shrink-0">
               <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
-              <span>Export CSV</span>
+              <span id="btn-export-label">Export CSV</span>
             </button>
           </div>
         </div>
 
+        <!-- Category & Souvenir Filter Tabs -->
+        <div class="flex items-center space-x-2 overflow-x-auto pb-1 border-b border-slate-200 text-xs font-bold" id="admin-runner-cat-tabs">
+          <button onclick="setAdminRunnerCategoryFilter('all')" id="tab-cat-all" class="px-3.5 py-2 rounded-xl bg-slate-900 text-white shadow-sm transition whitespace-nowrap">
+            ทั้งหมด (All)
+          </button>
+          <button onclick="setAdminRunnerCategoryFilter('vip')" id="tab-cat-vip" class="px-3.5 py-2 rounded-xl text-amber-800 bg-amber-50 hover:bg-amber-100 transition whitespace-nowrap">
+            รุ่น VIP
+          </button>
+          <button onclick="setAdminRunnerCategoryFilter('funrun')" id="tab-cat-funrun" class="px-3.5 py-2 rounded-xl text-cyan-800 bg-cyan-50 hover:bg-cyan-100 transition whitespace-nowrap">
+            รุ่น Fun Run (5km)
+          </button>
+          <button onclick="setAdminRunnerCategoryFilter('family')" id="tab-cat-family" class="px-3.5 py-2 rounded-xl text-purple-800 bg-purple-50 hover:bg-purple-100 transition whitespace-nowrap">
+            รุ่น Family (3 ท่าน)
+          </button>
+          <button onclick="setAdminRunnerCategoryFilter('mini')" id="tab-cat-mini" class="px-3.5 py-2 rounded-xl text-emerald-800 bg-emerald-50 hover:bg-emerald-100 transition whitespace-nowrap">
+            รุ่น Mini Marathon (10km)
+          </button>
+          <button onclick="setAdminRunnerCategoryFilter('souvenir')" id="tab-cat-souvenir" class="px-3.5 py-2 rounded-xl text-rose-800 bg-rose-50 hover:bg-rose-100 transition whitespace-nowrap flex items-center space-x-1.5">
+            <i data-lucide="shirt" class="w-3.5 h-3.5"></i>
+            <span>🛍️ ข้อมูลสั่งซื้อเสื้อที่ระลึก</span>
+          </button>
+        </div>
+
+        <!-- Runners / Souvenirs Table Container -->
         <div class="bg-white rounded-2xl border border-slate-200/80 shadow-soft overflow-hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs sm:text-sm border-collapse">
-              <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
-                <tr>
-                  <th class="py-3 px-4">เลขบิบ (BIB)</th>
-                  <th class="py-3 px-4">ชื่อ - นามสกุล</th>
-                  <th class="py-3 px-4">รุ่น / ระยะ</th>
-                  <th class="py-3 px-4">เพศ/อายุ</th>
-                  <th class="py-3 px-4">ไซส์เสื้อ</th>
-                  <th class="py-3 px-4">เบอร์โทรศัพท์</th>
-                  <th class="py-3 px-4">สถานะ</th>
-                  <th class="py-3 px-4 text-center">จัดการ</th>
-                </tr>
+              <thead id="admin-runners-thead" class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
+                <!-- Dynamically swapped between Runners Thead and Souvenir Thead -->
               </thead>
               <tbody id="admin-runners-tbody" class="divide-y divide-slate-100 text-slate-700">
                 <!-- Rendered by JS -->
@@ -1084,23 +1150,58 @@
           </div>
 
           <form id="settings-form" onsubmit="handleSaveSettings(event)" class="space-y-6">
+            <!-- Branding & Logo Section -->
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+              <h3 class="font-bold text-slate-800 text-sm sm:text-base flex items-center space-x-2">
+                <i data-lucide="image" class="w-4 h-4 text-brand-600"></i>
+                <span>โลโก้งานวิ่ง (Event Logo)</span>
+              </h3>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
+                <div class="sm:col-span-3 flex flex-col items-center">
+                  <div id="set_logo_preview_container" class="w-24 h-24 rounded-2xl bg-white border-2 border-dashed border-slate-300 flex items-center justify-center overflow-hidden p-1 shadow-sm">
+                    <img id="set_logo_preview" src="" alt="Logo Preview" class="w-full h-full object-contain hidden" onerror="this.classList.add('hidden')">
+                    <div id="set_logo_empty_icon" class="text-slate-400 flex flex-col items-center">
+                      <i data-lucide="image-plus" class="w-6 h-6"></i>
+                      <span class="text-[10px] mt-1">ไม่มีรูปโลโก้</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="sm:col-span-9 space-y-2 text-xs sm:text-sm">
+                  <div class="flex items-center space-x-2">
+                    <input type="file" id="set_logo_file" accept="image/*" class="hidden" onchange="handleLogoFileSelect(event)">
+                    <button type="button" onclick="document.getElementById('set_logo_file').click()" class="px-4 py-2 rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-700 font-semibold border border-brand-200 transition flex items-center space-x-1.5 text-xs">
+                      <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                      <span>อัปโหลดรูปภาพโลโก้</span>
+                    </button>
+                    <button type="button" onclick="clearLogoImage()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-600 text-xs font-semibold transition">
+                      ล้างรูป
+                    </button>
+                  </div>
+                  <p class="text-xs text-slate-500">แนะนำรูปทรงสี่เหลี่ยมจัตุรัสหรือวงกลม (PNG โปร่งใส หรือ JPG) ขนาดไฟล์ไม่เกิน 2MB</p>
+                  <input type="text" id="set_logo_url" placeholder="หรือระบุ URL รูปภาพโลโก้ (https://...)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono">
+                </div>
+              </div>
+            </div>
+
             <!-- Bank & PromptPay Section -->
             <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
               <h3 class="font-bold text-slate-800 text-sm sm:text-base flex items-center space-x-2">
                 <i data-lucide="credit-card" class="w-4 h-4 text-brand-600"></i>
-                <span>ข้อมูลการชำระเงิน & PromptPay QR Code</span>
+                <span>ข้อมูลการชำระเงิน, PromptPay & QR Code ธนาคาร</span>
               </h3>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
                 <div>
-                  <label class="block font-semibold text-slate-700 mb-1">หมายเลขพร้อมเพย์ (เบอร์โทร หรือ เลขประจำตัวผู้เสียภาษี) <span class="text-rose-500">*</span></label>
-                  <input type="text" id="set_promptpay_number" required placeholder="เช่น 0812345678 หรือ 0123456789012" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-mono text-sm focus:ring-2 focus:ring-brand-500">
-                  <p class="text-[11px] text-slate-400 mt-1">* ใช้สำหรับสร้าง Dynamic PromptPay QR Code อัตโนมัติ</p>
+                  <label class="block font-semibold text-slate-700 mb-1">หมายเลขพร้อมเพย์ (ไม่บังคับ)</label>
+                  <input type="text" id="set_promptpay_number" placeholder="เช่น 0812345678 (เว้นว่างได้ถ้าไม่มีพร้อมเพย์)" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-mono text-sm focus:ring-2 focus:ring-brand-500">
+                  <p class="text-[11px] text-slate-400 mt-1">* หากไม่มีพร้อมเพย์ ให้เว้นว่างไว้ แล้วอัปโหลดภาพ QR Code ธนาคารด้านล่างแทนได้ครับ</p>
                 </div>
 
                 <div>
-                  <label class="block font-semibold text-slate-700 mb-1">ชื่อบัญชีพร้อมเพย์ <span class="text-rose-500">*</span></label>
-                  <input type="text" id="set_promptpay_name" required placeholder="เช่น กองทุนสวัสดิการ อปพร.ระยอง" class="w-full px-3 py-2.5 rounded-xl border border-slate-300">
+                  <label class="block font-semibold text-slate-700 mb-1">ชื่อบัญชีพร้อมเพย์ (ไม่บังคับ)</label>
+                  <input type="text" id="set_promptpay_name" placeholder="เว้นว่างได้หากไม่มีพร้อมเพย์" class="w-full px-3 py-2.5 rounded-xl border border-slate-300">
                 </div>
 
                 <div>
@@ -1117,22 +1218,63 @@
                   <label class="block font-semibold text-slate-700 mb-1">ชื่อบัญชีธนาคาร (เต็ม) <span class="text-rose-500">*</span></label>
                   <input type="text" id="set_bank_account_name" required placeholder="เช่น กองทุนสวัสดิการ อปพร. จังหวัดระยอง" class="w-full px-3 py-2.5 rounded-xl border border-slate-300">
                 </div>
+
+                <!-- Custom Bank QR Code Upload -->
+                <div class="md:col-span-2 p-4 rounded-xl bg-white border border-slate-200 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <span class="font-bold text-slate-800 text-xs sm:text-sm">ภาพ QR Code สแกนตรงของธนาคาร (ทางเลือกเพิ่มเติม)</span>
+                      <p class="text-[11px] text-slate-500">อัปโหลดภาพ QR Code จากแอปธนาคารหรือป้ายตั้งโต๊ะ เพื่อให้ผู้สมัครเลือกสแกนได้อีกทาง</p>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+                    <div class="w-20 h-20 rounded-xl border border-slate-300 bg-slate-50 flex items-center justify-center overflow-hidden shrink-0">
+                      <img id="set_custom_qr_preview" src="" alt="Bank QR Preview" class="w-full h-full object-contain hidden" onerror="this.classList.add('hidden')">
+                      <div id="set_custom_qr_empty" class="text-slate-400 text-center text-[10px] p-1">
+                        <i data-lucide="qr-code" class="w-5 h-5 mx-auto"></i>
+                        <span>ไม่มีภาพ</span>
+                      </div>
+                    </div>
+
+                    <div class="flex-1 space-y-2">
+                      <div class="flex items-center space-x-2">
+                        <input type="file" id="set_custom_qr_file" accept="image/*" class="hidden" onchange="handleCustomQrFileSelect(event)">
+                        <button type="button" onclick="document.getElementById('set_custom_qr_file').click()" class="px-3.5 py-1.5 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs font-semibold border border-purple-200 transition flex items-center space-x-1">
+                          <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                          <span>อัปโหลดภาพ QR ธนาคาร</span>
+                        </button>
+                        <button type="button" onclick="clearCustomQrImage()" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-600 text-xs font-semibold transition">
+                          ล้างรูป
+                        </button>
+                      </div>
+                      <input type="text" id="set_custom_qr_url" placeholder="หรือระบุ URL ภาพ QR Code (https://...)" class="w-full px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-mono">
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- Pricing & Souvenir Section -->
+            <!-- Pricing, Souvenir & Registration Period Section -->
             <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
               <h3 class="font-bold text-slate-800 text-sm sm:text-base flex items-center space-x-2">
-                <i data-lucide="shirt" class="w-4 h-4 text-emerald-600"></i>
-                <span>ราคาเสื้อที่ระลึก & สินค้าเพิ่มเติม</span>
+                <i data-lucide="clock" class="w-4 h-4 text-emerald-600"></i>
+                <span>กำหนดการรับสมัคร & ราคาเสื้อที่ระลึก</span>
               </h3>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
                 <div>
+                  <label class="block font-semibold text-slate-700 mb-1">วันและเวลาปิดรับสมัคร (Registration Closing) <span class="text-rose-500">*</span></label>
+                  <input type="datetime-local" id="set_registration_close_date" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-mono focus:ring-2 focus:ring-brand-500">
+                  <p class="text-[11px] text-slate-400 mt-1">* เมื่อเลยกำหนดนี้ ระบบจะปิดการสมัครและแสดงสถานะปิดรับสมัครอัตโนมัติ</p>
+                </div>
+
+                <div>
                   <label class="block font-semibold text-slate-700 mb-1">ราคาเสื้อที่ระลึก (บาท/ตัว) <span class="text-rose-500">*</span></label>
                   <input type="number" id="set_souvenir_shirt_price" required min="0" step="1" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-mono">
                 </div>
-                <div>
+
+                <div class="sm:col-span-2">
                   <label class="block font-semibold text-slate-700 mb-1">เบอร์ติดต่อฝ่ายรับสมัคร</label>
                   <input type="text" id="set_contact_phone" placeholder="เช่น 081-234-5678" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-mono">
                 </div>
@@ -1551,6 +1693,13 @@
   <!-- JAVASCRIPT APPLICATION LOGIC                                              -->
   <!-- ========================================================================= -->
   <script>
+    // Fallback Image Handler (No via.placeholder)
+    function handleImageError(img) {
+      if (!img) return;
+      img.onerror = null;
+      img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>';
+    }
+
     /**
      * =========================================================================
      * ตั้งค่า SUPABASE DATABASE หลักของระบบ (ฝังในโค้ดเพื่อให้ทุกคนที่เปิดลิงก์เชื่อมต่อได้ทันที)
@@ -1624,6 +1773,9 @@
         event_subtitle: 'ชิงถ้วยผู้ว่าราชการจังหวัดระยอง นายไตรภพ วงศ์ไตรรัตน์',
         event_location: 'ณ อ่างเก็บน้ำเขาจุก อ.เขาชะเมา จ.ระยอง',
         event_date: '18 ตุลาคม 2569',
+        registration_close_date: '2026-10-10T23:59',
+        logo_url: '',
+        custom_qr_url: '',
         promptpay_number: '0812345678',
         promptpay_name: 'กองทุนสวัสดิการ อปพร.ระยอง',
         bank_name: 'ธนาคารกรุงไทย',
@@ -1632,6 +1784,8 @@
         souvenir_shirt_price: 300,
         contact_phone: '081-234-5678'
       },
+      activePaymentQrType: 'promptpay',
+      adminRunnerCategoryFilter: 'all',
       souvenirShirtPrice: 300,
       souvenirQty: 0,
       souvenirSizes: [],
@@ -1693,10 +1847,17 @@
       await loadInitialData();
 
       // 4. Render UI Components
+      updateHeaderAndBranding();
       renderNavAuth();
       renderLandingCategories();
       updateLandingStats();
       renderCountdown();
+      calculateTotalAmount();
+
+      // Start Realtime Live Ticking Countdown
+      if (!window.countdownInterval) {
+        window.countdownInterval = setInterval(renderCountdown, 1000);
+      }
 
       // Default View
       switchView('landing');
@@ -1997,15 +2158,15 @@
       // Clear desktop sidebar highlights
       const navButtons = document.querySelectorAll('#desktop-sidebar button[id^="side-nav-"]');
       navButtons.forEach(btn => {
-        btn.className = 'w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:text-brand-600 hover:bg-slate-100 transition text-slate-600';
+        btn.className = 'w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-left hover:text-brand-600 hover:bg-slate-100 transition text-slate-600';
       });
 
       const activeBtn = document.getElementById(`side-nav-${viewName.replace('admin-', 'admin-').replace('course-', '')}`);
       if (activeBtn) {
         if (viewName.startsWith('admin-')) {
-          activeBtn.className = 'w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-purple-600 bg-purple-50 font-semibold transition';
+          activeBtn.className = 'w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-left text-purple-600 bg-purple-50 font-semibold transition';
         } else {
-          activeBtn.className = 'w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-brand-600 bg-brand-50 font-semibold transition';
+          activeBtn.className = 'w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-left text-brand-600 bg-brand-50 font-semibold transition';
         }
       }
 
@@ -2028,9 +2189,37 @@
       }
     }
 
+    function isRegistrationClosed() {
+      if (!AppState.settings.registration_close_date) return false;
+      const closeDate = new Date(AppState.settings.registration_close_date);
+      if (isNaN(closeDate.getTime())) return false;
+      return new Date() > closeDate;
+    }
+
+    function updateHeaderAndBranding() {
+      const s = AppState.settings;
+      const logoWrapper = document.getElementById('header-logo-wrapper');
+      const titleEl = document.getElementById('header-event-name');
+      const subEl = document.getElementById('header-event-sub');
+
+      if (titleEl && s.event_name) titleEl.textContent = s.event_name;
+      if (subEl && s.event_subtitle) subEl.textContent = `${s.event_subtitle} • ${s.event_location || ''}`;
+
+      if (logoWrapper) {
+        if (s.logo_url) {
+          logoWrapper.innerHTML = `<img src="${s.logo_url}" alt="Logo" class="w-full h-full object-contain bg-white" onerror="this.parentElement.innerHTML='<i data-lucide=\\'flame\\' class=\\'w-6 h-6 text-white\\'></i>'; lucide.createIcons();">`;
+        } else {
+          logoWrapper.innerHTML = `<i data-lucide="flame" class="w-6 h-6 text-white"></i>`;
+        }
+      }
+      lucide.createIcons();
+    }
+
     function renderLandingCategories() {
       const grid = document.getElementById('categories-grid');
       const activeCats = AppState.categories.filter(c => c.is_active !== false);
+      const isClosed = isRegistrationClosed();
+
       grid.innerHTML = activeCats.map(cat => `
         <div class="rounded-3xl bg-white border border-slate-200/80 p-5 shadow-soft hover:shadow-card hover:border-brand-300 transition-all flex flex-col justify-between space-y-4 relative group">
           <div class="space-y-2">
@@ -2040,12 +2229,12 @@
             </div>
             <h3 class="text-lg font-bold text-slate-900 leading-snug">${cat.name}</h3>
             <div class="text-2xl font-black text-slate-900">
-              ${cat.price.toLocaleString()} <span class="text-xs font-medium text-slate-500">บาท</span>
+              ${Number(cat.price).toLocaleString()} <span class="text-xs font-medium text-slate-500">บาท</span>
             </div>
 
             <!-- Perks List -->
             <ul class="space-y-1.5 text-xs text-slate-600 pt-2 border-t border-slate-100">
-              ${cat.perks.map(p => `
+              ${(cat.perks || []).map(p => `
                 <li class="flex items-center space-x-1.5">
                   <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i>
                   <span>${p}</span>
@@ -2054,12 +2243,20 @@
             </ul>
           </div>
 
-          <button onclick="startRegistration('${cat.id}')" class="w-full py-2.5 rounded-xl bg-slate-900 group-hover:bg-brand-600 text-white font-bold text-xs shadow transition active:scale-95 flex items-center justify-center space-x-1.5">
-            <span>สมัครรุ่นนี้</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </button>
+          ${isClosed ? `
+            <button disabled class="w-full py-2.5 rounded-xl bg-slate-200 text-slate-400 font-bold text-xs cursor-not-allowed flex items-center justify-center space-x-1.5">
+              <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+              <span>ปิดรับสมัครแล้ว</span>
+            </button>
+          ` : `
+            <button onclick="startRegistration('${cat.id}')" class="w-full py-2.5 rounded-xl bg-slate-900 group-hover:bg-brand-600 text-white font-bold text-xs shadow transition active:scale-95 flex items-center justify-center space-x-1.5">
+              <span>สมัครรุ่นนี้</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          `}
         </div>
       `).join('');
+      lucide.createIcons();
     }
 
     function updateLandingStats() {
@@ -2072,6 +2269,35 @@
 
       const elApproved = document.getElementById('stat-approved-runners');
       if (elApproved) elApproved.textContent = approvedRunners.toLocaleString() + ' คน';
+
+      // Check Registration Closure Banner
+      const isClosed = isRegistrationClosed();
+      const bannerContainer = document.getElementById('landing-closure-banner');
+      if (bannerContainer) {
+        if (isClosed) {
+          const closeDateStr = new Date(AppState.settings.registration_close_date).toLocaleString('th-TH');
+          bannerContainer.innerHTML = `
+            <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-600 text-white shadow-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+                  <i data-lucide="lock" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm sm:text-base">🚫 ระบบได้ปิดรับสมัครออนไลน์แล้ว</h4>
+                  <p class="text-xs text-rose-100">สิ้นสุดระยะเวลาการรับสมัครเมื่อ ${closeDateStr} (ผู้ที่สมัครแล้วสามารถตรวจสอบสถานะและดาวน์โหลด BIB ได้ตามปกติ)</p>
+                </div>
+              </div>
+              <button onclick="switchView('check-status')" class="px-4 py-2.5 rounded-xl bg-white text-rose-700 font-bold text-xs shadow hover:bg-rose-50 transition shrink-0 whitespace-nowrap">
+                ตรวจสอบสถานะ / พิมพ์ BIB
+              </button>
+            </div>
+          `;
+          bannerContainer.classList.remove('hidden');
+        } else {
+          bannerContainer.classList.add('hidden');
+          bannerContainer.innerHTML = '';
+        }
+      }
 
       // Popular Category
       const counts = {};
@@ -2091,20 +2317,109 @@
       if (elPop) {
         elPop.textContent = popularCatObj ? popularCatObj.name.replace('รุ่น ', '') : 'Fun Run (5km)';
       }
+
+      renderCountdown();
+      updateHeaderAndBranding();
     }
 
     function renderCountdown() {
-      const eventDate = new Date('2026-10-18T05:00:00+07:00');
-      const now = new Date();
-      const diffTime = eventDate - now;
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const isClosed = isRegistrationClosed();
       const countEl = document.getElementById('stat-countdown');
+      const countSubEl = document.getElementById('stat-countdown-sub');
+      const badgeEl = document.getElementById('countdown-status-badge');
+      const dateLabelEl = document.getElementById('countdown-close-date-label');
+      const headingEl = document.getElementById('countdown-main-heading');
+      const iconBox = document.getElementById('countdown-icon-box');
+
+      const daysEl = document.getElementById('cd-days');
+      const hoursEl = document.getElementById('cd-hours');
+      const minsEl = document.getElementById('cd-mins');
+      const secsEl = document.getElementById('cd-secs');
+
+      let targetDate = new Date('2026-10-18T05:00:00+07:00');
+      if (AppState.settings.registration_close_date) {
+        const cd = new Date(AppState.settings.registration_close_date);
+        if (!isNaN(cd.getTime())) {
+          targetDate = cd;
+        }
+      }
+
+      const now = new Date();
+      const diffTime = targetDate - now;
+
+      // Format Thai Date string for closing
+      const thaiMonths = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
+      const d = targetDate.getDate();
+      const m = thaiMonths[targetDate.getMonth()];
+      const y = targetDate.getFullYear() + 543;
+      const hh = String(targetDate.getHours()).padStart(2, '0');
+      const mm = String(targetDate.getMinutes()).padStart(2, '0');
+      const formattedCloseStr = `${d} ${m} ${y} เวลา ${hh}:${mm} น.`;
+
+      if (dateLabelEl) {
+        dateLabelEl.textContent = `(ปิดรับสมัคร: ${formattedCloseStr})`;
+      }
+
+      if (isClosed || diffTime <= 0) {
+        if (countEl) countEl.textContent = 'ปิดรับแล้ว';
+        if (countSubEl) countSubEl.textContent = `ปิดเมื่อ ${formattedCloseStr}`;
+        if (badgeEl) {
+          badgeEl.className = 'px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-800';
+          badgeEl.textContent = '🚫 ปิดรับสมัครแล้ว';
+        }
+        if (headingEl) headingEl.textContent = 'สิ้นสุดระยะเวลารับสมัครออนไลน์แล้ว';
+        if (iconBox) {
+          iconBox.className = 'w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0';
+          iconBox.innerHTML = '<i data-lucide="lock" class="w-6 h-6"></i>';
+        }
+        if (daysEl) daysEl.textContent = '00';
+        if (hoursEl) hoursEl.textContent = '00';
+        if (minsEl) minsEl.textContent = '00';
+        if (secsEl) secsEl.textContent = '00';
+        return;
+      }
+
+      // Calculate Days, Hours, Minutes, Seconds
+      const totalSecs = Math.floor(diffTime / 1000);
+      const days = Math.floor(totalSecs / 86400);
+      const hours = Math.floor((totalSecs % 86400) / 3600);
+      const minutes = Math.floor((totalSecs % 3600) / 60);
+      const seconds = totalSecs % 60;
+
+      if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+      if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+      if (minsEl) minsEl.textContent = String(minutes).padStart(2, '0');
+      if (secsEl) secsEl.textContent = String(seconds).padStart(2, '0');
+
       if (countEl) {
-        countEl.textContent = diffDays > 0 ? `${diffDays} วัน` : 'วันนี้วันแข่ง!';
+        countEl.textContent = days > 0 ? `${days} วัน ${hours} ชม.` : `${hours} ชม. ${minutes} น.`;
+      }
+      if (countSubEl) {
+        countSubEl.textContent = `ปิด ${formattedCloseStr}`;
+      }
+
+      // Urgent highlight if <= 3 days remaining
+      if (days <= 3) {
+        if (badgeEl) {
+          badgeEl.className = 'px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 animate-pulse';
+          badgeEl.textContent = '⚡ ใกล้หมดเวลารับสมัคร!';
+        }
+        if (headingEl) headingEl.textContent = 'เหลือเวลาอีกไม่กี่วัน รีบสมัครก่อนปิดระบบ!';
+      } else {
+        if (badgeEl) {
+          badgeEl.className = 'px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800';
+          badgeEl.textContent = '🟢 กำลังเปิดรับสมัคร';
+        }
+        if (headingEl) headingEl.textContent = 'เวลาที่เหลือก่อนปิดระบบรับสมัครออนไลน์';
       }
     }
 
     function startRegistration(catId) {
+      if (isRegistrationClosed()) {
+        const closeDateStr = new Date(AppState.settings.registration_close_date).toLocaleString('th-TH');
+        showToast(`ขออภัย ระบบได้ปิดรับสมัครออนไลน์แล้ว (สิ้นสุดเมื่อ ${closeDateStr})`, 'error');
+        return;
+      }
       if (catId) {
         AppState.selectedCategory = catId;
       }
@@ -2606,9 +2921,32 @@
       calculateTotalAmount();
     }
 
+    function switchPaymentQrType(type) {
+      const ppClean = (AppState.settings.promptpay_number || '').replace(/[^0-9]/g, '');
+      const hasValidPromptPay = ppClean.length >= 10;
+      const hasCustomBankQr = Boolean(AppState.settings.custom_qr_url);
+
+      if (type === 'bank' && hasCustomBankQr) {
+        AppState.activePaymentQrType = 'bank';
+        const tabBank = document.getElementById('tab-qr-bank');
+        const tabPP = document.getElementById('tab-qr-promptpay');
+        const qrImg = document.getElementById('payment-qr-img');
+        if (tabBank) tabBank.className = 'px-3 py-1 rounded-lg bg-white text-purple-700 shadow-sm transition';
+        if (tabPP) tabPP.className = 'px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition';
+        if (qrImg) qrImg.src = AppState.settings.custom_qr_url;
+      } else if (hasValidPromptPay) {
+        AppState.activePaymentQrType = 'promptpay';
+        const tabBank = document.getElementById('tab-qr-bank');
+        const tabPP = document.getElementById('tab-qr-promptpay');
+        if (tabPP) tabPP.className = 'px-3 py-1 rounded-lg bg-white text-brand-700 shadow-sm transition';
+        if (tabBank) tabBank.className = 'px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition';
+        calculateTotalAmount();
+      }
+    }
+
     function calculateTotalAmount() {
       const cat = AppState.categories.find(c => c.id === AppState.selectedCategory) || AppState.categories[0];
-      const basePrice = Number(cat.price) || 0;
+      const basePrice = Number(cat ? cat.price : 0) || 0;
       const souvenirPrice = Number(AppState.settings.souvenir_shirt_price) || AppState.souvenirShirtPrice || 300;
       const souvenirTotal = AppState.souvenirQty * souvenirPrice;
       const grandTotal = basePrice + souvenirTotal;
@@ -2616,11 +2954,50 @@
       const totalDisplay = document.getElementById('total-payment-display');
       if (totalDisplay) totalDisplay.textContent = grandTotal.toLocaleString('th-TH', { minimumFractionDigits: 2 }) + ' บาท';
 
-      // Update Dynamic PromptPay QR image using PromptPay generator API with amount
-      const promptPayRaw = (AppState.settings.promptpay_number || '0812345678').replace(/[^0-9]/g, '');
-      const qrImg = document.getElementById('payment-qr-img');
-      if (qrImg) qrImg.src = `https://promptpay.io/${promptPayRaw}/${grandTotal}.png`;
+      const ppClean = (AppState.settings.promptpay_number || '').replace(/[^0-9]/g, '');
+      const hasValidPromptPay = ppClean.length >= 10;
+      const hasCustomBankQr = Boolean(AppState.settings.custom_qr_url);
 
+      const qrTabs = document.getElementById('payment-qr-tabs');
+      const tabPP = document.getElementById('tab-qr-promptpay');
+      const tabBank = document.getElementById('tab-qr-bank');
+
+      // 1. Show switcher tabs only if BOTH PromptPay and Custom Bank QR exist
+      if (qrTabs) {
+        if (hasValidPromptPay && hasCustomBankQr) {
+          qrTabs.classList.remove('hidden');
+        } else {
+          qrTabs.classList.add('hidden');
+        }
+      }
+
+      // 2. Decide active QR type
+      if (!hasValidPromptPay && hasCustomBankQr) {
+        AppState.activePaymentQrType = 'bank';
+      } else if (hasValidPromptPay && !hasCustomBankQr) {
+        AppState.activePaymentQrType = 'promptpay';
+      } else if (!AppState.activePaymentQrType) {
+        AppState.activePaymentQrType = hasCustomBankQr ? 'bank' : 'promptpay';
+      }
+
+      // 3. Render QR Code Image
+      const qrImg = document.getElementById('payment-qr-img');
+      if (qrImg) {
+        if (AppState.activePaymentQrType === 'bank' && hasCustomBankQr) {
+          qrImg.src = AppState.settings.custom_qr_url;
+          if (tabBank) tabBank.className = 'px-3 py-1 rounded-lg bg-white text-purple-700 shadow-sm transition';
+          if (tabPP) tabPP.className = 'px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition';
+        } else if (hasValidPromptPay) {
+          qrImg.src = `https://promptpay.io/${ppClean}/${grandTotal}.png`;
+          if (tabPP) tabPP.className = 'px-3 py-1 rounded-lg bg-white text-brand-700 shadow-sm transition';
+          if (tabBank) tabBank.className = 'px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition';
+        } else {
+          // Fallback placeholder when no QR is available
+          qrImg.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="%236366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>';
+        }
+      }
+
+      // 4. Bank and PromptPay details display
       const accNameEl = document.getElementById('bank-acc-name-display');
       if (accNameEl) accNameEl.textContent = AppState.settings.bank_account_name || 'กองทุนสวัสดิการ อปพร.ระยอง';
 
@@ -2628,7 +3005,15 @@
       if (accNoEl) accNoEl.textContent = `${AppState.settings.bank_name || 'ธนาคารกรุงไทย'} • ${AppState.settings.bank_account_no || '123-0-45678-9'}`;
 
       const ppEl = document.getElementById('promptpay-display');
-      if (ppEl) ppEl.textContent = `พร้อมเพย์: ${AppState.settings.promptpay_number || '081-234-5678'}`;
+      if (ppEl) {
+        if (hasValidPromptPay) {
+          ppEl.textContent = `พร้อมเพย์: ${AppState.settings.promptpay_number}`;
+          ppEl.classList.remove('hidden');
+        } else {
+          ppEl.textContent = '';
+          ppEl.classList.add('hidden');
+        }
+      }
 
       return grandTotal;
     }
@@ -3326,24 +3711,162 @@
     }
 
     // =========================================================================
-    // ADMIN RUNNERS TABLE & CSV EXPORT
+    // ADMIN RUNNERS TABLE & SOUVENIR ORDERS & CATEGORY FILTERING & CSV EXPORT
     // =========================================================================
+    function setAdminRunnerCategoryFilter(filterKey) {
+      AppState.adminRunnerCategoryFilter = filterKey;
+
+      // Update tab active UI
+      const tabs = ['all', 'vip', 'funrun', 'family', 'mini', 'souvenir'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-cat-${t}`);
+        if (btn) {
+          if (t === filterKey) {
+            btn.className = 'px-3.5 py-2 rounded-xl bg-slate-900 text-white shadow-sm transition whitespace-nowrap';
+          } else {
+            if (t === 'vip') btn.className = 'px-3.5 py-2 rounded-xl text-amber-800 bg-amber-50 hover:bg-amber-100 transition whitespace-nowrap';
+            else if (t === 'funrun') btn.className = 'px-3.5 py-2 rounded-xl text-cyan-800 bg-cyan-50 hover:bg-cyan-100 transition whitespace-nowrap';
+            else if (t === 'family') btn.className = 'px-3.5 py-2 rounded-xl text-purple-800 bg-purple-50 hover:bg-purple-100 transition whitespace-nowrap';
+            else if (t === 'mini') btn.className = 'px-3.5 py-2 rounded-xl text-emerald-800 bg-emerald-50 hover:bg-emerald-100 transition whitespace-nowrap';
+            else if (t === 'souvenir') btn.className = 'px-3.5 py-2 rounded-xl text-rose-800 bg-rose-50 hover:bg-rose-100 transition whitespace-nowrap flex items-center space-x-1.5';
+            else btn.className = 'px-3.5 py-2 rounded-xl text-slate-600 bg-slate-100 hover:bg-slate-200 transition whitespace-nowrap';
+          }
+        }
+      });
+
+      renderAdminRunnersTable();
+    }
+
     function renderAdminRunnersTable() {
       const kw = (document.getElementById('admin-runner-search')?.value || '').toLowerCase().trim();
+      const thead = document.getElementById('admin-runners-thead');
       const tbody = document.getElementById('admin-runners-tbody');
+      const titleEl = document.getElementById('admin-runners-view-title');
+      const descEl = document.getElementById('admin-runners-view-desc');
+      const exportLabel = document.getElementById('btn-export-label');
+
+      const filter = AppState.adminRunnerCategoryFilter || 'all';
+
+      // -------------------------------------------------------------
+      // Case 1: Souvenir Shirt Buyers Table
+      // -------------------------------------------------------------
+      if (filter === 'souvenir') {
+        if (titleEl) titleEl.textContent = '🛍️ รายการสั่งซื้อเสื้อที่ระลึก (Souvenir Orders)';
+        if (descEl) descEl.textContent = 'รายชื่อผู้สั่งซื้อเสื้อที่ระลึกพิเศษ จำนวน ไซส์ และข้อมูลการจัดส่ง';
+        if (exportLabel) exportLabel.textContent = 'Export เสื้อที่ระลึก CSV';
+
+        thead.innerHTML = `
+          <tr>
+            <th class="py-3 px-4">รหัสใบสมัคร</th>
+            <th class="py-3 px-4">ชื่อผู้สั่งซื้อ</th>
+            <th class="py-3 px-4">เบอร์โทรศัพท์</th>
+            <th class="py-3 px-4 text-center">จำนวน (ตัว)</th>
+            <th class="py-3 px-4">ไซส์ที่สั่ง</th>
+            <th class="py-3 px-4">รูปแบบการรับ</th>
+            <th class="py-3 px-4">ที่อยู่จัดส่ง</th>
+            <th class="py-3 px-4 text-right">ยอดชำระ</th>
+            <th class="py-3 px-4">สถานะ</th>
+            <th class="py-3 px-4 text-center">สลิป</th>
+          </tr>
+        `;
+
+        let souvenirRegs = AppState.registrations.filter(r => (r.souvenir_shirt_qty || 0) > 0);
+        if (kw) {
+          souvenirRegs = souvenirRegs.filter(r => 
+            (r.contact_name && r.contact_name.toLowerCase().includes(kw)) ||
+            (r.contact_phone && r.contact_phone.includes(kw)) ||
+            (r.reg_code && r.reg_code.toLowerCase().includes(kw)) ||
+            (r.delivery_address && r.delivery_address.toLowerCase().includes(kw))
+          );
+        }
+
+        if (souvenirRegs.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="10" class="text-center py-8 text-slate-400">ไม่พบรายการสั่งซื้อเสื้อที่ระลึก</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = souvenirRegs.map(reg => `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="py-3 px-4 font-mono font-bold text-brand-600">${reg.reg_code}</td>
+            <td class="py-3 px-4 font-semibold text-slate-900">${reg.contact_name}</td>
+            <td class="py-3 px-4 font-mono text-slate-600">${reg.contact_phone}</td>
+            <td class="py-3 px-4 text-center font-bold text-rose-600 bg-rose-50/50">${reg.souvenir_shirt_qty} ตัว</td>
+            <td class="py-3 px-4">
+              <div class="flex flex-wrap gap-1">
+                ${(reg.souvenir_shirt_sizes || []).map(sz => `<span class="px-2 py-0.5 rounded bg-slate-100 font-mono font-bold text-xs text-slate-800">${sz}</span>`).join('')}
+              </div>
+            </td>
+            <td class="py-3 px-4">
+              <span class="px-2 py-0.5 text-xs font-semibold rounded ${reg.delivery_type === 'delivery' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'}">
+                ${reg.delivery_type === 'delivery' ? '🚚 ส่งพัสดุ' : '📍 รับเองหน้างาน'}
+              </span>
+            </td>
+            <td class="py-3 px-4 text-xs text-slate-600 max-w-xs truncate" title="${reg.delivery_address || '-'}">
+              ${reg.delivery_type === 'delivery' ? (reg.delivery_address || '-') : 'รับหน้างาน 17 ต.ค.'}
+            </td>
+            <td class="py-3 px-4 text-right font-mono font-bold text-slate-900">${Number(reg.total_amount).toLocaleString()} ฿</td>
+            <td class="py-3 px-4">
+              <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${reg.status === 'approved' ? 'bg-emerald-100 text-emerald-800' : (reg.status === 'rejected' ? 'bg-rose-100 text-rose-800' : 'bg-amber-100 text-amber-800')}">
+                ${reg.status === 'approved' ? 'อนุมัติแล้ว' : (reg.status === 'rejected' ? 'ปฏิเสธ' : 'รอตรวจ')}
+              </span>
+            </td>
+            <td class="py-3 px-4 text-center">
+              <button onclick="viewSlipModal('${reg.id}')" class="p-1.5 text-slate-400 hover:text-brand-600 rounded-lg hover:bg-slate-100 transition" title="ดูสลิปโอนเงิน">
+                <i data-lucide="receipt" class="w-4 h-4"></i>
+              </button>
+            </td>
+          </tr>
+        `).join('');
+
+        lucide.createIcons();
+        return;
+      }
+
+      // -------------------------------------------------------------
+      // Case 2: Runner Roster by Category (VIP, Fun Run, Family, Mini, All)
+      // -------------------------------------------------------------
+      const catObj = AppState.categories.find(c => c.id === filter);
+      if (filter === 'all') {
+        if (titleEl) titleEl.textContent = 'รายชื่อนักวิ่งทั้งหมด (All Runners)';
+        if (descEl) descEl.textContent = 'รายชื่อนักวิ่งทุกคนในระบบ พร้อมเลขบิบและข้อมูลติดต่อ';
+        if (exportLabel) exportLabel.textContent = 'Export CSV ทั้งหมด';
+      } else {
+        if (titleEl) titleEl.textContent = `รายชื่อนักวิ่ง: ${catObj ? catObj.name : filter}`;
+        if (descEl) descEl.textContent = `ข้อมูลนักวิ่งเฉพาะรุ่น ${catObj ? catObj.name : filter} (${catObj ? catObj.distance : ''})`;
+        if (exportLabel) exportLabel.textContent = `Export CSV รุ่น ${catObj ? catObj.name.replace('รุ่น ', '') : ''}`;
+      }
+
+      thead.innerHTML = `
+        <tr>
+          <th class="py-3 px-4">เลขบิบ (BIB)</th>
+          <th class="py-3 px-4">ชื่อ - นามสกุล</th>
+          <th class="py-3 px-4">รุ่น / ระยะ</th>
+          <th class="py-3 px-4">เพศ/อายุ</th>
+          <th class="py-3 px-4">ไซส์เสื้อวิ่ง</th>
+          <th class="py-3 px-4">โรคประจำตัว</th>
+          <th class="py-3 px-4">เบอร์โทรศัพท์</th>
+          <th class="py-3 px-4">สถานะ</th>
+          <th class="py-3 px-4 text-center">จัดการ</th>
+        </tr>
+      `;
 
       let filtered = AppState.runners;
+      if (filter !== 'all') {
+        filtered = filtered.filter(r => r.category_id === filter);
+      }
+
       if (kw) {
         filtered = filtered.filter(r => 
-          r.first_name.toLowerCase().includes(kw) ||
-          r.last_name.toLowerCase().includes(kw) ||
-          r.citizen_id.includes(kw) ||
-          (r.bib_number && r.bib_number.toLowerCase().includes(kw))
+          (r.first_name && r.first_name.toLowerCase().includes(kw)) ||
+          (r.last_name && r.last_name.toLowerCase().includes(kw)) ||
+          (r.citizen_id && r.citizen_id.includes(kw)) ||
+          (r.bib_number && r.bib_number.toLowerCase().includes(kw)) ||
+          (r.phone && r.phone.includes(kw))
         );
       }
 
       if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="8" class="text-center py-6 text-slate-400">ไม่พบรายชื่อนักวิ่ง</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="9" class="text-center py-8 text-slate-400">ไม่พบรายชื่อนักวิ่งในหมวดหมู่นี้</td></tr>`;
         return;
       }
 
@@ -3364,16 +3887,24 @@
             </td>
             <td class="py-3 px-4 text-slate-600">${r.gender} / ${r.age} ปี</td>
             <td class="py-3 px-4 font-bold text-slate-900">${r.shirt_size}</td>
+            <td class="py-3 px-4 text-xs text-slate-500">${r.chronic_disease || 'ไม่มี'}</td>
             <td class="py-3 px-4 font-mono text-slate-600">${r.phone}</td>
             <td class="py-3 px-4">
-              <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${reg?.status === 'approved' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
-                ${reg?.status === 'approved' ? 'อนุมัติ' : 'รอตรวจ'}
+              <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${reg?.status === 'approved' ? 'bg-emerald-100 text-emerald-800' : (reg?.status === 'rejected' ? 'bg-rose-100 text-rose-800' : 'bg-amber-100 text-amber-800')}">
+                ${reg?.status === 'approved' ? 'อนุมัติ' : (reg?.status === 'rejected' ? 'ปฏิเสธ' : 'รอตรวจ')}
               </span>
             </td>
             <td class="py-3 px-4 text-center">
-              <button onclick="editRunnerBib('${r.id}')" class="p-1 text-slate-400 hover:text-brand-600" title="แก้ไขเลขบิบ">
-                <i data-lucide="edit-3" class="w-4 h-4"></i>
-              </button>
+              <div class="flex items-center justify-center space-x-1">
+                <button onclick="editRunnerBib('${r.id}')" class="p-1.5 text-slate-400 hover:text-brand-600 rounded-lg hover:bg-slate-100" title="แก้ไขเลขบิบ">
+                  <i data-lucide="edit-3" class="w-4 h-4"></i>
+                </button>
+                ${reg ? `
+                  <button onclick="viewSlipModal('${reg.id}')" class="p-1.5 text-slate-400 hover:text-purple-600 rounded-lg hover:bg-slate-100" title="ดูสลิป">
+                    <i data-lucide="receipt" class="w-4 h-4"></i>
+                  </button>
+                ` : ''}
+              </div>
             </td>
           </tr>
         `;
@@ -3396,15 +3927,54 @@
     }
 
     function exportRunnersCSV() {
-      if (AppState.runners.length === 0) {
+      const filter = AppState.adminRunnerCategoryFilter || 'all';
+
+      // 1. Export Souvenirs CSV
+      if (filter === 'souvenir') {
+        const souvenirRegs = AppState.registrations.filter(r => (r.souvenir_shirt_qty || 0) > 0);
+        if (souvenirRegs.length === 0) {
+          showToast('ไม่มีข้อมูลการสั่งซื้อเสื้อที่ระลึก', 'error');
+          return;
+        }
+
+        let csvContent = "\uFEFF";
+        csvContent += "ลำดับ,รหัสการสมัคร,ชื่อผู้สั่งซื้อ,เบอร์โทร,จำนวนเสื้อ(ตัว),ไซส์ที่สั่ง,รูปแบบการรับ,ที่อยู่จัดส่ง,ยอดรวม(บาท),สถานะ\n";
+        souvenirRegs.forEach((reg, idx) => {
+          const row = [
+            idx + 1,
+            `"${reg.reg_code}"`,
+            `"${reg.contact_name}"`,
+            `="${reg.contact_phone}"`,
+            reg.souvenir_shirt_qty,
+            `"${(reg.souvenir_shirt_sizes || []).join(', ')}"`,
+            `"${reg.delivery_type === 'delivery' ? 'ส่งพัสดุ' : 'รับเองหน้างาน'}"`,
+            `"${(reg.delivery_address || '-').replace(/"/g, '""')}"`,
+            reg.total_amount,
+            `"${reg.status}"`
+          ];
+          csvContent += row.join(",") + "\n";
+        });
+
+        downloadCSVFile(csvContent, `souvenir_shirt_orders_${new Date().toISOString().slice(0,10)}.csv`);
+        showToast('ส่งออกข้อมูลสั่งซื้อเสื้อที่ระลึกสำเร็จ', 'success');
+        return;
+      }
+
+      // 2. Export Runners CSV (Filtered by category or all)
+      let runnersToExport = AppState.runners;
+      if (filter !== 'all') {
+        runnersToExport = runnersToExport.filter(r => r.category_id === filter);
+      }
+
+      if (runnersToExport.length === 0) {
         showToast('ไม่มีข้อมูลนักวิ่งสำหรับส่งออก', 'error');
         return;
       }
 
       let csvContent = "\uFEFF"; // UTF-8 BOM for Thai Excel
-      csvContent += "ลำดับ,เลขบิบ(BIB),รหัสการสมัคร,คำนำหน้า,ชื่อ,นามสกุล,เพศ,อายุ,วันเกิด,เลขบัตรประชาชน,เบอร์โทร,ไซส์เสื้อ,โรคประจำตัว,ประเภท,การรับเสื้อ,สถานะ\n";
+      csvContent += "ลำดับ,เลขบิบ(BIB),รหัสการสมัคร,คำนำหน้า,ชื่อ,นามสกุล,เพศ,อายุ,วันเกิด,เลขบัตรประชาชน,เบอร์โทร,ไซส์เสื้อ,โรคประจำตัว,รุ่นการแข่งขัน,ระยะทาง,การรับเสื้อ,ที่อยู่,สถานะ\n";
 
-      AppState.runners.forEach((r, idx) => {
+      runnersToExport.forEach((r, idx) => {
         const reg = AppState.registrations.find(rg => rg.id === r.registration_id);
         const cat = AppState.categories.find(c => c.id === r.category_id);
         const row = [
@@ -3422,22 +3992,29 @@
           `"${r.shirt_size}"`,
           `"${r.chronic_disease || 'ไม่มี'}"`,
           `"${cat ? cat.name : ''}"`,
+          `"${cat ? cat.distance : ''}"`,
           `"${reg ? reg.delivery_type : ''}"`,
+          `"${(r.address || '').replace(/"/g, '""')}"`,
           `"${reg ? reg.status : ''}"`
         ];
         csvContent += row.join(",") + "\n";
       });
 
-      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const catName = filter === 'all' ? 'all' : filter;
+      downloadCSVFile(csvContent, `runners_${catName}_${new Date().toISOString().slice(0,10)}.csv`);
+      showToast('ส่งออกข้อมูลนักวิ่งสำเร็จ', 'success');
+    }
+
+    function downloadCSVFile(content, fileName) {
+      const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
       const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.setAttribute('href', url);
-      link.setAttribute('download', `อปพร_มินิมาราธอน_รายชื่อนักวิ่ง_${new Date().toISOString().slice(0,10)}.csv`);
+      link.setAttribute("href", url);
+      link.setAttribute("download", fileName);
+      link.style.visibility = 'hidden';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
-      showToast('ส่งออกไฟล์ CSV เรียบร้อยแล้ว', 'success');
     }
 
     // =========================================================================
@@ -3946,8 +4523,134 @@
     }
 
     // =========================================================================
-    // ADMIN: SYSTEM & BANK SETTINGS
+    // ADMIN: SYSTEM & BANK SETTINGS & LOGO / QR UPLOAD
     // =========================================================================
+    function handleLogoFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          const MAX_SIZE = 500;
+          let width = img.width;
+          let height = img.height;
+          if (width > height) {
+            if (width > MAX_SIZE) {
+              height *= MAX_SIZE / width;
+              width = MAX_SIZE;
+            }
+          } else {
+            if (height > MAX_SIZE) {
+              width *= MAX_SIZE / height;
+              height = MAX_SIZE;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const compressedBase64 = canvas.toDataURL('image/png');
+          AppState.settings.logo_url = compressedBase64;
+          document.getElementById('set_logo_url').value = compressedBase64;
+          
+          const previewImg = document.getElementById('set_logo_preview');
+          const emptyIcon = document.getElementById('set_logo_empty_icon');
+          if (previewImg) {
+            previewImg.src = compressedBase64;
+            previewImg.classList.remove('hidden');
+          }
+          if (emptyIcon) emptyIcon.classList.add('hidden');
+          updateHeaderAndBranding();
+          showToast('โหลดรูปภาพโลโก้สำเร็จ (อย่าลืมกดบันทึกการตั้งค่า)', 'info');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearLogoImage() {
+      AppState.settings.logo_url = '';
+      const input = document.getElementById('set_logo_url');
+      if (input) input.value = '';
+      const fileInput = document.getElementById('set_logo_file');
+      if (fileInput) fileInput.value = '';
+      const previewImg = document.getElementById('set_logo_preview');
+      const emptyIcon = document.getElementById('set_logo_empty_icon');
+      if (previewImg) {
+        previewImg.src = '';
+        previewImg.classList.add('hidden');
+      }
+      if (emptyIcon) emptyIcon.classList.remove('hidden');
+      updateHeaderAndBranding();
+      showToast('ลบรูปภาพโลโก้แล้ว', 'info');
+    }
+
+    function handleCustomQrFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          const MAX_SIZE = 800;
+          let width = img.width;
+          let height = img.height;
+          if (width > height) {
+            if (width > MAX_SIZE) {
+              height *= MAX_SIZE / width;
+              width = MAX_SIZE;
+            }
+          } else {
+            if (height > MAX_SIZE) {
+              width *= MAX_SIZE / height;
+              height = MAX_SIZE;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.85);
+          AppState.settings.custom_qr_url = compressedBase64;
+          document.getElementById('set_custom_qr_url').value = compressedBase64;
+          
+          const previewImg = document.getElementById('set_custom_qr_preview');
+          const emptyIcon = document.getElementById('set_custom_qr_empty');
+          if (previewImg) {
+            previewImg.src = compressedBase64;
+            previewImg.classList.remove('hidden');
+          }
+          if (emptyIcon) emptyIcon.classList.add('hidden');
+          showToast('โหลดรูปภาพ QR Code ธนาคารสำเร็จ (อย่าลืมกดบันทึกการตั้งค่า)', 'info');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearCustomQrImage() {
+      AppState.settings.custom_qr_url = '';
+      const input = document.getElementById('set_custom_qr_url');
+      if (input) input.value = '';
+      const fileInput = document.getElementById('set_custom_qr_file');
+      if (fileInput) fileInput.value = '';
+      const previewImg = document.getElementById('set_custom_qr_preview');
+      const emptyIcon = document.getElementById('set_custom_qr_empty');
+      if (previewImg) {
+        previewImg.src = '';
+        previewImg.classList.add('hidden');
+      }
+      if (emptyIcon) emptyIcon.classList.remove('hidden');
+      showToast('ลบภาพ QR Code ธนาคารแล้ว', 'info');
+    }
+
     function renderAdminSettings() {
       const s = AppState.settings;
       document.getElementById('set_promptpay_number').value = s.promptpay_number || '';
@@ -3961,11 +4664,47 @@
       document.getElementById('set_event_subtitle').value = s.event_subtitle || '';
       document.getElementById('set_event_date').value = s.event_date || '';
       document.getElementById('set_event_location').value = s.event_location || '';
+      document.getElementById('set_registration_close_date').value = s.registration_close_date || '';
+      document.getElementById('set_logo_url').value = s.logo_url || '';
+      document.getElementById('set_custom_qr_url').value = s.custom_qr_url || '';
+
+      // Logo Preview
+      const logoPreview = document.getElementById('set_logo_preview');
+      const logoEmpty = document.getElementById('set_logo_empty_icon');
+      if (s.logo_url) {
+        if (logoPreview) {
+          logoPreview.src = s.logo_url;
+          logoPreview.classList.remove('hidden');
+        }
+        if (logoEmpty) logoEmpty.classList.add('hidden');
+      } else {
+        if (logoPreview) logoPreview.classList.add('hidden');
+        if (logoEmpty) logoEmpty.classList.remove('hidden');
+      }
+
+      // Bank QR Preview
+      const qrPreview = document.getElementById('set_custom_qr_preview');
+      const qrEmpty = document.getElementById('set_custom_qr_empty');
+      if (s.custom_qr_url) {
+        if (qrPreview) {
+          qrPreview.src = s.custom_qr_url;
+          qrPreview.classList.remove('hidden');
+        }
+        if (qrEmpty) qrEmpty.classList.add('hidden');
+      } else {
+        if (qrPreview) qrPreview.classList.add('hidden');
+        if (qrEmpty) qrEmpty.classList.remove('hidden');
+      }
+
+      lucide.createIcons();
     }
 
     async function handleSaveSettings(e) {
       e.preventDefault();
       AppState.settings = {
+        logo_url: document.getElementById('set_logo_url').value.trim() || AppState.settings.logo_url || '',
+        custom_qr_url: document.getElementById('set_custom_qr_url').value.trim() || AppState.settings.custom_qr_url || '',
+        registration_close_date: document.getElementById('set_registration_close_date').value,
         promptpay_number: document.getElementById('set_promptpay_number').value.trim(),
         promptpay_name: document.getElementById('set_promptpay_name').value.trim(),
         bank_name: document.getElementById('set_bank_name').value.trim(),
@@ -3995,8 +4734,9 @@
         }
       }
 
-      showToast('บันทึกการตั้งค่าระบบและบัญชีเรียบร้อยแล้ว!', 'success');
+      updateHeaderAndBranding();
       calculateTotalAmount();
+      showToast('บันทึกการตั้งค่าระบบและบัญชีเรียบร้อยแล้ว!', 'success');
     }
 
     function refreshAllData() {
