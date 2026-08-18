@@ -316,7 +316,7 @@
               </div>
               <div class="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white/10 border border-white/10">
                 <i data-lucide="clock" class="w-4 h-4 text-emerald-400"></i>
-                <span>ปล่อยตัว 05.30 น. เป็นต้นไป</span>
+                <span id="hero-chip-time">ปล่อยตัว 05.30 น. เป็นต้นไป</span>
               </div>
             </div>
 
@@ -1249,8 +1249,8 @@
                 </div>
 
                 <div class="md:col-span-2">
-                  <label class="block font-semibold text-slate-700 mb-1">คำบรรยาย / ชิงถ้วยรางวัล</label>
-                  <input type="text" id="set_event_subtitle" class="w-full px-3 py-2.5 rounded-xl border border-slate-300">
+                  <label class="block font-semibold text-slate-700 mb-1">คำบรรยาย / ชิงถ้วยรางวัล / วัตถุประสงค์งาน</label>
+                  <textarea id="set_event_subtitle" rows="2" placeholder="เช่น ชิงถ้วยผู้ว่าราชการจังหวัดระยอง นายไตรภพ วงศ์ไตรรัตน์..." class="w-full px-3 py-2.5 rounded-xl border border-slate-300"></textarea>
                 </div>
 
                 <div>
@@ -1261,6 +1261,11 @@
                 <div>
                   <label class="block font-semibold text-slate-700 mb-1">สถานที่จัดงาน</label>
                   <input type="text" id="set_event_location" placeholder="เช่น ณ อ่างเก็บน้ำเขาจุก อ.เขาชะเมา จ.ระยอง" class="w-full px-3 py-2.5 rounded-xl border border-slate-300">
+                </div>
+
+                <div class="md:col-span-2">
+                  <label class="block font-semibold text-slate-700 mb-1">เวลาปล่อยตัว / ข้อความเวลาบนแบนเนอร์หน้าแรก</label>
+                  <input type="text" id="set_event_time" placeholder="เช่น ปล่อยตัว 05.30 น. เป็นต้นไป" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-semibold text-emerald-700">
                 </div>
               </div>
             </div>
@@ -1908,6 +1913,7 @@
         bank_name: 'ธนาคารกรุงไทย',
         bank_account_no: '123-0-45678-9',
         bank_account_name: 'กองทุนสวัสดิการ อปพร. จังหวัดระยอง',
+        event_time: 'ปล่อยตัว 05.30 น. เป็นต้นไป',
         souvenir_enabled: true,
         souvenir_name: 'เสื้อที่ระลึก อปพร. มินิมาราธอน',
         souvenir_description: 'เนื้อผ้า Micro Polyester เบาสบาย ระบายอากาศดีเยี่ยม สั่งซื้อเพิ่มได้ในขั้นตอนการสมัคร',
@@ -2364,6 +2370,7 @@
       const heroSub = document.getElementById('hero-event-subtitle');
       const heroDate = document.getElementById('hero-chip-date');
       const heroLoc = document.getElementById('hero-chip-location');
+      const heroTime = document.getElementById('hero-chip-time');
 
       if (heroTitle && s.event_name) heroTitle.innerHTML = `${s.event_name} <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400"></span>`;
       if (heroSub && (s.event_subtitle || s.event_location)) {
@@ -2371,6 +2378,7 @@
       }
       if (heroDate && s.event_date) heroDate.textContent = s.event_date;
       if (heroLoc && s.event_location) heroLoc.textContent = s.event_location;
+      if (heroTime && s.event_time) heroTime.textContent = s.event_time;
 
       if (logoWrapper) {
         if (s.logo_url) {
@@ -5028,6 +5036,7 @@
       document.getElementById('set_event_subtitle').value = s.event_subtitle || '';
       document.getElementById('set_event_date').value = s.event_date || '';
       document.getElementById('set_event_location').value = s.event_location || '';
+      document.getElementById('set_event_time').value = s.event_time || 'ปล่อยตัว 05.30 น. เป็นต้นไป';
       document.getElementById('set_registration_close_date').value = s.registration_close_date || '';
       document.getElementById('set_logo_url').value = s.logo_url || '';
       document.getElementById('set_custom_qr_url').value = s.custom_qr_url || '';
@@ -5141,6 +5150,7 @@
         event_subtitle: document.getElementById('set_event_subtitle').value.trim(),
         event_date: document.getElementById('set_event_date').value.trim(),
         event_location: document.getElementById('set_event_location').value.trim(),
+        event_time: document.getElementById('set_event_time').value.trim() || 'ปล่อยตัว 05.30 น. เป็นต้นไป',
         
         // Dynamic Schedules
         schedules: schedules,
