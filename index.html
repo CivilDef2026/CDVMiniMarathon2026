@@ -2271,14 +2271,19 @@
             AppState.users = usersRes.data;
           }
           if (catsRes.data && catsRes.data.length > 0) {
-            AppState.categories = catsRes.data.map(c => ({
-              ...c,
-              image_shirt: c.image_shirt || '',
-              image_medal: c.image_medal || '',
-              image_souvenir: c.image_souvenir || '',
-              perks: Array.isArray(c.perks) ? c.perks : (typeof c.perks === 'string' ? JSON.parse(c.perks || '[]') : []),
-              badgeColor: c.id === 'vip' ? 'bg-amber-100 text-amber-800' : (c.id === 'mini' ? 'bg-emerald-100 text-emerald-800' : (c.id === 'family' ? 'bg-purple-100 text-purple-800' : 'bg-cyan-100 text-cyan-800'))
-            }));
+            const localCatMap = new Map((AppState.categories || []).map(c => [c.id, c]));
+            AppState.categories = catsRes.data.map(c => {
+              const localC = localCatMap.get(c.id);
+              return {
+                ...c,
+                image_shirt: c.image_shirt || (localC ? localC.image_shirt : '') || '',
+                image_medal: c.image_medal || (localC ? localC.image_medal : '') || '',
+                image_souvenir: c.image_souvenir || (localC ? localC.image_souvenir : '') || '',
+                perks: Array.isArray(c.perks) ? c.perks : (typeof c.perks === 'string' ? JSON.parse(c.perks || '[]') : []),
+                badgeColor: c.id === 'vip' ? 'bg-amber-100 text-amber-800' : (c.id === 'mini' ? 'bg-emerald-100 text-emerald-800' : (c.id === 'family' ? 'bg-purple-100 text-purple-800' : 'bg-cyan-100 text-cyan-800')),
+                color: c.id === 'vip' ? 'from-amber-500 to-yellow-400' : (c.id === 'mini' ? 'from-emerald-500 to-teal-400' : (c.id === 'family' ? 'from-purple-500 to-pink-500' : 'from-brand-500 to-cyan-400'))
+              };
+            });
           }
           if (settingsRes.data && settingsRes.data.length > 0) {
             settingsRes.data.forEach(item => {
@@ -5352,6 +5357,13 @@
           <td class="py-3 px-4 whitespace-nowrap">
             <span class="font-mono text-xs text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded font-bold">${c.id}</span>
             <div class="font-bold text-slate-900 mt-0.5">${c.name}</div>
+            ${(c.image_shirt || c.image_medal || c.image_souvenir) ? `
+              <div class="flex items-center gap-1.5 mt-1.5">
+                ${c.image_shirt ? `<img src="${c.image_shirt}" onclick="openImagePreviewModal('${c.image_shirt}', 'เสื้อ ${c.name}')" title="รูปเสื้อ" class="w-6 h-6 rounded border border-slate-200 object-cover cursor-pointer hover:ring-2 hover:ring-brand-500">` : ''}
+                ${c.image_medal ? `<img src="${c.image_medal}" onclick="openImagePreviewModal('${c.image_medal}', 'เหรียญ ${c.name}')" title="รูปเหรียญ" class="w-6 h-6 rounded border border-slate-200 object-cover cursor-pointer hover:ring-2 hover:ring-brand-500">` : ''}
+                ${c.image_souvenir ? `<img src="${c.image_souvenir}" onclick="openImagePreviewModal('${c.image_souvenir}', 'ของที่ระลึก ${c.name}')" title="รูปของที่ระลึก" class="w-6 h-6 rounded border border-slate-200 object-cover cursor-pointer hover:ring-2 hover:ring-brand-500">` : ''}
+              </div>
+            ` : ''}
           </td>
           <td class="py-3 px-4 font-semibold text-slate-700 whitespace-nowrap">${c.distance}</td>
           <td class="py-3 px-4 text-right font-mono font-bold text-slate-900 whitespace-nowrap">${Number(c.price).toLocaleString()} ฿</td>
@@ -5609,7 +5621,7 @@
 
       if (isConnectedToSupabase && dbClient) {
         try {
-          await dbClient.from('event_categories').upsert([{
+          const payload = {
             id: categoryData.id,
             name: categoryData.name,
             distance: categoryData.distance,
@@ -5617,8 +5629,21 @@
             quota: categoryData.quota,
             required_runners: categoryData.required_runners,
             perks: categoryData.perks,
-            is_active: categoryData.is_active
-          }]);
+            is_active: categoryData.is_active,
+            image_shirt: categoryData.image_shirt || null,
+            image_medal: categoryData.image_medal || null,
+            image_souvenir: categoryData.image_souvenir || null
+          };
+
+          const { error: catErr } = await dbClient.from('event_categories').upsert([payload]);
+          if (catErr) {
+            console.warn('Upsert category with images failed, falling back to base columns:', catErr);
+            const basicPayload = { ...payload };
+            delete basicPayload.image_shirt;
+            delete basicPayload.image_medal;
+            delete basicPayload.image_souvenir;
+            await dbClient.from('event_categories').upsert([basicPayload]);
+          }
         } catch (err) {
           console.warn('Supabase upsert category error', err);
         }
