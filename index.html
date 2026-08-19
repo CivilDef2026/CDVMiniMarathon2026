@@ -437,18 +437,30 @@
         </div>
 
         <!-- Souvenir Product Banner (Dynamic) -->
-        <div id="landing-souvenir-banner" class="p-6 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="space-y-1 text-center sm:text-left">
+        <div id="landing-souvenir-banner" class="p-6 rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-5">
+          <div class="space-y-2 text-center md:text-left flex-1">
             <div class="inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full bg-white/20 text-xs font-semibold">
               <i data-lucide="tag" class="w-3.5 h-3.5"></i>
               <span>สินค้าที่ระลึกพิเศษ</span>
             </div>
             <h3 id="landing-souvenir-title" class="text-xl font-bold">เสื้อที่ระลึก อปพร. มินิมาราธอน เพียง 300 บาท</h3>
-            <p id="landing-souvenir-desc" class="text-xs sm:text-sm text-orange-100">เนื้อผ้า Micro Polyester เบาสบาย ระบายอากาศดีเยี่ยม สั่งซื้อเพิ่มได้ในขั้นตอนการสมัคร</p>
+            <p id="landing-souvenir-desc" class="text-xs sm:text-sm text-orange-100">เนื้อผ้า Micro Polyester เบาสบาย ระบายอากาศดีเยี่ยม สั่งซื้อเพิ่มได้ในขั้นตอนการสมัคร หรือสั่งซื้อเฉพาะของที่ระลึกได้ทันที</p>
+            
+            <!-- Souvenir Images Preview Row -->
+            <div id="landing-souvenir-imgs" class="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1">
+              <!-- Rendered by JS -->
+            </div>
           </div>
-          <button onclick="startRegistration()" class="px-5 py-2.5 rounded-xl bg-white text-orange-600 font-bold text-sm shadow-md hover:bg-orange-50 transition shrink-0 active:scale-95">
-            สั่งซื้อพร้อมสมัครวิ่ง
-          </button>
+          <div class="flex flex-col sm:flex-row items-center gap-2.5 shrink-0">
+            <button onclick="startSouvenirRegistration()" class="px-5 py-2.5 rounded-xl bg-white text-orange-600 font-bold text-xs sm:text-sm shadow-md hover:bg-orange-50 transition active:scale-95 flex items-center space-x-1.5">
+              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+              <span>สั่งซื้อเฉพาะของที่ระลึก</span>
+            </button>
+            <button onclick="startRegistration()" class="px-4 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs sm:text-sm transition active:scale-95 flex items-center space-x-1.5 border border-white/30">
+              <i data-lucide="user-plus" class="w-4 h-4"></i>
+              <span>สมัครวิ่ง</span>
+            </button>
+          </div>
         </div>
 
         <!-- Event Schedule & Location Grid -->
@@ -1369,6 +1381,71 @@
                   </select>
                 </div>
               </div>
+
+              <!-- 3 Images for Souvenir Product -->
+              <div class="pt-3 border-t border-slate-200/80 space-y-2">
+                <label class="block font-bold text-slate-800 text-xs sm:text-sm flex items-center space-x-1.5">
+                  <i data-lucide="images" class="w-4 h-4 text-orange-600"></i>
+                  <span>รูปภาพสินค้าของที่ระลึก (สูงสุด 3 รูป: เสื้อ/สินค้าหลัก, เหรียญ/รายละเอียด, ของแถม/อาหาร)</span>
+                </label>
+                <p class="text-[11px] text-slate-500">รูปภาพจะถูกนำไปแสดงในแบนเนอร์หน้าแรก และในขั้นตอนเลือกของที่ระลึกของระบบ</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                  <!-- Souvenir Img 1 -->
+                  <div class="p-3 rounded-xl bg-white border border-slate-200 space-y-2 flex flex-col items-center">
+                    <span class="font-bold text-slate-700 text-xs self-start">🛍️ รูปสินค้าหลัก / เสื้อ</span>
+                    <div id="souv_img_1_wrap" class="w-full h-24 rounded-lg bg-slate-100 border border-dashed border-slate-300 flex items-center justify-center overflow-hidden cursor-pointer" onclick="document.getElementById('souv_file_1').click()">
+                      <img id="set_souvenir_img_1_preview" src="" alt="Souvenir 1" class="w-full h-full object-contain hidden" onerror="this.classList.add('hidden')">
+                      <div id="souv_empty_1" class="text-slate-400 flex flex-col items-center text-[10px]">
+                        <i data-lucide="image-plus" class="w-5 h-5 mb-0.5"></i>
+                        <span>เลือกรูปที่ 1</span>
+                      </div>
+                    </div>
+                    <input type="file" id="souv_file_1" accept="image/*" class="hidden" onchange="handleSouvenirFileSelect(event, 1)">
+                    <input type="hidden" id="set_souvenir_image_1">
+                    <div class="flex items-center space-x-1 w-full">
+                      <button type="button" onclick="document.getElementById('souv_file_1').click()" class="flex-1 py-1 rounded-lg bg-orange-50 hover:bg-orange-100 text-orange-700 font-semibold text-[10px] transition">อัปโหลด</button>
+                      <button type="button" onclick="clearSouvenirImg(1)" class="px-2 py-1 rounded-lg bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 text-[10px] transition">ล้าง</button>
+                    </div>
+                  </div>
+
+                  <!-- Souvenir Img 2 -->
+                  <div class="p-3 rounded-xl bg-white border border-slate-200 space-y-2 flex flex-col items-center">
+                    <span class="font-bold text-slate-700 text-xs self-start">🏅 รูปรายละเอียด / เหรียญ</span>
+                    <div id="souv_img_2_wrap" class="w-full h-24 rounded-lg bg-slate-100 border border-dashed border-slate-300 flex items-center justify-center overflow-hidden cursor-pointer" onclick="document.getElementById('souv_file_2').click()">
+                      <img id="set_souvenir_img_2_preview" src="" alt="Souvenir 2" class="w-full h-full object-contain hidden" onerror="this.classList.add('hidden')">
+                      <div id="souv_empty_2" class="text-slate-400 flex flex-col items-center text-[10px]">
+                        <i data-lucide="image-plus" class="w-5 h-5 mb-0.5"></i>
+                        <span>เลือกรูปที่ 2</span>
+                      </div>
+                    </div>
+                    <input type="file" id="souv_file_2" accept="image/*" class="hidden" onchange="handleSouvenirFileSelect(event, 2)">
+                    <input type="hidden" id="set_souvenir_image_2">
+                    <div class="flex items-center space-x-1 w-full">
+                      <button type="button" onclick="document.getElementById('souv_file_2').click()" class="flex-1 py-1 rounded-lg bg-orange-50 hover:bg-orange-100 text-orange-700 font-semibold text-[10px] transition">อัปโหลด</button>
+                      <button type="button" onclick="clearSouvenirImg(2)" class="px-2 py-1 rounded-lg bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 text-[10px] transition">ล้าง</button>
+                    </div>
+                  </div>
+
+                  <!-- Souvenir Img 3 -->
+                  <div class="p-3 rounded-xl bg-white border border-slate-200 space-y-2 flex flex-col items-center">
+                    <span class="font-bold text-slate-700 text-xs self-start">🎁 รูปของแถม / อาหาร</span>
+                    <div id="souv_img_3_wrap" class="w-full h-24 rounded-lg bg-slate-100 border border-dashed border-slate-300 flex items-center justify-center overflow-hidden cursor-pointer" onclick="document.getElementById('souv_file_3').click()">
+                      <img id="set_souvenir_img_3_preview" src="" alt="Souvenir 3" class="w-full h-full object-contain hidden" onerror="this.classList.add('hidden')">
+                      <div id="souv_empty_3" class="text-slate-400 flex flex-col items-center text-[10px]">
+                        <i data-lucide="image-plus" class="w-5 h-5 mb-0.5"></i>
+                        <span>เลือกรูปที่ 3</span>
+                      </div>
+                    </div>
+                    <input type="file" id="souv_file_3" accept="image/*" class="hidden" onchange="handleSouvenirFileSelect(event, 3)">
+                    <input type="hidden" id="set_souvenir_image_3">
+                    <div class="flex items-center space-x-1 w-full">
+                      <button type="button" onclick="document.getElementById('souv_file_3').click()" class="flex-1 py-1 rounded-lg bg-orange-50 hover:bg-orange-100 text-orange-700 font-semibold text-[10px] transition">อัปโหลด</button>
+                      <button type="button" onclick="clearSouvenirImg(3)" class="px-2 py-1 rounded-lg bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 text-[10px] transition">ล้าง</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Shirt Size Chart & Options (NEW) -->
@@ -1757,6 +1834,89 @@
           <input type="text" id="cat_perks" placeholder="เสื้อวิ่ง, เหรียญที่ระลึก, อาหารและเครื่องดื่ม" class="w-full px-3 py-2 rounded-xl border border-slate-300">
         </div>
 
+        <!-- 3 Category Images Upload (Shirt, Medal, Souvenir/Food) -->
+        <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+          <label class="block font-bold text-slate-800 text-xs sm:text-sm flex items-center space-x-1.5">
+            <i data-lucide="images" class="w-4 h-4 text-purple-600"></i>
+            <span>รูปภาพประกอบรุ่นนี้ (สูงสุด 3 รูป: เสื้อวิ่ง, เหรียญ, ของที่ระลึก/อาหาร)</span>
+          </label>
+          <p class="text-[11px] text-slate-500">รูปภาพจะถูกนำไปแสดงในการ์ดเลือกรุ่น และหน้ารายละเอียดเพื่อให้นักวิ่งกดดูรูปตัวอย่างได้</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+            <!-- 1. Shirt Image -->
+            <div class="p-2.5 rounded-xl bg-white border border-slate-200 space-y-2 flex flex-col items-center">
+              <span class="font-bold text-slate-700 text-[11px] self-start flex items-center space-x-1">
+                <span>👕 1. รูปเสื้อวิ่ง</span>
+              </span>
+              <div id="cat_img_shirt_preview_wrap" class="w-full h-24 rounded-lg bg-slate-100 border border-dashed border-slate-300 flex items-center justify-center overflow-hidden relative cursor-pointer" onclick="document.getElementById('cat_file_shirt').click()">
+                <img id="cat_img_shirt_preview" src="" alt="Shirt" class="w-full h-full object-contain hidden" onerror="this.classList.add('hidden')">
+                <div id="cat_img_shirt_empty" class="text-slate-400 flex flex-col items-center text-[10px]">
+                  <i data-lucide="image-plus" class="w-5 h-5 mb-0.5"></i>
+                  <span>เลือกรูปเสื้อ</span>
+                </div>
+              </div>
+              <input type="file" id="cat_file_shirt" accept="image/*" class="hidden" onchange="handleCategoryFileSelect(event, 'shirt')">
+              <input type="hidden" id="cat_image_shirt">
+              <div class="flex items-center space-x-1 w-full">
+                <button type="button" onclick="document.getElementById('cat_file_shirt').click()" class="flex-1 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-700 font-semibold text-[10px] transition">
+                  อัปโหลด
+                </button>
+                <button type="button" onclick="clearCategoryImg('shirt')" class="px-2 py-1 rounded-lg bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 text-[10px] transition">
+                  ล้าง
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Medal Image -->
+            <div class="p-2.5 rounded-xl bg-white border border-slate-200 space-y-2 flex flex-col items-center">
+              <span class="font-bold text-slate-700 text-[11px] self-start flex items-center space-x-1">
+                <span>🏅 2. รูปเหรียญรางวัล</span>
+              </span>
+              <div id="cat_img_medal_preview_wrap" class="w-full h-24 rounded-lg bg-slate-100 border border-dashed border-slate-300 flex items-center justify-center overflow-hidden relative cursor-pointer" onclick="document.getElementById('cat_file_medal').click()">
+                <img id="cat_img_medal_preview" src="" alt="Medal" class="w-full h-full object-contain hidden" onerror="this.classList.add('hidden')">
+                <div id="cat_img_medal_empty" class="text-slate-400 flex flex-col items-center text-[10px]">
+                  <i data-lucide="image-plus" class="w-5 h-5 mb-0.5"></i>
+                  <span>เลือกรูปเหรียญ</span>
+                </div>
+              </div>
+              <input type="file" id="cat_file_medal" accept="image/*" class="hidden" onchange="handleCategoryFileSelect(event, 'medal')">
+              <input type="hidden" id="cat_image_medal">
+              <div class="flex items-center space-x-1 w-full">
+                <button type="button" onclick="document.getElementById('cat_file_medal').click()" class="flex-1 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-700 font-semibold text-[10px] transition">
+                  อัปโหลด
+                </button>
+                <button type="button" onclick="clearCategoryImg('medal')" class="px-2 py-1 rounded-lg bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 text-[10px] transition">
+                  ล้าง
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. Souvenir / Food / Perk Image -->
+            <div class="p-2.5 rounded-xl bg-white border border-slate-200 space-y-2 flex flex-col items-center">
+              <span class="font-bold text-slate-700 text-[11px] self-start flex items-center space-x-1">
+                <span>🎁 3. อาหาร / ที่ระลึก</span>
+              </span>
+              <div id="cat_img_souvenir_preview_wrap" class="w-full h-24 rounded-lg bg-slate-100 border border-dashed border-slate-300 flex items-center justify-center overflow-hidden relative cursor-pointer" onclick="document.getElementById('cat_file_souvenir').click()">
+                <img id="cat_img_souvenir_preview" src="" alt="Souvenir" class="w-full h-full object-contain hidden" onerror="this.classList.add('hidden')">
+                <div id="cat_img_souvenir_empty" class="text-slate-400 flex flex-col items-center text-[10px]">
+                  <i data-lucide="image-plus" class="w-5 h-5 mb-0.5"></i>
+                  <span>เลือกรูปที่ระลึก</span>
+                </div>
+              </div>
+              <input type="file" id="cat_file_souvenir" accept="image/*" class="hidden" onchange="handleCategoryFileSelect(event, 'souvenir')">
+              <input type="hidden" id="cat_image_souvenir">
+              <div class="flex items-center space-x-1 w-full">
+                <button type="button" onclick="document.getElementById('cat_file_souvenir').click()" class="flex-1 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-700 font-semibold text-[10px] transition">
+                  อัปโหลด
+                </button>
+                <button type="button" onclick="clearCategoryImg('souvenir')" class="px-2 py-1 rounded-lg bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 text-[10px] transition">
+                  ล้าง
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="flex items-center space-x-2 pt-1">
           <input type="checkbox" id="cat_is_active" checked class="w-4 h-4 text-purple-600 rounded">
           <label for="cat_is_active" class="text-xs font-semibold text-slate-700">เปิดรับสมัครรุ่นนี้</label>
@@ -1766,6 +1926,31 @@
           บันทึกรุ่นการแข่งขัน
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: IMAGE LIGHTBOX / FULLSCREEN PREVIEW                                -->
+  <!-- ========================================================================= -->
+  <div id="modal-image-preview" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-xs flex items-center justify-center p-4 hidden" onclick="closeImagePreviewModal()">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-4 shadow-2xl border border-slate-200 space-y-3 relative overflow-hidden" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+        <div class="flex items-center space-x-2">
+          <i data-lucide="image" class="w-4 h-4 text-brand-600"></i>
+          <h4 id="img-preview-title" class="font-bold text-slate-900 text-sm">รูปตัวอย่าง</h4>
+        </div>
+        <button onclick="closeImagePreviewModal()" class="p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="w-full max-h-[70vh] flex items-center justify-center overflow-hidden rounded-2xl bg-slate-50 p-2 border border-slate-100">
+        <img id="img-preview-target" src="" alt="Preview" class="max-w-full max-h-[65vh] object-contain rounded-xl shadow-sm" onerror="handleImageError(this)">
+      </div>
+      <div class="text-center">
+        <button onclick="closeImagePreviewModal()" class="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition">
+          ปิดหน้าต่าง
+        </button>
+      </div>
     </div>
   </div>
 
@@ -2043,6 +2228,9 @@
           if (catsRes.data && catsRes.data.length > 0) {
             AppState.categories = catsRes.data.map(c => ({
               ...c,
+              image_shirt: c.image_shirt || '',
+              image_medal: c.image_medal || '',
+              image_souvenir: c.image_souvenir || '',
               perks: Array.isArray(c.perks) ? c.perks : (typeof c.perks === 'string' ? JSON.parse(c.perks || '[]') : []),
               badgeColor: c.id === 'vip' ? 'bg-amber-100 text-amber-800' : (c.id === 'mini' ? 'bg-emerald-100 text-emerald-800' : (c.id === 'family' ? 'bg-purple-100 text-purple-800' : 'bg-cyan-100 text-cyan-800'))
             }));
@@ -2446,11 +2634,32 @@
       banner.classList.remove('hidden');
       const titleEl = document.getElementById('landing-souvenir-title');
       const descEl = document.getElementById('landing-souvenir-desc');
+      const imgsContainer = document.getElementById('landing-souvenir-imgs');
       const price = Number(s.souvenir_price || s.souvenir_shirt_price) || 300;
       const unit = s.souvenir_unit || 'ตัว';
 
       if (titleEl) titleEl.textContent = `${s.souvenir_name || 'สินค้าที่ระลึกพิเศษ'} เพียง ${price.toLocaleString()} บาท/${unit}`;
-      if (descEl) descEl.textContent = s.souvenir_description || 'สินค้าคุณภาพ สั่งซื้อเพิ่มได้ในขั้นตอนการสมัคร';
+      if (descEl) descEl.textContent = s.souvenir_description || 'สินค้าคุณภาพ สั่งซื้อเพิ่มได้ในขั้นตอนการสมัคร หรือสั่งซื้อเฉพาะของที่ระลึกได้ทันที';
+
+      if (imgsContainer) {
+        const souvenirImgs = [
+          { url: s.souvenir_image_1, label: '🛍️ สินค้าหลัก/เสื้อ' },
+          { url: s.souvenir_image_2, label: '🏅 เหรียญ/รายละเอียด' },
+          { url: s.souvenir_image_3, label: '🎁 ของแถม/อาหาร' }
+        ].filter(item => Boolean(item.url));
+
+        if (souvenirImgs.length > 0) {
+          imgsContainer.innerHTML = souvenirImgs.map(item => `
+            <button type="button" onclick="openImagePreviewModal('${item.url}', '${item.label} - ${s.souvenir_name || 'ของที่ระลึก'}')" class="relative group overflow-hidden rounded-xl border-2 border-white/50 hover:border-white transition shadow-sm w-14 h-14 bg-white/10 shrink-0" title="คลิกดูรูปขยาย">
+              <img src="${item.url}" alt="${item.label}" class="w-full h-full object-cover group-hover:scale-105 transition" onerror="handleImageError(this)">
+              <span class="absolute bottom-0 inset-x-0 bg-slate-900/75 text-[8px] text-white text-center py-0.5 leading-none truncate px-0.5">${item.label.split(' ')[0]}</span>
+            </button>
+          `).join('');
+        } else {
+          imgsContainer.innerHTML = '';
+        }
+      }
+      lucide.createIcons();
     }
 
     function renderLandingCategories() {
@@ -2458,9 +2667,11 @@
       const activeCats = AppState.categories.filter(c => c.is_active !== false);
       const isClosed = isRegistrationClosed();
 
-      grid.innerHTML = activeCats.map(cat => `
+      grid.innerHTML = activeCats.map(cat => {
+        const hasAnyImg = Boolean(cat.image_shirt || cat.image_medal || cat.image_souvenir);
+        return `
         <div class="rounded-3xl bg-white border border-slate-200/80 p-5 shadow-soft hover:shadow-card hover:border-brand-300 transition-all flex flex-col justify-between space-y-4 relative group">
-          <div class="space-y-2">
+          <div class="space-y-2.5">
             <div class="flex items-center justify-between">
               <span class="px-2.5 py-0.5 text-xs font-bold rounded-full ${cat.badgeColor}">${cat.distance}</span>
               <span class="text-xs text-slate-400 font-semibold">${cat.required_runners > 1 ? `ทีม ${cat.required_runners} คน` : 'เดี่ยว'}</span>
@@ -2479,6 +2690,33 @@
                 </li>
               `).join('')}
             </ul>
+
+            <!-- 3 Category Images Previews (Shirt, Medal, Souvenir/Perks) -->
+            ${hasAnyImg ? `
+              <div class="pt-2 border-t border-slate-100 space-y-1">
+                <span class="text-[11px] font-semibold text-slate-400 block">รูปตัวอย่าง (คลิกดูขยาย):</span>
+                <div class="flex items-center gap-1.5">
+                  ${cat.image_shirt ? `
+                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); openImagePreviewModal('${cat.image_shirt}', '👕 เสื้อวิ่ง ${cat.name}')" class="relative group/img overflow-hidden rounded-xl border border-slate-200 hover:border-brand-500 transition w-12 h-12 bg-slate-50 shrink-0 shadow-2xs" title="คลิกดูรูปเสื้อ">
+                      <img src="${cat.image_shirt}" alt="เสื้อ" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                      <span class="absolute bottom-0 inset-x-0 bg-slate-900/80 text-[8px] text-white text-center py-0.5 leading-none">เสื้อ</span>
+                    </button>
+                  ` : ''}
+                  ${cat.image_medal ? `
+                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); openImagePreviewModal('${cat.image_medal}', '🏅 เหรียญรางวัล ${cat.name}')" class="relative group/img overflow-hidden rounded-xl border border-slate-200 hover:border-brand-500 transition w-12 h-12 bg-slate-50 shrink-0 shadow-2xs" title="คลิกดูรูปเหรียญ">
+                      <img src="${cat.image_medal}" alt="เหรียญ" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                      <span class="absolute bottom-0 inset-x-0 bg-slate-900/80 text-[8px] text-white text-center py-0.5 leading-none">เหรียญ</span>
+                    </button>
+                  ` : ''}
+                  ${cat.image_souvenir ? `
+                    <button type="button" onclick="event.preventDefault(); event.stopPropagation(); openImagePreviewModal('${cat.image_souvenir}', '🎁 อาหาร/ที่ระลึก ${cat.name}')" class="relative group/img overflow-hidden rounded-xl border border-slate-200 hover:border-brand-500 transition w-12 h-12 bg-slate-50 shrink-0 shadow-2xs" title="คลิกดูรูปอาหาร/ของที่ระลึก">
+                      <img src="${cat.image_souvenir}" alt="ที่ระลึก" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                      <span class="absolute bottom-0 inset-x-0 bg-slate-900/80 text-[8px] text-white text-center py-0.5 leading-none">อาหาร</span>
+                    </button>
+                  ` : ''}
+                </div>
+              </div>
+            ` : ''}
           </div>
 
           ${isClosed ? `
@@ -2493,7 +2731,8 @@
             </button>
           `}
         </div>
-      `).join('');
+      `;
+      }).join('');
       lucide.createIcons();
     }
 
@@ -2951,23 +3190,24 @@
       lucide.createIcons();
     }
 
-    // =========================================================================
-    // REGISTRATION FORM LOGIC (Single + Family 3 Persons)
-    // =========================================================================
-    // =========================================================================
-    // REGISTRATION FORM LOGIC (Single + Family 3 Persons)
-    // =========================================================================
     function renderRegistrationForm() {
       // 1. Render Category Radio Cards
       const catContainer = document.getElementById('form-category-options');
       const activeCats = AppState.categories.filter(c => c.is_active !== false);
-      if (activeCats.length > 0 && !activeCats.some(c => c.id === AppState.selectedCategory)) {
+      const isSouvenirSelected = AppState.selectedCategory === 'souvenir_only';
+
+      if (!isSouvenirSelected && activeCats.length > 0 && !activeCats.some(c => c.id === AppState.selectedCategory)) {
         AppState.selectedCategory = activeCats[0].id;
       }
-      catContainer.innerHTML = activeCats.map(cat => {
+
+      const s = AppState.settings;
+      const souvenirPrice = Number(s.souvenir_price || s.souvenir_shirt_price) || 300;
+
+      let html = activeCats.map(cat => {
         const isSelected = cat.id === AppState.selectedCategory;
+        const hasAnyImg = Boolean(cat.image_shirt || cat.image_medal || cat.image_souvenir);
         return `
-          <label class="relative flex flex-col p-4 rounded-2xl border-2 ${isSelected ? 'border-brand-500 bg-brand-50/40 shadow-sm' : 'border-slate-200 hover:border-slate-300 bg-white'} cursor-pointer transition">
+          <label class="relative flex flex-col p-4 rounded-2xl border-2 ${isSelected ? 'border-brand-500 bg-brand-50/40 shadow-sm ring-2 ring-brand-500/20' : 'border-slate-200 hover:border-slate-300 bg-white'} cursor-pointer transition">
             <input type="radio" name="form_cat" value="${cat.id}" ${isSelected ? 'checked' : ''} onchange="onCategoryChange('${cat.id}')" class="hidden">
             <div class="flex items-center justify-between mb-2">
               <span class="px-2 py-0.5 text-[10px] font-bold rounded ${cat.badgeColor}">${cat.distance}</span>
@@ -2975,15 +3215,80 @@
             </div>
             <span class="font-bold text-slate-900 text-sm leading-tight">${cat.name}</span>
             <span class="text-xs text-slate-500 mt-1">${cat.required_runners > 1 ? `ใส่ข้อมูล ${cat.required_runners} ท่านใน 1 บิล` : 'ผู้สมัคร 1 ท่าน'}</span>
+            
+            <!-- Category Thumbnails -->
+            ${hasAnyImg ? `
+              <div class="flex items-center gap-1.5 pt-2.5 mt-2 border-t border-slate-100/80">
+                ${cat.image_shirt ? `
+                  <button type="button" onclick="event.preventDefault(); event.stopPropagation(); openImagePreviewModal('${cat.image_shirt}', '👕 เสื้อวิ่ง ${cat.name}')" class="relative group/img overflow-hidden rounded-lg border border-slate-200 hover:border-brand-500 transition w-10 h-10 bg-slate-50 shrink-0" title="คลิกดูรูปเสื้อ">
+                    <img src="${cat.image_shirt}" alt="เสื้อ" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <span class="absolute bottom-0 inset-x-0 bg-slate-900/80 text-[7px] text-white text-center py-0.2 leading-none">เสื้อ</span>
+                  </button>
+                ` : ''}
+                ${cat.image_medal ? `
+                  <button type="button" onclick="event.preventDefault(); event.stopPropagation(); openImagePreviewModal('${cat.image_medal}', '🏅 เหรียญรางวัล ${cat.name}')" class="relative group/img overflow-hidden rounded-lg border border-slate-200 hover:border-brand-500 transition w-10 h-10 bg-slate-50 shrink-0" title="คลิกดูรูปเหรียญ">
+                    <img src="${cat.image_medal}" alt="เหรียญ" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <span class="absolute bottom-0 inset-x-0 bg-slate-900/80 text-[7px] text-white text-center py-0.2 leading-none">เหรียญ</span>
+                  </button>
+                ` : ''}
+                ${cat.image_souvenir ? `
+                  <button type="button" onclick="event.preventDefault(); event.stopPropagation(); openImagePreviewModal('${cat.image_souvenir}', '🎁 อาหาร/ที่ระลึก ${cat.name}')" class="relative group/img overflow-hidden rounded-lg border border-slate-200 hover:border-brand-500 transition w-10 h-10 bg-slate-50 shrink-0" title="คลิกดูรูปอาหาร/ของที่ระลึก">
+                    <img src="${cat.image_souvenir}" alt="ที่ระลึก" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <span class="absolute bottom-0 inset-x-0 bg-slate-900/80 text-[7px] text-white text-center py-0.2 leading-none">อาหาร</span>
+                  </button>
+                ` : ''}
+              </div>
+            ` : ''}
           </label>
         `;
       }).join('');
 
-      // 2. Render Runners Input Fields (with dynamic shirt sizes)
+      // Add Souvenir-Only Option Card if souvenir is enabled
+      if (s.souvenir_enabled !== false) {
+        const hasSouvImgs = Boolean(s.souvenir_image_1 || s.souvenir_image_2 || s.souvenir_image_3);
+        html += `
+          <label class="relative flex flex-col p-4 rounded-2xl border-2 ${isSouvenirSelected ? 'border-orange-500 bg-orange-50/50 shadow-sm ring-2 ring-orange-400/30' : 'border-slate-200 hover:border-slate-300 bg-white'} cursor-pointer transition">
+            <input type="radio" name="form_cat" value="souvenir_only" ${isSouvenirSelected ? 'checked' : ''} onchange="onCategoryChange('souvenir_only')" class="hidden">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2 py-0.5 text-[10px] font-bold rounded bg-orange-100 text-orange-800">🛍️ สั่งซื้อของที่ระลึก</span>
+              <span class="text-sm font-extrabold text-orange-600">${Number(souvenirPrice).toLocaleString()} ฿</span>
+            </div>
+            <span class="font-bold text-slate-900 text-sm leading-tight">${s.souvenir_name || 'เสื้อที่ระลึก'}</span>
+            <span class="text-xs text-slate-500 mt-1">สั่งซื้อเฉพาะของที่ระลึก (ไม่ลงวิ่ง)</span>
+
+            <!-- Souvenir Images -->
+            ${hasSouvImgs ? `
+              <div class="flex items-center gap-1.5 pt-2.5 mt-2 border-t border-slate-100/80">
+                ${s.souvenir_image_1 ? `
+                  <button type="button" onclick="event.preventDefault(); event.stopPropagation(); openImagePreviewModal('${s.souvenir_image_1}', '🛍️ สินค้าหลัก/เสื้อ - ${s.souvenir_name || 'ของที่ระลึก'}')" class="relative group/img overflow-hidden rounded-lg border border-slate-200 hover:border-orange-500 transition w-10 h-10 bg-slate-50 shrink-0" title="คลิกดูรูปสินค้า">
+                    <img src="${s.souvenir_image_1}" alt="สินค้า" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <span class="absolute bottom-0 inset-x-0 bg-slate-900/80 text-[7px] text-white text-center py-0.2 leading-none">สินค้า</span>
+                  </button>
+                ` : ''}
+                ${s.souvenir_image_2 ? `
+                  <button type="button" onclick="event.preventDefault(); event.stopPropagation(); openImagePreviewModal('${s.souvenir_image_2}', '🏅 เหรียญ/รายละเอียด - ${s.souvenir_name || 'ของที่ระลึก'}')" class="relative group/img overflow-hidden rounded-lg border border-slate-200 hover:border-orange-500 transition w-10 h-10 bg-slate-50 shrink-0" title="คลิกดูรูปรายละเอียด">
+                    <img src="${s.souvenir_image_2}" alt="เหรียญ" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <span class="absolute bottom-0 inset-x-0 bg-slate-900/80 text-[7px] text-white text-center py-0.2 leading-none">เหรียญ</span>
+                  </button>
+                ` : ''}
+                ${s.souvenir_image_3 ? `
+                  <button type="button" onclick="event.preventDefault(); event.stopPropagation(); openImagePreviewModal('${s.souvenir_image_3}', '🎁 ของแถม/อาหาร - ${s.souvenir_name || 'ของที่ระลึก'}')" class="relative group/img overflow-hidden rounded-lg border border-slate-200 hover:border-orange-500 transition w-10 h-10 bg-slate-50 shrink-0" title="คลิกดูรูปของแถม">
+                    <img src="${s.souvenir_image_3}" alt="ของแถม" class="w-full h-full object-cover" onerror="handleImageError(this)">
+                    <span class="absolute bottom-0 inset-x-0 bg-slate-900/80 text-[7px] text-white text-center py-0.2 leading-none">ของแถม</span>
+                  </button>
+                ` : ''}
+              </div>
+            ` : ''}
+          </label>
+        `;
+      }
+
+      catContainer.innerHTML = html;
+
+      // 2. Render Runners Input Fields (or Buyer Input for Souvenir)
       renderRunnerInputCards();
 
       // 3. Configure Souvenir Addon Section
-      const s = AppState.settings;
       const souvenirWrapper = document.getElementById('reg-souvenir-section-wrapper');
       const souvenirTitle = document.getElementById('reg-souvenir-title-display');
       const souvenirDesc = document.getElementById('reg-souvenir-desc-display');
@@ -2995,13 +3300,26 @@
           document.getElementById('souvenir-qty-display').textContent = '0';
         } else {
           souvenirWrapper.classList.remove('hidden');
-          const price = Number(s.souvenir_price || s.souvenir_shirt_price) || 300;
           const unit = s.souvenir_unit || 'ตัว';
-          if (souvenirTitle) {
-            souvenirTitle.textContent = `สั่งซื้อ${s.souvenir_name || 'ของที่ระลึก'}เพิ่มเติม (${unit}ละ ${price.toLocaleString()} บาท)`;
-          }
-          if (souvenirDesc) {
-            souvenirDesc.textContent = s.souvenir_description || 'สามารถสั่งซื้อเพิ่มได้ตามต้องการ';
+          if (isSouvenirSelected) {
+            if (!AppState.souvenirQty || AppState.souvenirQty < 1) {
+              AppState.souvenirQty = 1;
+            }
+            document.getElementById('souvenir-qty-display').textContent = AppState.souvenirQty;
+            if (souvenirTitle) {
+              souvenirTitle.textContent = `ระบุจำนวน${s.souvenir_name || 'ของที่ระลึก'}ที่ต้องการสั่งซื้อ (${unit}ละ ${souvenirPrice.toLocaleString()} บาท)`;
+            }
+            if (souvenirDesc) {
+              souvenirDesc.textContent = 'เลือกจำนวนและไซส์ที่ต้องการ (ขั้นต่ำ 1 ชิ้น)';
+            }
+            adjustSouvenirQty(0);
+          } else {
+            if (souvenirTitle) {
+              souvenirTitle.textContent = `สั่งซื้อ${s.souvenir_name || 'ของที่ระลึก'}เพิ่มเติม (${unit}ละ ${souvenirPrice.toLocaleString()} บาท)`;
+            }
+            if (souvenirDesc) {
+              souvenirDesc.textContent = s.souvenir_description || 'สามารถสั่งซื้อเพิ่มได้ตามต้องการ';
+            }
           }
         }
       }
@@ -3016,11 +3334,64 @@
     }
 
     function renderRunnerInputCards() {
-      const cat = AppState.categories.find(c => c.id === AppState.selectedCategory);
+      const isSouvenirOnly = AppState.selectedCategory === 'souvenir_only';
+      const container = document.getElementById('runners-inputs-container');
+      const badge = document.getElementById('runner-count-badge');
+
+      if (isSouvenirOnly) {
+        if (badge) badge.textContent = '🛍️ ข้อมูลผู้สั่งซื้อของที่ระลึก';
+        container.innerHTML = `
+          <div class="p-5 rounded-2xl bg-orange-50/70 border border-orange-200 space-y-4">
+            <div class="flex items-center space-x-2 font-bold text-slate-900 text-sm sm:text-base border-b border-orange-200 pb-2">
+              <i data-lucide="shopping-bag" class="w-5 h-5 text-orange-600"></i>
+              <span>ข้อมูลผู้สั่งซื้อและผู้รับสินค้า (สำหรับออกใบเสร็จและติดต่อ)</span>
+            </div>
+
+            <!-- Row 1: Prefix, First Name, Last Name -->
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 text-xs sm:text-sm">
+              <div class="sm:col-span-3">
+                <label class="block font-semibold text-slate-700 mb-1">คำนำหน้า <span class="text-rose-500">*</span></label>
+                <select id="buyer_prefix" required class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white">
+                  <option value="นาย">นาย</option>
+                  <option value="นาง">นาง</option>
+                  <option value="นางสาว">นางสาว</option>
+                  <option value="คุณ">คุณ</option>
+                </select>
+              </div>
+
+              <div class="sm:col-span-5">
+                <label class="block font-semibold text-slate-700 mb-1">ชื่อจริงผู้สั่งซื้อ <span class="text-rose-500">*</span></label>
+                <input type="text" id="buyer_fname" required placeholder="ชื่อจริง" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-orange-500">
+              </div>
+
+              <div class="sm:col-span-4">
+                <label class="block font-semibold text-slate-700 mb-1">นามสกุล <span class="text-rose-500">*</span></label>
+                <input type="text" id="buyer_lname" required placeholder="นามสกุล" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-orange-500">
+              </div>
+            </div>
+
+            <!-- Row 2: Phone & ID/Email -->
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 text-xs sm:text-sm">
+              <div class="sm:col-span-6">
+                <label class="block font-semibold text-slate-700 mb-1">เบอร์โทรศัพท์ที่ติดต่อได้ <span class="text-rose-500">*</span></label>
+                <input type="tel" id="buyer_phone" required placeholder="081-234-5678" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-mono focus:ring-2 focus:ring-orange-500">
+              </div>
+
+              <div class="sm:col-span-6">
+                <label class="block font-semibold text-slate-700 mb-1">เลขบัตรประชาชน / อีเมล (ถ้ามี)</label>
+                <input type="text" id="buyer_citizen" placeholder="ระบุหรือไม่ระบุก็ได้" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-mono">
+              </div>
+            </div>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      const cat = AppState.categories.find(c => c.id === AppState.selectedCategory) || AppState.categories[0];
       const runnerCount = cat ? cat.required_runners : 1;
 
-      document.getElementById('runner-count-badge').textContent = `ผู้สมัคร ${runnerCount} ท่าน (${cat.name})`;
-      const container = document.getElementById('runners-inputs-container');
+      if (badge) badge.textContent = `ผู้สมัคร ${runnerCount} ท่าน (${cat.name})`;
 
       const sizes = (AppState.settings.shirt_sizes && AppState.settings.shirt_sizes.length > 0)
         ? AppState.settings.shirt_sizes
@@ -3137,7 +3508,7 @@
       if (m < 0 || (m === 0 && today.getDate() < bdate.getDate())) {
         age--;
       }
-      if (age > 0) {
+      if (age >= 0 && age <= 120) {
         document.getElementById(`runner_${index}_age`).value = age;
       }
     }
@@ -3220,8 +3591,14 @@
     }
 
     function calculateTotalAmount() {
-      const cat = AppState.categories.find(c => c.id === AppState.selectedCategory) || AppState.categories[0];
-      const basePrice = Number(cat ? cat.price : 0) || 0;
+      let basePrice = 0;
+      if (AppState.selectedCategory === 'souvenir_only') {
+        basePrice = 0;
+      } else {
+        const cat = AppState.categories.find(c => c.id === AppState.selectedCategory) || AppState.categories[0];
+        basePrice = Number(cat ? cat.price : 0) || 0;
+      }
+
       const souvenirPrice = Number(AppState.settings.souvenir_price || AppState.settings.souvenir_shirt_price) || 300;
       const souvenirTotal = (AppState.settings.souvenir_enabled !== false) ? (AppState.souvenirQty * souvenirPrice) : 0;
       const grandTotal = basePrice + souvenirTotal;
@@ -3352,9 +3729,15 @@
         return;
       }
 
-      const cat = AppState.categories.find(c => c.id === AppState.selectedCategory);
-      const runnerCount = cat ? cat.required_runners : 1;
+      const isSouvenirOnly = AppState.selectedCategory === 'souvenir_only';
+      const cat = isSouvenirOnly ? null : (AppState.categories.find(c => c.id === AppState.selectedCategory) || AppState.categories[0]);
+      const runnerCount = isSouvenirOnly ? 0 : (cat ? cat.required_runners : 1);
       const totalAmount = calculateTotalAmount();
+
+      if (isSouvenirOnly && (!AppState.souvenirQty || AppState.souvenirQty < 1)) {
+        showToast('กรุณาระบุจำนวนของที่ระลึกที่ต้องการสั่งซื้ออย่างน้อย 1 ชิ้น', 'error');
+        return;
+      }
 
       const deliveryType = document.querySelector('input[name="delivery_type"]:checked').value;
       const deliveryAddress = deliveryType === 'delivery' ? document.getElementById('delivery_address').value.trim() : `รับที่งาน (${deliveryType === 'before_event' ? 'ก่อนวันแข่ง 17 ต.ค.' : 'เช้าวันงาน 18 ต.ค.'})`;
@@ -3399,16 +3782,29 @@
         }
       }
 
-      // Collect Runner 1 as Contact Person
-      const contactName = `${document.getElementById('runner_1_prefix').value} ${document.getElementById('runner_1_fname').value.trim()} ${document.getElementById('runner_1_lname').value.trim()}`;
-      const contactPhone = document.getElementById('runner_1_phone').value.trim();
-      const contactCitizen = document.getElementById('runner_1_citizen').value.trim();
+      // Collect Contact Person (Buyer info if souvenir_only, or Runner 1)
+      let contactName = '';
+      let contactPhone = '';
+      let contactCitizen = '';
+
+      if (isSouvenirOnly) {
+        const pfx = document.getElementById('buyer_prefix').value;
+        const fname = document.getElementById('buyer_fname').value.trim();
+        const lname = document.getElementById('buyer_lname').value.trim();
+        contactName = `${pfx} ${fname} ${lname}`.trim();
+        contactPhone = document.getElementById('buyer_phone').value.trim();
+        contactCitizen = (document.getElementById('buyer_citizen') ? document.getElementById('buyer_citizen').value.trim() : '');
+      } else {
+        contactName = `${document.getElementById('runner_1_prefix').value} ${document.getElementById('runner_1_fname').value.trim()} ${document.getElementById('runner_1_lname').value.trim()}`;
+        contactPhone = document.getElementById('runner_1_phone').value.trim();
+        contactCitizen = document.getElementById('runner_1_citizen').value.trim();
+      }
 
       const newRegistration = {
         id: regId,
         reg_code: regCode,
         user_id: validUserId,
-        category_id: cat.id,
+        category_id: isSouvenirOnly ? 'souvenir' : cat.id,
         contact_name: contactName,
         contact_phone: contactPhone,
         contact_citizen_id: contactCitizen,
@@ -4881,6 +5277,105 @@
       lucide.createIcons();
     }
 
+    // =========================================================================
+    // IMAGE PREVIEW / LIGHTBOX HELPER
+    // =========================================================================
+    function openImagePreviewModal(imgUrl, title = 'รูปตัวอย่าง') {
+      if (!imgUrl) return;
+      const modal = document.getElementById('modal-image-preview');
+      const targetImg = document.getElementById('img-preview-target');
+      const titleEl = document.getElementById('img-preview-title');
+      if (targetImg) targetImg.src = imgUrl;
+      if (titleEl) titleEl.textContent = title;
+      if (modal) modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeImagePreviewModal() {
+      const modal = document.getElementById('modal-image-preview');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // Helper: สั่งซื้อเฉพาะของที่ระลึกจากหน้าแรก
+    function startSouvenirRegistration() {
+      if (isRegistrationClosed()) {
+        showToast('ระบบปิดรับสมัครและสั่งซื้อเรียบร้อยแล้ว', 'warning');
+        return;
+      }
+      AppState.selectedCategory = 'souvenir_only';
+      if (!AppState.souvenirQty || AppState.souvenirQty < 1) {
+        AppState.souvenirQty = 1;
+        const qtyDisplay = document.getElementById('souvenir-qty-display');
+        if (qtyDisplay) qtyDisplay.textContent = '1';
+      }
+      switchView('registration');
+      renderRegistrationForm();
+      const container = document.getElementById('souvenir-sizes-container');
+      if (container) container.classList.remove('hidden');
+    }
+
+    // Image Upload Helpers for Categories
+    function handleCategoryFileSelect(event, type) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          const MAX_SIZE = 800;
+          let width = img.width;
+          let height = img.height;
+          if (width > height) {
+            if (width > MAX_SIZE) {
+              height *= MAX_SIZE / width;
+              width = MAX_SIZE;
+            }
+          } else {
+            if (height > MAX_SIZE) {
+              width *= MAX_SIZE / height;
+              height = MAX_SIZE;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.85);
+          const hiddenInput = document.getElementById(`cat_image_${type}`);
+          const previewImg = document.getElementById(`cat_img_${type}_preview`);
+          const emptyIcon = document.getElementById(`cat_img_${type}_empty`);
+
+          if (hiddenInput) hiddenInput.value = compressedBase64;
+          if (previewImg) {
+            previewImg.src = compressedBase64;
+            previewImg.classList.remove('hidden');
+          }
+          if (emptyIcon) emptyIcon.classList.add('hidden');
+          showToast(`โหลดรูปภาพ ${type === 'shirt' ? 'เสื้อ' : (type === 'medal' ? 'เหรียญ' : 'ของที่ระลึก')} สำเร็จ`, 'info');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearCategoryImg(type) {
+      const hiddenInput = document.getElementById(`cat_image_${type}`);
+      const fileInput = document.getElementById(`cat_file_${type}`);
+      const previewImg = document.getElementById(`cat_img_${type}_preview`);
+      const emptyIcon = document.getElementById(`cat_img_${type}_empty`);
+
+      if (hiddenInput) hiddenInput.value = '';
+      if (fileInput) fileInput.value = '';
+      if (previewImg) {
+        previewImg.src = '';
+        previewImg.classList.add('hidden');
+      }
+      if (emptyIcon) emptyIcon.classList.remove('hidden');
+    }
+
     function openCategoryModal(catId) {
       const modal = document.getElementById('modal-category');
       const title = document.getElementById('modal-cat-title');
@@ -4893,6 +5388,9 @@
       const quotaInput = document.getElementById('cat_quota');
       const perksInput = document.getElementById('cat_perks');
       const activeInput = document.getElementById('cat_is_active');
+
+      // Clear all image previews first
+      ['shirt', 'medal', 'souvenir'].forEach(t => clearCategoryImg(t));
 
       if (catId) {
         const cat = AppState.categories.find(c => c.id === catId);
@@ -4908,6 +5406,29 @@
           quotaInput.value = cat.quota || 500;
           perksInput.value = (cat.perks || []).join(', ');
           activeInput.checked = cat.is_active !== false;
+
+          // Set Images
+          if (cat.image_shirt) {
+            document.getElementById('cat_image_shirt').value = cat.image_shirt;
+            const p = document.getElementById('cat_img_shirt_preview');
+            const e = document.getElementById('cat_img_shirt_empty');
+            if (p) { p.src = cat.image_shirt; p.classList.remove('hidden'); }
+            if (e) e.classList.add('hidden');
+          }
+          if (cat.image_medal) {
+            document.getElementById('cat_image_medal').value = cat.image_medal;
+            const p = document.getElementById('cat_img_medal_preview');
+            const e = document.getElementById('cat_img_medal_empty');
+            if (p) { p.src = cat.image_medal; p.classList.remove('hidden'); }
+            if (e) e.classList.add('hidden');
+          }
+          if (cat.image_souvenir) {
+            document.getElementById('cat_image_souvenir').value = cat.image_souvenir;
+            const p = document.getElementById('cat_img_souvenir_preview');
+            const e = document.getElementById('cat_img_souvenir_empty');
+            if (p) { p.src = cat.image_souvenir; p.classList.remove('hidden'); }
+            if (e) e.classList.add('hidden');
+          }
         }
       } else {
         title.textContent = 'เพิ่มรุ่นการแข่งขันใหม่';
@@ -4943,6 +5464,10 @@
       const perksStr = document.getElementById('cat_perks').value.trim();
       const is_active = document.getElementById('cat_is_active').checked;
 
+      const image_shirt = document.getElementById('cat_image_shirt').value.trim();
+      const image_medal = document.getElementById('cat_image_medal').value.trim();
+      const image_souvenir = document.getElementById('cat_image_souvenir').value.trim();
+
       const perks = perksStr ? perksStr.split(',').map(s => s.trim()).filter(Boolean) : [];
 
       const categoryData = {
@@ -4954,6 +5479,9 @@
         quota,
         perks,
         is_active,
+        image_shirt,
+        image_medal,
+        image_souvenir,
         badgeColor: (editId || id) === 'vip' ? 'bg-amber-100 text-amber-800' : ((editId || id) === 'mini' ? 'bg-emerald-100 text-emerald-800' : ((editId || id) === 'family' ? 'bg-purple-100 text-purple-800' : 'bg-cyan-100 text-cyan-800')),
         color: (editId || id) === 'vip' ? 'from-amber-500 to-yellow-400' : ((editId || id) === 'mini' ? 'from-emerald-500 to-teal-400' : ((editId || id) === 'family' ? 'from-purple-500 to-pink-500' : 'from-brand-500 to-cyan-400'))
       };
@@ -4991,6 +5519,7 @@
       closeCategoryModal();
       renderAdminCategories();
       renderLandingCategories();
+      renderRegistrationForm();
       showToast('บันทึกรุ่นการแข่งขันเรียบร้อยแล้ว', 'success');
     }
 
@@ -5236,6 +5765,69 @@
       }
     }
 
+    function handleSouvenirFileSelect(event, num) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          const MAX_SIZE = 800;
+          let width = img.width;
+          let height = img.height;
+          if (width > height) {
+            if (width > MAX_SIZE) {
+              height *= MAX_SIZE / width;
+              width = MAX_SIZE;
+            }
+          } else {
+            if (height > MAX_SIZE) {
+              width *= MAX_SIZE / height;
+              height = MAX_SIZE;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.85);
+          AppState.settings[`souvenir_image_${num}`] = compressedBase64;
+          const hiddenInput = document.getElementById(`set_souvenir_image_${num}`);
+          const previewImg = document.getElementById(`set_souvenir_img_${num}_preview`);
+          const emptyIcon = document.getElementById(`souv_empty_${num}`);
+
+          if (hiddenInput) hiddenInput.value = compressedBase64;
+          if (previewImg) {
+            previewImg.src = compressedBase64;
+            previewImg.classList.remove('hidden');
+          }
+          if (emptyIcon) emptyIcon.classList.add('hidden');
+          showToast(`โหลดรูปภาพสินค้าที่ ${num} สำเร็จ (อย่าลืมกดบันทึกการตั้งค่า)`, 'info');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearSouvenirImg(num) {
+      AppState.settings[`souvenir_image_${num}`] = '';
+      const hiddenInput = document.getElementById(`set_souvenir_image_${num}`);
+      const fileInput = document.getElementById(`souv_file_${num}`);
+      const previewImg = document.getElementById(`set_souvenir_img_${num}_preview`);
+      const emptyIcon = document.getElementById(`souv_empty_${num}`);
+
+      if (hiddenInput) hiddenInput.value = '';
+      if (fileInput) fileInput.value = '';
+      if (previewImg) {
+        previewImg.src = '';
+        previewImg.classList.add('hidden');
+      }
+      if (emptyIcon) emptyIcon.classList.remove('hidden');
+    }
+
     function renderAdminSettings() {
       const s = AppState.settings;
       document.getElementById('set_promptpay_number').value = s.promptpay_number || '';
@@ -5273,6 +5865,22 @@
       document.getElementById('set_souvenir_shirt_price').value = Number(s.souvenir_price || s.souvenir_shirt_price) || 300;
       document.getElementById('set_souvenir_unit').value = s.souvenir_unit || 'ตัว';
       document.getElementById('set_souvenir_has_sizes').value = String(s.souvenir_has_sizes !== false);
+
+      // Souvenir 3 Image Previews
+      for (let n = 1; n <= 3; n++) {
+        const val = s[`souvenir_image_${n}`] || '';
+        const hInput = document.getElementById(`set_souvenir_image_${n}`);
+        const pImg = document.getElementById(`set_souvenir_img_${n}_preview`);
+        const eIcon = document.getElementById(`souv_empty_${n}`);
+        if (hInput) hInput.value = val;
+        if (val) {
+          if (pImg) { pImg.src = val; pImg.classList.remove('hidden'); }
+          if (eIcon) eIcon.classList.add('hidden');
+        } else {
+          if (pImg) { pImg.src = ''; pImg.classList.add('hidden'); }
+          if (eIcon) eIcon.classList.remove('hidden');
+        }
+      }
 
       // Shirt sizes table
       renderAdminShirtSizesTable();
@@ -5375,6 +5983,9 @@
         souvenir_shirt_price: souvenirPrice,
         souvenir_unit: document.getElementById('set_souvenir_unit').value.trim() || 'ชิ้น',
         souvenir_has_sizes: document.getElementById('set_souvenir_has_sizes').value === 'true',
+        souvenir_image_1: document.getElementById('set_souvenir_image_1').value.trim() || AppState.settings.souvenir_image_1 || '',
+        souvenir_image_2: document.getElementById('set_souvenir_image_2').value.trim() || AppState.settings.souvenir_image_2 || '',
+        souvenir_image_3: document.getElementById('set_souvenir_image_3').value.trim() || AppState.settings.souvenir_image_3 || '',
 
         // Dynamic Shirt Sizes
         shirt_sizes: shirtSizes
