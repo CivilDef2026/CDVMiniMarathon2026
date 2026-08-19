@@ -511,15 +511,19 @@
       <section id="view-registration" class="view-content space-y-6 hidden">
         
         <!-- Header & Breadcrumb -->
-        <div class="flex items-center justify-between">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <button onclick="switchView('landing')" class="inline-flex items-center text-xs font-semibold text-slate-500 hover:text-brand-600 mb-1 transition">
               <i data-lucide="arrow-left" class="w-3.5 h-3.5 mr-1"></i> ย้อนกลับหน้าแรก
             </button>
             <h2 class="text-2xl font-bold text-slate-900">แบบฟอร์มสมัครวิ่งออนไลน์</h2>
           </div>
-          <div class="text-right">
-            <span class="text-xs text-slate-400">อปพร. มินิมาราธอน ครั้งที่ 1</span>
+          <div class="flex items-center space-x-2.5 self-end sm:self-auto">
+            <button type="button" onclick="resetRegistrationForm()" class="px-3.5 py-1.5 rounded-xl border border-rose-200 bg-rose-50/80 hover:bg-rose-100 text-rose-700 text-xs font-bold flex items-center space-x-1.5 transition active:scale-95 shadow-2xs" title="ล้างข้อมูลที่กรอกทั้งหมดเพื่อเริ่มใหม่">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5 text-rose-600"></i>
+              <span>รีเซ็ตฟอร์ม</span>
+            </button>
+            <span class="text-xs text-slate-400 hidden sm:inline">อปพร. มินิมาราธอน ครั้งที่ 1</span>
           </div>
         </div>
 
@@ -689,14 +693,20 @@
           </div>
 
           <!-- Submit Button & Loader -->
-          <div class="flex items-center justify-end space-x-3 pt-2">
-            <button type="button" onclick="switchView('landing')" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium text-sm hover:bg-slate-100 transition">
-              ยกเลิก
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <button type="button" onclick="resetRegistrationForm()" class="px-5 py-2.5 rounded-xl border border-rose-200 bg-rose-50/70 hover:bg-rose-100 text-rose-700 font-semibold text-xs sm:text-sm transition flex items-center space-x-1.5 active:scale-95 shadow-2xs" title="ล้างข้อมูลที่กรอกทั้งหมดเพื่อเริ่มใหม่">
+              <i data-lucide="rotate-ccw" class="w-4 h-4 text-rose-500"></i>
+              <span>ล้างข้อมูล / รีเซ็ตฟอร์ม</span>
             </button>
-            <button type="submit" id="btn-submit-registration" class="px-8 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white font-bold text-sm sm:text-base shadow-lg shadow-brand-500/25 transition active:scale-95 flex items-center space-x-2">
-              <i data-lucide="check" class="w-5 h-5"></i>
-              <span>ยืนยันการสมัครวิ่ง</span>
-            </button>
+            <div class="flex items-center space-x-3 ml-auto">
+              <button type="button" onclick="switchView('landing')" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium text-xs sm:text-sm hover:bg-slate-100 transition">
+                ยกเลิก
+              </button>
+              <button type="submit" id="btn-submit-registration" class="px-8 py-3 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white font-bold text-sm sm:text-base shadow-lg shadow-brand-500/25 transition active:scale-95 flex items-center space-x-2">
+                <i data-lucide="check" class="w-5 h-5"></i>
+                <span>ยืนยันการสมัครวิ่ง</span>
+              </button>
+            </div>
           </div>
 
         </form>
@@ -720,16 +730,23 @@
                 <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
                 <input type="text" id="search-keyword" placeholder="เช่น 3100600123456 หรือ 0898765432 หรือ RUN69-0001" class="w-full pl-10 pr-4 py-3 text-sm rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
               </div>
-              <button onclick="performStatusSearch()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md transition flex items-center justify-center space-x-2 shrink-0">
-                <i data-lucide="search" class="w-4 h-4"></i>
-                <span>ค้นหาข้อมูล</span>
-              </button>
+              <div class="flex items-center space-x-2 w-full sm:w-auto shrink-0">
+                <button onclick="performStatusSearch()" class="flex-1 sm:flex-initial px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md transition flex items-center justify-center space-x-2">
+                  <i data-lucide="search" class="w-4 h-4"></i>
+                  <span>ค้นหาข้อมูล</span>
+                </button>
+                <button type="button" onclick="clearStatusSearch()" class="px-3.5 py-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-600 text-sm font-semibold transition" title="ล้างคำค้นหา">
+                  <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+              </div>
             </div>
 
             <!-- Quick Hint -->
             <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
               <span>* สามารถค้นหาได้ทุกรายการที่ลงทะเบียนไว้</span>
-              <button onclick="fillSampleSearch()" class="text-brand-600 hover:underline">ลองค้นหาด้วยข้อมูลตัวอย่าง</button>
+              <div class="flex items-center space-x-3">
+                <button onclick="fillSampleSearch()" class="text-brand-600 hover:underline">ลองค้นหาด้วยข้อมูลตัวอย่าง</button>
+              </div>
             </div>
           </div>
 
@@ -777,6 +794,10 @@
           </div>
 
           <div class="flex items-center space-x-2">
+            <button onclick="confirmResetAllRegistrationData()" class="px-3 py-2 rounded-xl border border-rose-300 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-semibold transition flex items-center space-x-1.5 shadow-2xs" title="ล้างข้อมูลการสมัครและนักวิ่งทั้งหมด">
+              <i data-lucide="trash-2" class="w-4 h-4 text-rose-600"></i>
+              <span>รีเซ็ตข้อมูลลงทะเบียน</span>
+            </button>
             <button onclick="exportRunnersCSV()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>ส่งออก CSV นักวิ่ง</span>
@@ -889,7 +910,7 @@
             <p id="admin-runners-view-desc" class="text-xs sm:text-sm text-slate-500">เลือกดูข้อมูลแยกตามรุ่นการแข่งขัน หรือดูรายการผู้สั่งซื้อเสื้อที่ระลึก</p>
           </div>
 
-          <div class="flex items-center space-x-2">
+          <div class="flex flex-wrap items-center gap-2">
             <div class="relative">
               <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
               <input type="text" id="admin-runner-search" oninput="renderAdminRunnersTable()" placeholder="ค้นหาชื่อ, บิบ, บัตรประชาชน..." class="pl-9 pr-3 py-2 text-xs sm:text-sm rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500">
@@ -901,6 +922,10 @@
             <button onclick="exportRunnersCSV()" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center space-x-1 shadow-sm transition shrink-0">
               <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
               <span id="btn-export-label">Export CSV</span>
+            </button>
+            <button onclick="confirmResetAllRegistrationData()" class="px-3 py-2 rounded-xl border border-rose-300 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-semibold flex items-center space-x-1 transition shrink-0 shadow-2xs" title="ล้างข้อมูลการสมัครและนักวิ่งทั้งหมดในฐานข้อมูล">
+              <i data-lucide="trash-2" class="w-4 h-4 text-rose-600"></i>
+              <span>รีเซ็ตข้อมูลลงทะเบียน</span>
             </button>
           </div>
         </div>
@@ -1497,6 +1522,26 @@
             </div>
 
           </form>
+
+          <!-- Danger Zone: Database Reset -->
+          <div class="mt-8 p-6 rounded-2xl bg-rose-50/50 border border-rose-200 space-y-3">
+            <div class="flex items-center space-x-2 text-rose-700 font-bold text-base">
+              <i data-lucide="alert-triangle" class="w-5 h-5 text-rose-600"></i>
+              <span>โซนอันตราย: จัดการล้างข้อมูลการลงทะเบียน (Database Reset)</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              ฟังก์ชันนี้จะทำการลบข้อมูลการสมัครวิ่งทั้งหมด (ตาราง <code class="bg-white px-1.5 py-0.5 rounded border border-slate-200 text-rose-600 font-mono text-[11px]">registrations</code>) 
+              และรายชื่อนักวิ่งทั้งหมด (ตาราง <code class="bg-white px-1.5 py-0.5 rounded border border-slate-200 text-rose-600 font-mono text-[11px]">runner_members</code>) 
+              ทั้งในเครื่องและในฐานข้อมูล <strong>Supabase</strong> เพื่อเริ่มต้นรับสมัครรอบใหม่ (ข้อมูลประเภทการแข่งขันและตั้งค่าระบบจะไม่ถูกลบ)
+            </p>
+            <div class="pt-1">
+              <button type="button" onclick="confirmResetAllRegistrationData()" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center space-x-2 active:scale-95">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                <span>ล้างข้อมูลการสมัครและนักวิ่งทั้งหมดในฐานข้อมูล</span>
+              </button>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -3190,6 +3235,61 @@
       lucide.createIcons();
     }
 
+    // =========================================================================
+    // REGISTRATION FORM LOGIC & RESET CONTROLLER
+    // =========================================================================
+    function resetRegistrationForm(confirmFirst = true) {
+      if (confirmFirst && !confirm('คุณต้องการล้างข้อมูลที่กรอกทั้งหมดในฟอร์มใช่หรือไม่?')) {
+        return;
+      }
+
+      // 1. Reset standard form fields
+      const form = document.getElementById('reg-form');
+      if (form) form.reset();
+
+      // 2. Reset slip image upload state & preview UI
+      AppState.uploadedSlipBase64 = null;
+      const slipFileInput = document.getElementById('slip_file');
+      if (slipFileInput) slipFileInput.value = '';
+      const slipPreviewBox = document.getElementById('slip-preview-box');
+      if (slipPreviewBox) slipPreviewBox.classList.add('hidden');
+      const slipPlaceholder = document.getElementById('slip-placeholder');
+      if (slipPlaceholder) slipPlaceholder.classList.remove('hidden');
+      const slipPreviewImg = document.getElementById('slip-preview-img');
+      if (slipPreviewImg) slipPreviewImg.src = '';
+      const slipFileInfo = document.getElementById('slip-file-info');
+      if (slipFileInfo) slipFileInfo.textContent = '';
+
+      // 3. Reset Souvenir Quantity and dynamic sizes container
+      AppState.souvenirQty = 0;
+      const souvenirQtyDisp = document.getElementById('souvenir-qty-display');
+      if (souvenirQtyDisp) souvenirQtyDisp.textContent = '0';
+      const souvenirSizesContainer = document.getElementById('souvenir-sizes-container');
+      if (souvenirSizesContainer) {
+        souvenirSizesContainer.classList.add('hidden');
+        souvenirSizesContainer.innerHTML = '';
+      }
+
+      // 4. Reset Delivery Address wrapper
+      const deliveryAddrWrapper = document.getElementById('delivery-address-wrapper');
+      if (deliveryAddrWrapper) deliveryAddrWrapper.classList.add('hidden');
+      const deliveryAddrInput = document.getElementById('delivery_address');
+      if (deliveryAddrInput) deliveryAddrInput.value = '';
+
+      // 5. Reset selected category to first active race category
+      const activeCats = AppState.categories.filter(c => c.is_active !== false);
+      if (activeCats.length > 0) {
+        AppState.selectedCategory = activeCats[0].id;
+      } else {
+        AppState.selectedCategory = 'funrun';
+      }
+
+      // 6. Re-render the form cleanly
+      renderRegistrationForm();
+      showToast('ล้างข้อมูลและรีเซ็ตแบบฟอร์มเรียบร้อยแล้ว', 'info');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     function renderRegistrationForm() {
       // 1. Render Category Radio Cards
       const catContainer = document.getElementById('form-category-options');
@@ -3910,6 +4010,14 @@
     function fillSampleSearch() {
       document.getElementById('search-keyword').value = '3100600123456';
       performStatusSearch();
+    }
+
+    function clearStatusSearch() {
+      const input = document.getElementById('search-keyword');
+      if (input) input.value = '';
+      const container = document.getElementById('status-results-container');
+      if (container) container.innerHTML = '';
+      showToast('ล้างคำค้นหาเรียบร้อยแล้ว', 'info');
     }
 
     function performStatusSearch() {
@@ -6015,6 +6123,62 @@
       renderAdminShirtsSummary();
       calculateTotalAmount();
       showToast('บันทึกการตั้งค่ากำหนดการ สินค้าที่ระลึก และไซส์เสื้อเรียบร้อยแล้ว!', 'success');
+    }
+
+    // =========================================================================
+    // DATABASE REGISTRATION RESET CONTROLLER (DANGER ZONE)
+    // =========================================================================
+    async function confirmResetAllRegistrationData() {
+      const confirmed = confirm('⚠️ คำเตือนสำคัญ!\n\nคุณต้องการลบข้อมูลการสมัครวิ่ง, รายชื่อนักวิ่ง, เลข BIB และข้อมูลการสั่งซื้อของที่ระลึก "ทั้งหมด" ใช่หรือไม่?\n\n- ข้อมูลในตาราง registrations และ runner_members ทั้งในเครื่องและ Supabase จะถูกล้างทั้งหมด\n- ข้อมูลประเภทการแข่งขัน (Categories) และการตั้งค่าระบบ (Settings) จะยังคงอยู่\n\nกด "ตกลง" เพื่อดำเนินการต่อ');
+      if (!confirmed) return;
+
+      const doubleConfirm = prompt('เพื่อความปลอดภัย โปรดพิมพ์คำว่า "RESET" (ตัวพิมพ์ใหญ่) เพื่อยืนยันการล้างข้อมูลในฐานข้อมูล:');
+      if (doubleConfirm !== 'RESET' && doubleConfirm !== 'reset') {
+        showToast('ยกเลิกการล้างข้อมูล (พิมพ์ข้อความยืนยันไม่ถูกต้อง)', 'info');
+        return;
+      }
+
+      showToast('กำลังล้างข้อมูลในฐานข้อมูล...', 'info');
+
+      // 1. Clear Supabase Database if connected
+      if (isConnectedToSupabase && dbClient) {
+        try {
+          // Delete all runner_members first (child table)
+          const { error: runErr } = await dbClient
+            .from('runner_members')
+            .delete()
+            .neq('runner_number', -999);
+          if (runErr) console.warn('Supabase delete runner_members error:', runErr);
+
+          // Delete all registrations (parent table)
+          const { error: regErr } = await dbClient
+            .from('registrations')
+            .delete()
+            .neq('total_amount', -999999);
+          if (regErr) console.warn('Supabase delete registrations error:', regErr);
+        } catch (err) {
+          console.error('Supabase reset error:', err);
+        }
+      }
+
+      // 2. Clear Local State & LocalStorage
+      AppState.registrations = [];
+      AppState.runners = [];
+      saveDataToStorage();
+
+      // 3. Refresh All Views
+      updateLandingStats();
+      renderAdminDashboard();
+      renderAdminApprovals();
+      renderAdminRunnersTable();
+      renderAdminShirtsSummary();
+      if (AppState.currentView === 'my-registrations') renderMyRegistrations();
+      if (AppState.currentView === 'check-status') {
+        const container = document.getElementById('status-results-container');
+        if (container) container.innerHTML = '';
+      }
+
+      showToast('ล้างและรีเซ็ตข้อมูลการสมัครทั้งหมดในฐานข้อมูลเรียบร้อยแล้ว!', 'success');
     }
 
     function refreshAllData() {
